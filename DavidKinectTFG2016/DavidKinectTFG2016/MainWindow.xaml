@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Button x:Name="buttonIniciar" Content="Iniciar" HorizontalAlignment="Left" Margin="140,242,0,0" VerticalAlignment="Top" Width="75" Click="iniciar_click_buttonIniciar"/>
+        <Button x:Name="buttonRegistrar" Content="Registrarse" HorizontalAlignment="Left" Margin="282,242,0,0" VerticalAlignment="Top" Width="75" Click="registrar_click_buttonRegistrar"/>
+        <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Height="23" Margin="237,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label" Content="Usuario:" HorizontalAlignment="Left" Margin="125,116,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Contraseña:" HorizontalAlignment="Left" Margin="125,168,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="25" Margin="353,39,0,0" VerticalAlignment="Top" Width="100" Source="images/Kinect_Logo.jpg"/>
+        <Label x:Name="label2" Content="BIENVENIDO A KINECT:" HorizontalAlignment="Left" Margin="106,46,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Margin="237,170,0,0" VerticalAlignment="Top" Height="24" Width="114"/>
+
     </Grid>
 </Window>
