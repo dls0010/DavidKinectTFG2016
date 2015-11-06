@@ -66,25 +66,52 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Administradores.cs">
+      <DependentUpon>ModeloBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="BDComun.cs" />
     <Compile Include="clases\Administrador.cs" />
     <Compile Include="clases\Paciente.cs" />
+    <Compile Include="clases\Relacion.cs" />
     <Compile Include="clases\Terapeuta.cs" />
     <Compile Include="clases\Usuario.cs" />
-    <Compile Include="ModeloUsuarios.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloUsuarios.Context.tt</DependentUpon>
+    <Compile Include="iniciosSesionVarios\InicioSesionAdministrador.xaml.cs">
+      <DependentUpon>InicioSesionAdministrador.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModeloUsuarios.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloUsuarios.tt</DependentUpon>
+    <Compile Include="iniciosSesionVarios\InicioSesionPaciente.xaml.cs">
+      <DependentUpon>InicioSesionPaciente.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModeloUsuarios.Designer.cs">
+    <Compile Include="iniciosSesionVarios\InicioSesionTerapeuta.xaml.cs">
+      <DependentUpon>InicioSesionTerapeuta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KinectTFGBDDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloUsuarios.edmx</DependentUpon>
+      <DependentUpon>KinectTFGBDDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloBD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloBD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloBD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeloBD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloBD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pacientes.cs">
+      <DependentUpon>ModeloBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="recursosTerapeuta\AdquerirPacientes.xaml.cs">
+      <DependentUpon>AdquerirPacientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosTerapeuta\ConsultarPacientes.xaml.cs">
+      <DependentUpon>ConsultarPacientes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Registro.xaml.cs">
       <DependentUpon>Registro.xaml</DependentUpon>
@@ -98,10 +125,27 @@
     <Compile Include="registrosVarios\RegistroTerapeuta.xaml.cs">
       <DependentUpon>RegistroTerapeuta.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Usuarios.cs">
-      <DependentUpon>ModeloUsuarios.tt</DependentUpon>
+    <Compile Include="Relaciones.cs">
+      <DependentUpon>ModeloBD.tt</DependentUpon>
     </Compile>
-    <Page Include="InicioSesion.xaml">
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModeloBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Terapeutas.cs">
+      <DependentUpon>ModeloBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>ModeloBD.tt</DependentUpon>
+    </Compile>
+    <Page Include="iniciosSesionVarios\InicioSesionAdministrador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="iniciosSesionVarios\InicioSesionPaciente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="iniciosSesionVarios\InicioSesionTerapeuta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,13 +157,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="InicioSesion.xaml.cs">
-      <DependentUpon>InicioSesion.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="recursosTerapeuta\AdquerirPacientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosTerapeuta\ConsultarPacientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Registro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,12 +204,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="ModeloUsuarios.edmx">
+    <EntityDeploy Include="ModeloBD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloUsuarios.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModeloBD.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModeloUsuarios.edmx.diagram">
-      <DependentUpon>ModeloUsuarios.edmx</DependentUpon>
+    <None Include="KinectTFGBDDataSet.xsc">
+      <DependentUpon>KinectTFGBDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="KinectTFGBDDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>KinectTFGBDDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="KinectTFGBDDataSet.xss">
+      <DependentUpon>KinectTFGBDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ModeloBD.edmx.diagram">
+      <DependentUpon>ModeloBD.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -179,15 +239,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModeloUsuarios.Context.tt">
+    <Content Include="ModeloBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloUsuarios.edmx</DependentUpon>
-      <LastGenOutput>ModeloUsuarios.Context.cs</LastGenOutput>
+      <DependentUpon>ModeloBD.edmx</DependentUpon>
+      <LastGenOutput>ModeloBD.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModeloUsuarios.tt">
+    <Content Include="ModeloBD.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloUsuarios.edmx</DependentUpon>
-      <LastGenOutput>ModeloUsuarios.cs</LastGenOutput>
+      <DependentUpon>ModeloBD.edmx</DependentUpon>
+      <LastGenOutput>ModeloBD.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup />

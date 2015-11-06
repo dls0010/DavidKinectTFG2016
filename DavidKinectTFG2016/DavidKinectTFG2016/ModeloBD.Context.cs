@@ -13,10 +13,10 @@ namespace DavidKinectTFG2016
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class KinectTFGBDEntities : DbContext
+    public partial class KinectTFGBDEntities1 : DbContext
     {
-        public KinectTFGBDEntities()
-            : base("name=KinectTFGBDEntities")
+        public KinectTFGBDEntities1()
+            : base("name=KinectTFGBDEntities1")
         {
         }
     
@@ -25,6 +25,11 @@ namespace DavidKinectTFG2016
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Administradores> Administradores { get; set; }
+        public virtual DbSet<Pacientes> Pacientes { get; set; }
+        public virtual DbSet<Relaciones> Relaciones { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Terapeutas> Terapeutas { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

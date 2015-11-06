@@ -14,9 +14,24 @@ namespace DavidKinectTFG2016
     
     public partial class Usuarios
     {
-        public int Id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Usuarios()
+        {
+            this.Administradores = new HashSet<Administradores>();
+            this.Pacientes = new HashSet<Pacientes>();
+            this.Terapeutas = new HashSet<Terapeutas>();
+        }
+    
+        public int id { get; set; }
         public string usuario { get; set; }
         public string contraseña { get; set; }
         public string tipoUsuario { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Administradores> Administradores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pacientes> Pacientes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Terapeutas> Terapeutas { get; set; }
     }
 }

@@ -12,15 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DavidKinectTFG2016
+namespace DavidKinectTFG2016.iniciosSesionVarios
 {
     /// <summary>
-    /// Lógica de interacción para InicioSesion.xaml
+    /// Lógica de interacción para InicioSesionAdministrador.xaml
     /// </summary>
-    public partial class InicioSesion : Window
+    public partial class InicioSesionAdministrador : Window
     {
-        public InicioSesion()
+        string nombreUsuario;
+        public InicioSesionAdministrador(string nombre)
         {
+            nombreUsuario = nombre;
             InitializeComponent();
         }
     }

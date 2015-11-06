@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DavidKinectTFG2016.iniciosSesionVarios;
 
 namespace DavidKinectTFG2016
 {
@@ -37,7 +38,8 @@ namespace DavidKinectTFG2016
             string contraseñaIntroducida = textBoxContraseña.Password;
 
             //Utilizamos el modelo de identidades
-            KinectTFGBDEntities modeloEntidades = new KinectTFGBDEntities();
+            KinectTFGBDEntities1 modeloEntidades = new KinectTFGBDEntities1();
+            
 
             //Verificamos si el usuario existe en la BD:
             Usuarios usuariosBD = modeloEntidades.Usuarios.SingleOrDefault( us => us.usuario.Equals(usuarioIntroducido));
@@ -46,10 +48,29 @@ namespace DavidKinectTFG2016
                 //verificamos la contraseña: 
                 if(usuariosBD.contraseña.Equals(contraseñaIntroducida))
                 {
-                    //Abrimos la nueva ventana:
-                    InicioSesion inicioSesion = new InicioSesion();
-                    inicioSesion.Show();
-                    this.Close();
+                    string tipo = usuariosBD.tipoUsuario;
+                    string usuario = usuariosBD.usuario;
+                    if(tipo == "Paciente")
+                    {
+                        //Abrimos la nueva ventana:
+                        InicioSesionPaciente inicioSesionPaciente = new InicioSesionPaciente(usuarioIntroducido);
+                        inicioSesionPaciente.Show();
+                        this.Close();
+                    }
+                    if(tipo == "Terapeuta")
+                    {
+                        //Abrimos la nueva ventana:
+                        InicioSesionTerapeuta inicioSesionPaciente = new InicioSesionTerapeuta(usuarioIntroducido);
+                        inicioSesionPaciente.Show();
+                        this.Close();
+                    }
+                    if(tipo == "Administrador")
+                    {
+                        //Abrimos la nueva ventana:
+                        InicioSesionAdministrador inicioSesionPaciente = new InicioSesionAdministrador(usuarioIntroducido);
+                        inicioSesionPaciente.Show();
+                        this.Close();
+                    }
                 }
                 else
                 {
