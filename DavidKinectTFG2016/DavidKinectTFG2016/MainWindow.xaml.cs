@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DavidKinectTFG2016.iniciosSesionVarios;
+using DavidKinectTFG2016.clases;
+using DavidKinectTFG2016.iniciosSesionVarios;
 
 namespace DavidKinectTFG2016
 {
@@ -39,52 +41,33 @@ namespace DavidKinectTFG2016
 
             //Utilizamos el modelo de identidades
             KinectTFGBDEntities1 modeloEntidades = new KinectTFGBDEntities1();
-            
 
-            //Verificamos si el usuario existe en la BD:
-            Usuarios usuariosBD = modeloEntidades.Usuarios.SingleOrDefault( us => us.usuario.Equals(usuarioIntroducido));
+            if (Usuario.Autentificar(usuarioIntroducido, contraseñaIntroducida) > 0)
+            {
+                MessageBox.Show("Usuario correcto");
+                string tipoUsuario = Usuario.obtenerTipo(textBoxUsuario.Text);
+                if (tipoUsuario == "Paciente")
+                {
+                    InicioSesionPaciente inicioPaciente = new InicioSesionPaciente(usuarioIntroducido);
+                    inicioPaciente.Show();
+                }
+                if (tipoUsuario == "Terapeuta")
+                {
+                    InicioSesionTerapeuta inicioTerapeuta = new InicioSesionTerapeuta(usuarioIntroducido);
+                    inicioTerapeuta.Show();
+                }
+                if (tipoUsuario == "Administrador")
+                {
+                    InicioSesionAdministrador inicioAdministrador = new InicioSesionAdministrador(usuarioIntroducido);
+                    inicioAdministrador.Show();
+                }
 
-            if (usuariosBD != null) {
-                //verificamos la contraseña: 
-                if(usuariosBD.contraseña.Equals(contraseñaIntroducida))
-                {
-                    string tipo = usuariosBD.tipoUsuario;
-                    string usuario = usuariosBD.usuario;
-                    if(tipo == "Paciente")
-                    {
-                        //Abrimos la nueva ventana:
-                        InicioSesionPaciente inicioSesionPaciente = new InicioSesionPaciente(usuarioIntroducido);
-                        inicioSesionPaciente.Show();
-                        this.Close();
-                    }
-                    if(tipo == "Terapeuta")
-                    {
-                        //Abrimos la nueva ventana:
-                        InicioSesionTerapeuta inicioSesionPaciente = new InicioSesionTerapeuta(usuarioIntroducido);
-                        inicioSesionPaciente.Show();
-                        this.Close();
-                    }
-                    if(tipo == "Administrador")
-                    {
-                        //Abrimos la nueva ventana:
-                        InicioSesionAdministrador inicioSesionPaciente = new InicioSesionAdministrador(usuarioIntroducido);
-                        inicioSesionPaciente.Show();
-                        this.Close();
-                    }
-                }
-                else
-                {
-                    //Las contraseñas no coinciden
-                    textBoxContraseña.Background = Brushes.Red; //Cambiamos el color del TextBox.
-                    MessageBox.Show("Contraseña incorrecta");
-                    textBoxContraseña.Clear();
-                }
             }
-            //Usuario no existe
             else
             {
                 textBoxUsuario.Background = Brushes.Red;
-                MessageBox.Show("Usuario no es correcto o no existe");
+                textBoxContraseña.Background = Brushes.Red;
+                MessageBox.Show("Usuario no es correcto o no existe. Vuelve a intentarlo.");
                 textBoxUsuario.Clear();
                 textBoxContraseña.Clear();
             }

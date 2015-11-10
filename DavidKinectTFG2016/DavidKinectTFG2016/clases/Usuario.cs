@@ -36,6 +36,31 @@ namespace DavidKinectTFG2016.clases
         }
 
         /// <summary>
+        /// Metodo que controla la autenficacion en el login del usuario.
+        /// </summary>
+        /// <param name="pUsuario"></param> Nombre del Usuario.
+        /// <param name="pContraseña"></param> Contraseña del usuario.
+        /// <returns>
+        /// -1: No hay usuario en esa base de datos.
+        /// != -1: Usuario encontrado. Autentificacion correcta.
+        /// </returns>
+        public static int Autentificar(String pUsuario, String pContraseña)
+        {
+            int resultado = -1;
+            SqlConnection conn = BDComun.ObtnerConexion();
+            SqlCommand comando = new SqlCommand(string.Format("Select * from Usuarios where usuario = '{0}' and contraseña = '{1}'", pUsuario, pContraseña), conn);
+
+            SqlDataReader reader = comando.ExecuteReader();
+
+            while (reader.Read())
+            {
+                resultado = 50;
+            }
+            conn.Close();
+            return resultado;
+        }
+
+        /// <summary>
         /// Metodo que devuelve el tipo de usuario.
         /// </summary>
         /// <param name="pUsuario"></param> nombre de usuario.
