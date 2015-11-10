@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.iniciosSesionVarios"
         mc:Ignorable="d"
-        Title="InicioSesionAdministrador" Height="300" Width="300">
+        Title="InicioSesionAdministrador" Height="300" Width="400">
     <Grid>
-        
+        <Label x:Name="labelTitulo" Content="Seleccione la opción que desee:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelModificarPacientes" Content="Modificar Pacientes:" HorizontalAlignment="Left" Margin="34,54,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonModificarPacientes" Content="Modificar" HorizontalAlignment="Left" Margin="175,54,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarPacientes_Click"/>
+        <Label x:Name="labelModificarTerapeutas" Content="Modificar Terapeutas:" HorizontalAlignment="Left" Margin="34,92,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonModificarTerapeutas" Content="Modificar" HorizontalAlignment="Left" Margin="175,92,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarTerapeutas_Click"/>
+
     </Grid>
 </Window>
