@@ -30,6 +30,22 @@ namespace DavidKinectTFG2016.recursosAdministrador
         }
 
         /// <summary>
+        /// Metodo que actualiza un cambio del datagrid en la BD.
+        /// </summary>
+        /// <param name="sender"></param> Boton Actualizar.
+        /// <param name="e"></param> Evento del boton.
+        private void buttonModificar_Click(object sender, RoutedEventArgs e)
+        {
+            SqlCommandBuilder builder = new SqlCommandBuilder(adaptador);
+            adaptador.UpdateCommand = builder.GetUpdateCommand();
+            int numeroCambios = adaptador.Update(dt);
+            if (numeroCambios > 0)
+                MessageBox.Show("Actualizado");
+            else
+                MessageBox.Show("No ha sido posible actualizar");
+        }
+
+        /// <summary>
         /// Metodo que carga la tabla al abrirse la ventana.
         /// </summary>
         /// <param name="sender"></param> Ventana.
@@ -57,22 +73,6 @@ namespace DavidKinectTFG2016.recursosAdministrador
         private void Window_Closed(object sender, EventArgs e)
         {
             conexion.Close();
-        }
-
-        /// <summary>
-        /// Metodo que actualiza un cambio del datagrid en la BD.
-        /// </summary>
-        /// <param name="sender"></param> Boton Actualizar.
-        /// <param name="e"></param> Evento del boton.
-        private void buttonModificar_Click(object sender, RoutedEventArgs e)
-        {
-            SqlCommandBuilder builder = new SqlCommandBuilder(adaptador);
-            adaptador.UpdateCommand = builder.GetUpdateCommand();
-            int numeroCambios = adaptador.Update(dt);
-            if (numeroCambios > 0)
-                MessageBox.Show("Actualizado");
-            else
-                MessageBox.Show("No ha sido posible actualizar");
         }
     }
 }
