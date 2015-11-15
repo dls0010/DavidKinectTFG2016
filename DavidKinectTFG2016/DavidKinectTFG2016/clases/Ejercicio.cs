@@ -27,7 +27,6 @@ namespace DavidKinectTFG2016.clases
 
             resultado = comando.ExecuteNonQuery();
             conn.Close();
-
             return resultado;
         }
 
