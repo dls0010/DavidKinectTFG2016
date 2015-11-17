@@ -29,14 +29,30 @@ namespace DavidKinectTFG2016.clases
         public static int RegistrarPaciente(string pNombre, string pApellidos, string pNombreUsuario, string pNIF, string pTelefono, string pNacimiento, string pEstado)
         {
             int resultado = 0;
+            int error = 0;
+            SqlConnection conn;
 
-            SqlConnection conn = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand(string.Format("Insert Into Pacientes (nombrePaciente,apellidosPaciente,usuario, nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", pNombre, pApellidos, pNombreUsuario, pNIF, pTelefono, pNacimiento, pEstado), conn);
+            try
+            {
+                conn = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
 
-            resultado = comando.ExecuteNonQuery();
-            conn.Close();
+            try {
+                SqlCommand comando = new SqlCommand(string.Format("Insert Into Pacientes (nombrePaciente,apellidosPaciente,usuario, nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", pNombre, pApellidos, pNombreUsuario, pNIF, pTelefono, pNacimiento, pEstado), conn);
 
-            return resultado;
+                resultado = comando.ExecuteNonQuery();
+                conn.Close();
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
         }
 
         /// <summary>
@@ -47,15 +63,22 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static DataTable getPacientes()
         {
-            SqlConnection con = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = con;
-            comando.CommandType = CommandType.Text;
-            comando.CommandText = "Select * from Pacientes";
-            SqlDataReader reader = comando.ExecuteReader();
-            DataTable table = new DataTable();
-            table.Load(reader);
-            return table;
+            DataTable table;
+            try {
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "Select * from Pacientes";
+                SqlDataReader reader = comando.ExecuteReader();
+                table = new DataTable();
+                table.Load(reader);
+                return table;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
         /// <summary>
         /// Metodo que obtiene todos los datos de la base de datos tabla Pacientes.
@@ -69,20 +92,25 @@ namespace DavidKinectTFG2016.clases
             string nombre = "";
             string apellido = "";
             string[] nombreCompleto = new string[] { "nombre", "apellido" };
-            SqlConnection con = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = con;
-            comando.CommandType = CommandType.Text;
-            comando.CommandText = string.Format("Select nombrePaciente, apellidosPaciente from Pacientes where usuario = '"+usuario+"'");
-            SqlDataReader reader = comando.ExecuteReader();
-            while (reader.Read())
+            try {
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = string.Format("Select nombrePaciente, apellidosPaciente from Pacientes where usuario = '" + usuario + "'");
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    nombre = reader.GetString(0);
+                    apellido = reader.GetString(1);
+                    nombreCompleto[0] = nombre;
+                    nombreCompleto[1] = apellido;
+                }
+                return nombreCompleto;
+            }catch(Exception ex)
             {
-                nombre = reader.GetString(0);
-                apellido = reader.GetString(1);
-                nombreCompleto[0] = nombre;
-                nombreCompleto[1] = apellido;
+                return nombreCompleto;
             }
-            return nombreCompleto;
         }
     }
 }

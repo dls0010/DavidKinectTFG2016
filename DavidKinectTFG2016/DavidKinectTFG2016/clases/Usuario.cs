@@ -22,17 +22,23 @@ namespace DavidKinectTFG2016.clases
         public static int CrearUsuarios(string pUsuario, string pContraseña, string pTipoUsuario)
         {
             int resultado = 0;
+            int error = 0;
+            try {
+                if (Existe(pUsuario) == false && pTipoUsuario.Length != 0)
+                {
+                    SqlConnection conn = BDComun.ObtnerConexion();
+                    SqlCommand comando = new SqlCommand(string.Format("Insert Into Usuarios (usuario,contraseña,tipoUsuario) values ('{0}','{1}','{2}')", pUsuario, pContraseña, pTipoUsuario), conn);
 
-            if (Existe(pUsuario) == false && pTipoUsuario.Length != 0)
-            {
-                SqlConnection conn = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand(string.Format("Insert Into Usuarios (usuario,contraseña,tipoUsuario) values ('{0}','{1}','{2}')", pUsuario, pContraseña, pTipoUsuario), conn);
+                    resultado = comando.ExecuteNonQuery();
+                    conn.Close();
 
-                resultado = comando.ExecuteNonQuery();
-                conn.Close();
-
+                }
+                return resultado;
             }
-            return resultado;
+            catch(Exception ex)
+            {
+                return error;
+            }
         }
 
         /// <summary>
@@ -47,17 +53,25 @@ namespace DavidKinectTFG2016.clases
         public static int Autentificar(String pUsuario, String pContraseña)
         {
             int resultado = -1;
-            SqlConnection conn = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand(string.Format("Select * from Usuarios where usuario = '{0}' and contraseña = '{1}'", pUsuario, pContraseña), conn);
+            int error = -1;
+            SqlConnection conn;
+            try {
+                conn = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand(string.Format("Select * from Usuarios where usuario = '{0}' and contraseña = '{1}'", pUsuario, pContraseña), conn);
 
-            SqlDataReader reader = comando.ExecuteReader();
+                SqlDataReader reader = comando.ExecuteReader();
 
-            while (reader.Read())
-            {
-                resultado = 50;
+                while (reader.Read())
+                {
+                    resultado = 50;
+                }
+                conn.Close();
+                return resultado;
             }
-            conn.Close();
-            return resultado;
+            catch(Exception ex)
+            {
+                return error;
+            }
         }
 
         /// <summary>
@@ -69,16 +83,21 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static string obtenerTipo(String pUsuario)
         {
-            string tipoUsuario = " ";
-            SqlConnection conn = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand(string.Format("Select tipoUsuario from Usuarios where usuario like '{0}' ", pUsuario), conn);
-            SqlDataReader reader = comando.ExecuteReader();
-            while (reader.Read())
+            try {
+                string tipoUsuario = " ";
+                SqlConnection conn = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand(string.Format("Select tipoUsuario from Usuarios where usuario like '{0}' ", pUsuario), conn);
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    tipoUsuario = reader.GetString(0);
+                }
+                reader.Close();
+                return tipoUsuario;
+            }catch(Exception ex)
             {
-                tipoUsuario = reader.GetString(0);
+                return null;
             }
-            reader.Close();
-            return tipoUsuario;
 
         }
 
@@ -91,17 +110,22 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static bool Existe(string usuario)
         {
-            using (SqlConnection conexion = BDComun.ObtnerConexion())
-            {
-                string query = "SELECT COUNT(*) FROM Usuarios WHERE Usuario=@Usuario";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("Usuario", usuario);
+            try {
+                using (SqlConnection conexion = BDComun.ObtnerConexion())
+                {
+                    string query = "SELECT COUNT(*) FROM Usuarios WHERE Usuario=@Usuario";
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("Usuario", usuario);
 
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                if (count == 0)
-                    return false;
-                else
-                    return true;
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (count == 0)
+                        return false;
+                    else
+                        return true;
+                }
+            }catch(Exception ex)
+            {
+                return false;
             }
         }
     }

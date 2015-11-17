@@ -28,14 +28,25 @@ namespace DavidKinectTFG2016.clases
         public static int registrarAdministrador(string pNombre, string pApellidos, string pNombreUsuario, string pNIF, string pNacimiento)
         {
             int resultado = 0;
+            int error = 0;
+            SqlConnection conn;
+            try {
+                conn = BDComun.ObtnerConexion();
+            }
+            catch(Exception ex)
+            {
+                return error;
+            }
+            try {
+                SqlCommand comando = new SqlCommand(string.Format("Insert Into Administradores (nombreAdministrador,apellidosAdministrador,usuario,nifAdministrador,nacimientoAdministrador) values ('{0}','{1}','{2}','{3}','{4}')", pNombre, pApellidos, pNombreUsuario, pNIF, pNacimiento), conn);
 
-            SqlConnection conn = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand(string.Format("Insert Into Administradores (nombreAdministrador,apellidosAdministrador,usuario,nifAdministrador,nacimientoAdministrador) values ('{0}','{1}','{2}','{3}','{4}')", pNombre, pApellidos, pNombreUsuario, pNIF, pNacimiento), conn);
-
-            resultado = comando.ExecuteNonQuery();
-            conn.Close();
-
-            return resultado;
+                resultado = comando.ExecuteNonQuery();
+                conn.Close();
+                return resultado;
+            }catch(Exception ex)
+            {
+                return error;
+            }
         }
     }
 }

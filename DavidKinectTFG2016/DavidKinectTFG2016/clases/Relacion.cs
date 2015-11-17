@@ -25,17 +25,29 @@ namespace DavidKinectTFG2016.clases
         public static int registrarRelacion(string pIdPaciente, string pUsuarioTerapeuta, string pNombrePaciente, string pApellidosPaciente, string pFechaInicio)
         {
             int resultado = 0;
+            int error = 0;
             string pFechaFin = "en tratamiento";
             int pIdTerapeuta = obtenerIdTerapeuta(pUsuarioTerapeuta);
             string pNombreTerapeuta = obtenerNombreTerapeuta(pUsuarioTerapeuta);
 
-            SqlConnection conn = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand(string.Format("Insert Into Relaciones (idPaciente,idTerapeuta,nombrePaciente,apellidosPaciente,nombreTerapeuta,fechaInicio, fechaFin) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", pIdPaciente, pIdTerapeuta, pNombrePaciente, pApellidosPaciente, pNombreTerapeuta, pFechaInicio, pFechaFin), conn);
+            if (pIdTerapeuta < 0 || pNombreTerapeuta==null)
+                return error;
 
-            resultado = comando.ExecuteNonQuery();
-            conn.Close();
+            SqlConnection conn;
+            try {
+                conn = BDComun.ObtnerConexion();
 
-            return resultado;
+                SqlCommand comando = new SqlCommand(string.Format("Insert Into Relaciones (idPaciente,idTerapeuta,nombrePaciente,apellidosPaciente,nombreTerapeuta,fechaInicio, fechaFin) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", pIdPaciente, pIdTerapeuta, pNombrePaciente, pApellidosPaciente, pNombreTerapeuta, pFechaInicio, pFechaFin), conn);
+
+                resultado = comando.ExecuteNonQuery();
+                conn.Close();
+
+                return resultado;
+            }
+            catch(Exception ex)
+            {
+                return error;
+            }
         }
         /// <summary>
         /// Metodo que nos da todos las relaciones de las Base de datos.
@@ -43,15 +55,21 @@ namespace DavidKinectTFG2016.clases
         /// <returns></returns>
         public static DataTable getRelaciones()
         {
-            SqlConnection con = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = con;
-            comando.CommandType = CommandType.Text;
-            comando.CommandText = "Select * from Relaciones";
-            SqlDataReader reader = comando.ExecuteReader();
-            DataTable table = new DataTable();
-            table.Load(reader);
-            return table;
+            try {
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "Select * from Relaciones";
+                SqlDataReader reader = comando.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+                return table;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -62,20 +80,26 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static int obtenerIdTerapeuta(string terapeuta)
         {
-            int idTerapeuta = -3;
-            using (SqlConnection conexion = BDComun.ObtnerConexion())
-            {
-                string query = "SELECT idTerapeuta FROM Terapeutas WHERE usuario=@Usuario";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("Usuario", terapeuta);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+            int error = -1;
+            try {
+                int idTerapeuta = -3;
+                using (SqlConnection conexion = BDComun.ObtnerConexion())
                 {
-                    idTerapeuta = reader.GetInt32(0);
+                    string query = "SELECT idTerapeuta FROM Terapeutas WHERE usuario=@Usuario";
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("Usuario", terapeuta);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        idTerapeuta = reader.GetInt32(0);
+                    }
+                    reader.Close();
                 }
-                reader.Close();
+                return idTerapeuta;
+            }catch(Exception ex)
+            {
+                return error;
             }
-            return idTerapeuta;
         }
 
         /// <summary>
@@ -86,20 +110,26 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static string obtenerNombreTerapeuta(string terapeuta)
         {
-            string nombreTerapeuta = "";
-            using (SqlConnection conexion = BDComun.ObtnerConexion())
-            {
-                string query = "SELECT nombreTerapeuta FROM Terapeutas WHERE usuario=@Usuario";
-                SqlCommand cmd = new SqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("Usuario", terapeuta);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+            try {
+                string nombreTerapeuta = "";
+                using (SqlConnection conexion = BDComun.ObtnerConexion())
                 {
-                    nombreTerapeuta = reader.GetString(0);
+                    string query = "SELECT nombreTerapeuta FROM Terapeutas WHERE usuario=@Usuario";
+                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("Usuario", terapeuta);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        nombreTerapeuta = reader.GetString(0);
+                    }
+                    reader.Close();
                 }
-                reader.Close();
+                return nombreTerapeuta;
             }
-            return nombreTerapeuta;
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -111,18 +141,24 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static string getTerapeuta(string nombrePaciente, string apellidosPaciente)
         {
-            string usuarioTerapeuta = "";
-            SqlConnection con = BDComun.ObtnerConexion();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = con;
-            comando.CommandType = CommandType.Text;
-            comando.CommandText = string.Format("Select nombreTerapeuta from Relaciones where nombrePaciente = '" + nombrePaciente + "' and apellidosPaciente = '"+apellidosPaciente+"'");
-            SqlDataReader reader = comando.ExecuteReader();
-            while (reader.Read())
-            {
-                usuarioTerapeuta = reader.GetString(0);
+            try {
+                string usuarioTerapeuta = "";
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = string.Format("Select nombreTerapeuta from Relaciones where nombrePaciente = '" + nombrePaciente + "' and apellidosPaciente = '" + apellidosPaciente + "'");
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    usuarioTerapeuta = reader.GetString(0);
+                }
+                return usuarioTerapeuta;
             }
-            return usuarioTerapeuta;
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

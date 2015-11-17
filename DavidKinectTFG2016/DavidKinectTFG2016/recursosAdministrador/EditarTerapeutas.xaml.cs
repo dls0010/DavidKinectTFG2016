@@ -36,13 +36,19 @@ namespace DavidKinectTFG2016.recursosAdministrador
         /// <param name="e"></param> Evento del boton.
         private void buttonModificar_Click(object sender, RoutedEventArgs e)
         {
-            SqlCommandBuilder builder = new SqlCommandBuilder(adaptador);
-            adaptador.UpdateCommand = builder.GetUpdateCommand();
-            int numeroCambios = adaptador.Update(dt);
-            if (numeroCambios > 0)
-                MessageBox.Show("Actualizado");
-            else
-                MessageBox.Show("No ha sido posible actualizar");
+            try {
+                SqlCommandBuilder builder = new SqlCommandBuilder(adaptador);
+                adaptador.UpdateCommand = builder.GetUpdateCommand();
+                int numeroCambios = adaptador.Update(dt);
+                if (numeroCambios > 0)
+                    MessageBox.Show("Actualizado");
+                else
+                    MessageBox.Show("No se ha actualizado ningun registro");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al modificar la tabla");
+            }
         }
 
         /// <summary>
@@ -52,17 +58,28 @@ namespace DavidKinectTFG2016.recursosAdministrador
         /// <param name="e"></param>Evento de ventana.
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            conexion = BDComun.ObtnerConexion();
+            try {
+                conexion = BDComun.ObtnerConexion();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error al conectar con la base de datos");
+            }
 
             string query = "Select * from terapeutas";
-            SqlCommand comando = new SqlCommand(query, conexion);
-            comando.ExecuteNonQuery();
+            try {
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.ExecuteNonQuery();
 
-            adaptador = new SqlDataAdapter(comando);
-            dt = new DataTable("terapeutas");
-            adaptador.Fill(dt);
-            dataGrid.ItemsSource = dt.DefaultView;
-            adaptador.Update(dt);
+                adaptador = new SqlDataAdapter(comando);
+                dt = new DataTable("terapeutas");
+                adaptador.Fill(dt);
+                dataGrid.ItemsSource = dt.DefaultView;
+                adaptador.Update(dt);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error al cargar la tabla");
+            }
         }
 
         /// <summary>
@@ -72,7 +89,32 @@ namespace DavidKinectTFG2016.recursosAdministrador
         /// <param name="e"></param> Evento de cerrar.
         private void Window_Closed(object sender, EventArgs e)
         {
-            conexion.Close();
+            try
+            {
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+            }
+        }
+
+        /// <summary>
+        /// Metodo que cierra la conexion con la BD al cerrar la ventana.
+        /// </summary>
+        /// <param name="sender"></param> Cerrar ventana.
+        /// <param name="e"></param> Evento de cerrar.
+        private void buttonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                conexion.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+            }
         }
     }
 }

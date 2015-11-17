@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DavidKinectTFG2016.iniciosSesionVarios;
 using DavidKinectTFG2016.clases;
-using DavidKinectTFG2016.iniciosSesionVarios;
 using System.Threading;
 using System.Globalization;
 

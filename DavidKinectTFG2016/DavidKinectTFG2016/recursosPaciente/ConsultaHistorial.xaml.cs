@@ -36,17 +36,28 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <param name="e"></param>Evento de ventana.
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            conexion = BDComun.ObtnerConexion();
+            try {
+                conexion = BDComun.ObtnerConexion();
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error al conectar con la base de datos");
+            }
 
             string query = "Select * from historial where usuarioPaciente = '" + nombreUsuario + "'";
-            SqlCommand comando = new SqlCommand(query, conexion);
-            comando.ExecuteNonQuery();
 
-            SqlDataAdapter adaptador = new SqlDataAdapter(comando);
-            DataTable dt = new DataTable("historial");
-            adaptador.Fill(dt);
-            dataGrid.ItemsSource = dt.DefaultView;
-            adaptador.Update(dt);
+            try {
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.ExecuteNonQuery();
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                DataTable dt = new DataTable("historial");
+                adaptador.Fill(dt);
+                dataGrid.ItemsSource = dt.DefaultView;
+                adaptador.Update(dt);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos en la tabla");
+            }
         }
     }
 }
