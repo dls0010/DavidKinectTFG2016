@@ -1,0 +1,21 @@
+﻿<Window x:Class="DavidKinectTFG2016.recursosPaciente.Ejercicio1Paciente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:k="http://schemas.microsoft.com/kinect/2013"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DavidKinectTFG2016.recursosPaciente"
+        mc:Ignorable="d"
+        Title="Ejercicio1Paciente" Height="300" Width="300" Loaded="Window_Loaded" Closed="Window_Closed">
+    <Grid>
+        <k:KinectRegion Name="zonaCursor">
+            <Grid>
+                <k:KinectUserViewer Name="visorUsuario" ImageBackground="Black" DefaultUserColor="Green" PrimaryUserColor="Red"></k:KinectUserViewer>
+                <TextBlock Name="textPosicion1" Text="Cabeza" FontWeight="Bold" FontSize="21.333" Foreground="Red" HorizontalAlignment="Left"></TextBlock>
+                <TextBlock Name="textPosicion2" Text="Cabeza" FontWeight="Bold" FontSize="21.333" Foreground="Red" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Name="textResultado" Text="RESULTADO" FontWeight="Bold" FontSize="21.333" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+            </Grid>
+        </k:KinectRegion>
+        <k:KinectSensorChooserUI Name="sensorChooserUI" HorizontalAlignment="Center" VerticalAlignment="Top"></k:KinectSensorChooserUI>
+    </Grid>
+</Window>

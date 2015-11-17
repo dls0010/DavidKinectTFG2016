@@ -7,14 +7,37 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button x:Name="buttonIniciar" Content="Iniciar" HorizontalAlignment="Left" Margin="140,242,0,0" VerticalAlignment="Top" Width="75" Click="iniciar_click_buttonIniciar"/>
-        <Button x:Name="buttonRegistrar" Content="Registrarse" HorizontalAlignment="Left" Margin="282,242,0,0" VerticalAlignment="Top" Width="75" Click="registrar_click_buttonRegistrar"/>
-        <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Height="23" Margin="237,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label" Content="Usuario:" HorizontalAlignment="Left" Margin="125,116,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Contraseña:" HorizontalAlignment="Left" Margin="125,168,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="25" Margin="353,39,0,0" VerticalAlignment="Top" Width="100" Source="images/Kinect_Logo.jpg"/>
-        <Label x:Name="label2" Content="BIENVENIDO A KINECT:" HorizontalAlignment="Left" Margin="106,46,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Margin="237,170,0,0" VerticalAlignment="Top" Height="24" Width="114"/>
-
+        <Viewbox Stretch="Uniform" Margin="10,0,10,10">
+            <Grid Width="428">
+                <Button x:Name="buttonIniciar" Content="{Binding buttonIniciar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="100,242,0,0" VerticalAlignment="Top" Width="75" Click="iniciar_click_buttonIniciar"/>
+                <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="242,242,0,0" VerticalAlignment="Top" Width="75" Click="registrar_click_buttonRegistrar"/>
+                <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Height="23" Margin="180,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label x:Name="labelUsuario" Content="{Binding labelUsuario, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="60,116,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelContraseña" Content="{Binding labelContraseña, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="60,168,0,0" VerticalAlignment="Top"/>
+                <Image x:Name="image" HorizontalAlignment="Left" Height="25" Margin="255,46,0,0" VerticalAlignment="Top" Width="100" Source="images/Kinect_Logo.jpg"/>
+                <Label x:Name="labelTitulo" Content="{Binding labelTitulo, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="50,46,0,0" VerticalAlignment="Top"/>
+                <PasswordBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Margin="180,170,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
+                <Button x:Name="buttonSpanish"  Margin="230,10,50,0" VerticalAlignment="Top" Width="32" Height="19" Click="buttonSpanish_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="images/esp.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="buttonEnglish"  Margin="288,10,35,0" VerticalAlignment="Top" Width="32" Height="19" RenderTransformOrigin="-0.456,0.46" Click="buttonEnglish_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="images/eng.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="buttonAcerca"  Margin="331,9,4,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="-0.456,0.46" Click="buttonAcerca_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="images/info.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="buttonSalir"  Margin="10,10,386,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="-0.456,0.46" Click="buttonSalir_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="images/salir.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>

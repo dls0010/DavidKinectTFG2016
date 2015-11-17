@@ -7,11 +7,14 @@
         mc:Ignorable="d"
         Title="InicioSesionAdministrador" Height="300" Width="400">
     <Grid>
-        <Label x:Name="labelTitulo" Content="Seleccione la opción que desee:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelModificarPacientes" Content="Modificar Pacientes:" HorizontalAlignment="Left" Margin="34,54,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonModificarPacientes" Content="Modificar" HorizontalAlignment="Left" Margin="175,54,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarPacientes_Click"/>
-        <Label x:Name="labelModificarTerapeutas" Content="Modificar Terapeutas:" HorizontalAlignment="Left" Margin="34,92,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonModificarTerapeutas" Content="Modificar" HorizontalAlignment="Left" Margin="175,92,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarTerapeutas_Click"/>
-
+        <Viewbox Stretch="Uniform" Margin="10,0,10,10">
+            <Grid>
+                <Label x:Name="labelTituloAdministrador" Content="{Binding labelTituloAdministrador, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelModificarPacientes" Content="{Binding labelModificarPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="34,54,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonModificarPacientes" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="175,54,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarPacientes_Click"/>
+                <Label x:Name="labelModificarTerapeutas" Content="{Binding labelModificarTerapeutas, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="34,92,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonModificarTerapeutas" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="175,92,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarTerapeutas_Click"/>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>

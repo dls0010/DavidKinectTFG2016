@@ -1,0 +1,19 @@
+﻿<Window x:Class="DavidKinectTFG2016.AcercaDe"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DavidKinectTFG2016"
+        mc:Ignorable="d"
+        Title="AcercaDe" Height="300" Width="350">
+    <Grid>
+        <Viewbox Stretch="Uniform" Margin="10,0,10,10">
+            <Grid Height="276" Width="345">
+                <Label x:Name="labelTitulo" Content="Uso de Kinect para el envejecimiento activo y rehabilitación." Margin="0,90,10,-86"/>
+                <Label x:Name="labelVersion" Content="Version 1.0" Margin="10,120,-10,-118"/>
+                <Label x:Name="labelNombre" Content="David López Santamaría" Margin="10,150,-10,-146"/>
+                <Label x:Name="labelFecha" Content="2016" Margin="10,180,-10,-146"/>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>

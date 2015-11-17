@@ -2,8 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DavidKinectTFG2016"
+             xmlns:idiomas="clr-namespace:DavidKinectTFG2016.idiomas"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ObjectDataProvider x:Key="IdiomasRes"
+                            ObjectType="{x:Type idiomas:WrapperIdiomas}"
+                            MethodName="GetResourceInstance">
+        </ObjectDataProvider>
     </Application.Resources>
 </Application>

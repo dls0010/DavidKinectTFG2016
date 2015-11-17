@@ -7,11 +7,14 @@
         mc:Ignorable="d"
         Title="Inicio Sesion Terapeuta" Height="250" Width="350">
     <Grid>
-        <Label x:Name="labelAdquerir" Content="Adquerir Pacientes:" HorizontalAlignment="Left" Margin="29,85,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelConsultar" Content="Consultar mis pacientes:" HorizontalAlignment="Left" Margin="29,144,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelTitulo" Content="Bienvenido, seleccione la opción que desee:" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonAdquerir" Content="Adquerir" HorizontalAlignment="Left" Margin="193,89,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdquerir_Click"/>
-        <Button x:Name="buttonConsultar" Content="Consultar" HorizontalAlignment="Left" Margin="193,148,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultar_Click"/>
-
+        <Viewbox Stretch="Uniform" Margin="10,0,10,10">
+            <Grid>
+                <Label x:Name="labelAdquerirPacientes" Content="{Binding labelAdquerirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="29,85,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelConsultar" Content="{Binding labelConsultarPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="29,144,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelTituloTerapeuta" Content="{Binding labelTituloTerapeuta, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonAdquerirPacientes" Content="{Binding buttonAdquerirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="193,89,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdquerir_Click"/>
+                <Button x:Name="buttonConsultar" Content="{Binding buttonConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="193,148,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultar_Click"/>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>

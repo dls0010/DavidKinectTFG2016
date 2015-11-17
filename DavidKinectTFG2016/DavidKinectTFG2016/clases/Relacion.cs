@@ -102,6 +102,27 @@ namespace DavidKinectTFG2016.clases
             return nombreTerapeuta;
         }
 
-
+        /// <summary>
+        /// Metodo que obtiene todos los datos de la base de datos tabla Relaciones.
+        /// </summary>
+        /// <param name="usuario"></param> nombre de usuario del paciente.
+        /// <returns>
+        /// String con el nombre del terapeuta correspondiente.
+        /// </returns>
+        public static string getTerapeuta(string nombrePaciente, string apellidosPaciente)
+        {
+            string usuarioTerapeuta = "";
+            SqlConnection con = BDComun.ObtnerConexion();
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = con;
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = string.Format("Select nombreTerapeuta from Relaciones where nombrePaciente = '" + nombrePaciente + "' and apellidosPaciente = '"+apellidosPaciente+"'");
+            SqlDataReader reader = comando.ExecuteReader();
+            while (reader.Read())
+            {
+                usuarioTerapeuta = reader.GetString(0);
+            }
+            return usuarioTerapeuta;
+        }
     }
 }

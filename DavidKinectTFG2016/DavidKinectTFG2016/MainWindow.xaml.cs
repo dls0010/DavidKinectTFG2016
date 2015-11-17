@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using DavidKinectTFG2016.iniciosSesionVarios;
 using DavidKinectTFG2016.clases;
 using DavidKinectTFG2016.iniciosSesionVarios;
+using System.Threading;
+using System.Globalization;
 
 namespace DavidKinectTFG2016
 {
@@ -82,6 +84,49 @@ namespace DavidKinectTFG2016
         {
             Registro registro = new Registro();
             registro.Show();
+        }
+
+        /// <summary>
+        /// Metodo que permite cambiar el idioma de la aplicacion a Español.
+        /// </summary>
+        /// <param name="sender"></param> Boton Español.
+        /// <param name="e"></param> Evento del boton.
+        private void buttonSpanish_Click(object sender, RoutedEventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            idiomas.WrapperIdiomas.ChangeCulture(Thread.CurrentThread.CurrentUICulture);
+        }
+
+        /// <summary>
+        /// Metodo que permite cambiar el idioma de la aplicacion a Ingles.
+        /// </summary>
+        /// <param name="sender"></param> Boton Ingles.
+        /// <param name="e"></param> Evento del boton.
+        private void buttonEnglish_Click(object sender, RoutedEventArgs e)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
+            idiomas.WrapperIdiomas.ChangeCulture(Thread.CurrentThread.CurrentUICulture);
+        }
+
+        /// <summary>
+        /// Metodo que permite consultar el Acerca De, de la aplicación.
+        /// </summary>
+        /// <param name="sender"></param> Boton Acerca de.
+        /// <param name="e"></param> Evento del boton.
+        private void buttonAcerca_Click(object sender, RoutedEventArgs e)
+        {
+            AcercaDe acercaDe = new AcercaDe();
+            acercaDe.Show();
+        }
+
+        /// <summary>
+        /// Metodo que permite cerrar la aplicacion.
+        /// </summary>
+        /// <param name="sender"></param> Boton Salir.
+        /// <param name="e"></param> Evento del boton.
+        private void buttonSalir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

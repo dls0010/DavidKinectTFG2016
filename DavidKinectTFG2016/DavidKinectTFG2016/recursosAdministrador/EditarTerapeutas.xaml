@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosAdministrador"
         mc:Ignorable="d"
-        Title="EditarTerapeutas" Height="400" Width="500" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="EditarTerapeutas" Height="400" Width="500" Loaded="Window_Loaded" WindowState="Maximized" Closed="Window_Closed">
     <Grid>
-        <Button x:Name="buttonModificar" Content="Modificar" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="76" Click="buttonModificar_Click"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top"/>
-
-
+        <Viewbox Stretch="Uniform" Margin="10,0,10,10">
+            <Grid>
+                <Button x:Name="buttonModificar" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="76" Click="buttonModificar_Click"/>
+                <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>

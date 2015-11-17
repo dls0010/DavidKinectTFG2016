@@ -57,5 +57,32 @@ namespace DavidKinectTFG2016.clases
             table.Load(reader);
             return table;
         }
+        /// <summary>
+        /// Metodo que obtiene todos los datos de la base de datos tabla Pacientes.
+        /// </summary>
+        /// <param name="usuario"></param> nombre de usuario del paciente.
+        /// <returns>
+        /// String con el nombre del paciente correspondiente.
+        /// </returns>
+        public static string[] getPaciente(string usuario)
+        {
+            string nombre = "";
+            string apellido = "";
+            string[] nombreCompleto = new string[] { "nombre", "apellido" };
+            SqlConnection con = BDComun.ObtnerConexion();
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = con;
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = string.Format("Select nombrePaciente, apellidosPaciente from Pacientes where usuario = '"+usuario+"'");
+            SqlDataReader reader = comando.ExecuteReader();
+            while (reader.Read())
+            {
+                nombre = reader.GetString(0);
+                apellido = reader.GetString(1);
+                nombreCompleto[0] = nombre;
+                nombreCompleto[1] = apellido;
+            }
+            return nombreCompleto;
+        }
     }
 }
