@@ -306,6 +306,7 @@
     <Resource Include="images\esp.png" />
     <Resource Include="images\info.png" />
     <Resource Include="images\salir.png" />
+    <Resource Include="images\usuario.jpg" />
     <Content Include="ModeloBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloBD.edmx</DependentUpon>

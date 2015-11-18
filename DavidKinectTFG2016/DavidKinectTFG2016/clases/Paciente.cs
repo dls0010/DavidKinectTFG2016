@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.IO;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -22,13 +24,23 @@ namespace DavidKinectTFG2016.clases
         /// <param name="pNIF"></param> NIF del paciente.
         /// <param name="pNacimiento"></param> Nacimiento del paciente.
         /// <param name="pEstado"></param> Estado del paciente.
+        /// <param name="pImagen"></param> Imagen del Terapeuta.
+        /// <param name="pDescripcion"></param> Descripcion del Terapeuta.
         /// <returns>
         /// 0: Ha ocurrido un fallo. No se ha llevado a cabo la inserción.
         /// != 0 Proceso realizado correctamente.
         /// </returns>
-        public static int RegistrarPaciente(string pNombre, string pApellidos, string pNombreUsuario, string pNIF, string pTelefono, string pNacimiento, string pEstado)
+        public static int RegistrarPaciente(string pNombre, string pApellidos, string pNombreUsuario, string pNIF, string pTelefono, string pNacimiento, string pEstado, string pDescripcion, string pathImagen)
         {
-            int resultado = 0;
+            byte[] imagen = null;
+            if (pathImagen != null)
+            {
+                FileStream fstream = new FileStream(pathImagen, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fstream);
+                imagen = br.ReadBytes((int)fstream.Length);
+            }
+
+            int resultado =1;
             int error = 0;
             SqlConnection conn;
 
@@ -40,11 +52,17 @@ namespace DavidKinectTFG2016.clases
             {
                 return error;
             }
+   
+            string query = "Insert Into Pacientes (nombrePaciente,apellidosPaciente,usuario, nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente,descripcionPaciente,imagenPaciente)" + "values('" + pNombre + "','" + pApellidos + "','" + pNombreUsuario + "','" + pNIF + "','" + pTelefono + "','" + pNacimiento + "','" + pEstado +"','"+pDescripcion+ "',@IMG);";
+            SqlCommand comando = new SqlCommand(query,conn);
+            SqlDataReader reader;
+            try
+            {
+                if(pathImagen != null)
+                    comando.Parameters.Add(new SqlParameter("@IMG",imagen));
 
-            try {
-                SqlCommand comando = new SqlCommand(string.Format("Insert Into Pacientes (nombrePaciente,apellidosPaciente,usuario, nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", pNombre, pApellidos, pNombreUsuario, pNIF, pTelefono, pNacimiento, pEstado), conn);
-
-                resultado = comando.ExecuteNonQuery();
+                reader = comando.ExecuteReader();
+               
                 conn.Close();
 
                 return resultado;

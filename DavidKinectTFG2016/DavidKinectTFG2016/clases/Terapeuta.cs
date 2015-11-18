@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Media;
+using System.IO;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -20,27 +22,54 @@ namespace DavidKinectTFG2016.clases
         /// <param name="pNombreUsuario"></param> Nombre Usuario del Terapeuta.
         /// <param name="pNIF"></param> Nif del Terapeuta.
         /// <param name="pNacimiento"></param> Nacimiento del Terapeuta.
+        /// <param name="pTelefono"></param> Telefono del Terapeuta.
+        /// <param name="pathImagen"></param> Imagen del Terapeuta.
         /// <returns>
         /// 0: Ha ocurrido un fallo. No se ha llevado a cabo la inserción.
         /// != 0 Proceso realizado correctamente.
         /// </returns>
-        public static int registrarTerapeuta(string pNombre, string pApellidos, string pNombreUsuario, string pNIF, string pNacimiento)
+        public static int registrarTerapeuta(string pNombre, string pApellidos, string pNombreUsuario, string pNIF, string pNacimiento, string pTelefono, string pathImagen)
         {
-            int resultado = 0;
+            int resultado = 1;
             int error = 0;
             SqlConnection conn;
-            try {
+            byte[] imagen = null;
+
+            if (pathImagen != null)
+            {
+                FileStream fstream = new FileStream(pathImagen, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fstream);
+                imagen = br.ReadBytes((int)fstream.Length);
+            }
+
+            try
+            {
                 conn = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand(string.Format("Insert Into Terapeutas (nombreTerapeuta,apellidosTerapeuta,usuario,nifTerapeuta,nacimientoTerapeuta) values ('{0}','{1}','{2}','{3}','{4}')", pNombre, pApellidos, pNombreUsuario, pNIF, pNacimiento), conn);
-
-                resultado = comando.ExecuteNonQuery();
-                conn.Close();
-
-                return resultado;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return error;
             }
+
+            string query = "Insert Into Terapeutas (nombreTerapeuta,apellidosTerapeuta,usuario,nifTerapeuta,nacimientoTerapeuta,telefonoTerapeuta,imagenTerapeuta)" + "values('" + pNombre + "','" + pApellidos + "','" + pNombreUsuario + "','" + pNIF + "','" + pNacimiento + "','" + pTelefono + "',@IMG);";
+            SqlCommand comando = new SqlCommand(query, conn);
+            SqlDataReader reader;
+            try
+            {
+                if (pathImagen != null)
+                    comando.Parameters.Add(new SqlParameter("@IMG", imagen));
+
+                reader = comando.ExecuteReader();
+                
+                conn.Close();
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
+
         }
     }
 }

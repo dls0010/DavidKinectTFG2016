@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DavidKinectTFG2016.clases;
+using Microsoft.Win32;
+using System.IO;
 
 namespace DavidKinectTFG2016.registrosVarios
 {
@@ -21,6 +23,7 @@ namespace DavidKinectTFG2016.registrosVarios
     public partial class RegistroTerapeuta : Window
     {
         string nombreUsuario;
+        string path = null;
         public RegistroTerapeuta(string nombre)
         {
             nombreUsuario = nombre;
@@ -59,15 +62,36 @@ namespace DavidKinectTFG2016.registrosVarios
             string apellidosTerapeuta = textBoxApellidos.Text;
             string nifTerapeuta = textBoxNIF.Text;
             string nacimientoTerapeuta = textBoxNacimiento.Text;
+            string telefonoTerapeuta = textBoxTelefono.Text;
 
-            if (Terapeuta.registrarTerapeuta(nombreTerapeuta, apellidosTerapeuta, nombreUsuario, nifTerapeuta, nacimientoTerapeuta) > 0)
+            if (Terapeuta.registrarTerapeuta(nombreTerapeuta, apellidosTerapeuta, nombreUsuario, nifTerapeuta, nacimientoTerapeuta,telefonoTerapeuta,path) > 0)
             {
                 MessageBox.Show("Terapeuta registrado con exito.");
                 this.Close();
             }
             else
             {
-                MessageBox.Show("El terapeuta ha completado mal el formulario.");
+                if (path == null)
+                    MessageBox.Show("El terapeuta debe de insertar una foto.");
+                else
+                    MessageBox.Show("El terapeuta ha completado mal el formulario.");
+            }
+        }
+
+        /// <summary>
+        /// Metodo que permite la seleccion de una imagen en nuestro ordenador para colocarla de perfil.
+        /// </summary>
+        /// <param name="sender"></param> Boton Examinar.
+        /// <param name="e"></param>Evento del botón.
+        private void buttonExaminar_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Seleccione la Imagen a Mostrar";
+            openFile.Filter = "Todos(*.*) | *.*| Imagenes | *.jpg; *.gif; *.png; *.bmp";
+            if (openFile.ShowDialog() == true)
+            {
+                path = openFile.FileName.ToString();
+                imagenFoto.Source = new BitmapImage(new Uri(path));
             }
         }
     }

@@ -222,4 +222,16 @@
   <data name="labelTituloTerapeuta" xml:space="preserve">
     <value>Bienvenido, seleccione la opción que desee:</value>
   </data>
+  <data name="buttonExaminar" xml:space="preserve">
+    <value>Examinar...</value>
+  </data>
+  <data name="buttonHacerFoto" xml:space="preserve">
+    <value>Hacer foto...</value>
+  </data>
+  <data name="labelDescripcion" xml:space="preserve">
+    <value>Descripción:</value>
+  </data>
+  <data name="labelImagen" xml:space="preserve">
+    <value>Imagen:</value>
+  </data>
 </root>

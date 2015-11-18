@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DavidKinectTFG2016.clases;
+using Microsoft.Win32;
+using System.IO;
 
 namespace DavidKinectTFG2016.registrosVarios
 {
@@ -21,6 +23,7 @@ namespace DavidKinectTFG2016.registrosVarios
     public partial class RegistroPaciente : Window
     {
         string nombreUsuario;
+        string path = null;
         public RegistroPaciente(string nombre)
         {
             nombreUsuario = nombre;
@@ -41,15 +44,19 @@ namespace DavidKinectTFG2016.registrosVarios
             string telefonoPaciente = textBoxTelefono.Text;
             string nacimientoPaciente = textBoxNacimiento.Text;
             string estadoPaciente = textBoxEstado.Text;
+            string descripcionPaciente = textBoxDescripcion.Text;
 
-            if (Paciente.RegistrarPaciente(nombrePaciente, apellidosPaciente, nombreUsuario, nifPaciente, telefonoPaciente, nacimientoPaciente, estadoPaciente) > 0)
+            if (Paciente.RegistrarPaciente(nombrePaciente, apellidosPaciente, nombreUsuario, nifPaciente, telefonoPaciente, nacimientoPaciente, estadoPaciente, descripcionPaciente, path) > 0)
             {
                 MessageBox.Show("Paciente registrado con exito.");
                 this.Close();
             }
             else
             {
-                MessageBox.Show("El paciente ha completado mal el formulario.");
+                if(path == null)
+                    MessageBox.Show("El paciente debe de insertar una foto.");
+                else
+                    MessageBox.Show("El paciente ha completado mal el formulario.");
             }
         }
 
@@ -72,6 +79,23 @@ namespace DavidKinectTFG2016.registrosVarios
         private void buttonNacimiento_Click(object sender, RoutedEventArgs e)
         {
             textBoxNacimiento.Text = dateCalendario.SelectedDate.Value.ToString("yyyy/MM/dd");
+        }
+
+        /// <summary>
+        /// Metodo que permite la seleccion de una imagen en nuestro ordenador para colocarla de perfil.
+        /// </summary>
+        /// <param name="sender"></param> Boton Examinar.
+        /// <param name="e"></param>Evento del botón.
+        private void buttonExaminar_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "Seleccione la Imagen a Mostrar";
+            openFile.Filter = "Todos(*.*) | *.*| Imagenes | *.jpg; *.gif; *.png; *.bmp";
+            if (openFile.ShowDialog() == true)
+            {
+                path = openFile.FileName.ToString();
+                imagenFoto.Source = new BitmapImage(new Uri(path));
+            }
         }
     }
 }

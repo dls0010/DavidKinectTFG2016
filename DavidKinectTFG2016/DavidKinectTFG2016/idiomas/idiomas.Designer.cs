@@ -106,6 +106,24 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Examinar....
+        /// </summary>
+        public static string buttonExaminar {
+            get {
+                return ResourceManager.GetString("buttonExaminar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hacer foto....
+        /// </summary>
+        public static string buttonHacerFoto {
+            get {
+                return ResourceManager.GetString("buttonHacerFoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Iniciar.
         /// </summary>
         public static string buttonIniciar {
@@ -178,6 +196,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Descripción:.
+        /// </summary>
+        public static string labelDescripcion {
+            get {
+                return ResourceManager.GetString("labelDescripcion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Hacer ejercicio:.
         /// </summary>
         public static string labelEjercicio {
@@ -210,6 +237,15 @@ namespace DavidKinectTFG2016.idiomas {
         public static string labelIDPaciente {
             get {
                 return ResourceManager.GetString("labelIDPaciente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Imagen:.
+        /// </summary>
+        public static string labelImagen {
+            get {
+                return ResourceManager.GetString("labelImagen", resourceCulture);
             }
         }
         

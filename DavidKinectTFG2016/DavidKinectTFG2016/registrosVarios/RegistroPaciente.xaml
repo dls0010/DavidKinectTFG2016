@@ -5,26 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.registrosVarios"
         mc:Ignorable="d"
-        Title="RegistroPaciente" Height="400" Width="400">
+        Title="RegistroPaciente" Height="700" Width="550">
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
-            <Grid>
+            <Grid Height="528" Width="419">
                 <Label x:Name="labelNombre" Content="{Binding labelNombre, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,39,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelApellidos" Content="{Binding labelApellidos, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,81,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelNIF" Content="{Binding labelNIF, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,121,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelTelefono" Content="{Binding labelTelefono, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,159,-252,0" VerticalAlignment="Top" Width="605"/>
                 <Label x:Name="labelNacimiento" Content="{Binding labelNacimiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,198,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelEstado" Content="{Binding labelEstado, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,277,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelImagen" Content="{Binding labelImagen, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,329,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelDescripcion" Content="{Binding labelDescripcion, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,417,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="textBoxNombre" HorizontalAlignment="Left" Height="23" Margin="125,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <TextBox x:Name="textBoxApellidos" HorizontalAlignment="Left" Height="23" Margin="125,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="textBoxNIF" HorizontalAlignment="Left" Height="23" Margin="125,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" UndoLimit="9"/>
-                <TextBox x:Name="textBoxTelefono" HorizontalAlignment="Left" Height="23" Margin="125,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" UndoLimit="9"/>
+                <TextBox x:Name="textBoxNIF" MaxLength="9" HorizontalAlignment="Left" Height="23" Margin="125,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" UndoLimit="9"/>
+                <TextBox x:Name="textBoxTelefono" MaxLength="9" HorizontalAlignment="Left" Height="23" Margin="125,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" UndoLimit="9"/>
                 <DatePicker x:Name="dateCalendario" HorizontalAlignment="Left" Margin="125,200,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="textBoxNacimiento" HorizontalAlignment="Left" Height="23" Margin="125,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
                 <TextBox x:Name="textBoxEstado" HorizontalAlignment="Left" Height="23" Margin="125,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Libre" IsEnabled="False"/>
-                <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,329,0,0" VerticalAlignment="Top" Width="75" Click="buttonRegistrar_Click"/>
-                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,329,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click"/>
+                <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,505,0,0" Width="75" Click="buttonRegistrar_Click"/>
+                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,505,0,0" Width="75" Click="buttonCancelar_Click"/>
                 <Button x:Name="buttonNacimiento" Content="OK" HorizontalAlignment="Left" Margin="283,200,0,0" VerticalAlignment="Top" Width="75" Click="buttonNacimiento_Click"/>
+                <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="60" Margin="125,329,0,0" VerticalAlignment="Top" Width="60" Source="/images/usuario.jpg"/>
+                <Button x:Name="buttonExaminar" Content="{Binding buttonExaminar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,333,0,0" VerticalAlignment="Top" Width="75" Click="buttonExaminar_Click"/>
+                <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="63" Margin="125,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+                <Button x:Name="buttonHacerFoto" Content="{Binding buttonHacerFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,367,0,0" VerticalAlignment="Top" Width="75"/>
             </Grid>
         </Viewbox>
     </Grid>

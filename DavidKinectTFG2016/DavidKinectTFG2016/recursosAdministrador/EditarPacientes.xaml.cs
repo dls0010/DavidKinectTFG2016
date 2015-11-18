@@ -45,7 +45,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
                 MessageBox.Show("Error al conectar con la base de datos");
             }
 
-            string query = "Select * from pacientes";
+            string query = "Select idPaciente,nombrePaciente,apellidosPaciente,usuario,nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente,descripcionPaciente from pacientes";
             try {
                 SqlCommand comando = new SqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
