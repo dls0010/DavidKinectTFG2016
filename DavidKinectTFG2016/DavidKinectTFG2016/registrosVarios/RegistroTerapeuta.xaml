@@ -18,6 +18,7 @@
                 <TextBox x:Name="textBoxApellidos" HorizontalAlignment="Left" Height="23" Margin="125,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <TextBox x:Name="textBoxNIF" MaxLength="9" HorizontalAlignment="Left" Height="23" Margin="125,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <DatePicker x:Name="dateCalendario" HorizontalAlignment="Left" Margin="123,170,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonNacimiento" Content="OK" HorizontalAlignment="Left" Margin="281,170,0,0" VerticalAlignment="Top" Width="75" Click="buttonNacimiento_Click"/>
                 <TextBox x:Name="textBoxNacimiento" HorizontalAlignment="Left" Height="23" Margin="123,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
                 <Label x:Name="labelTelefono" Content="{Binding labelTelefono, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,253,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="textBoxTelefono" MaxLength="9" HorizontalAlignment="Left" Height="23" Margin="123,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -26,7 +27,6 @@
                 <Button x:Name="buttonHacerFoto" Content="{Binding buttonHacerFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,342,0,0" VerticalAlignment="Top" Width="75"/>
                 <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="78,401,0,0" VerticalAlignment="Top" Width="75" Click="buttonRegistrar_Click" Height="27"/>
                 <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="247,401,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Height="27"/>
-                <Button x:Name="buttonNacimiento" Content="OK" HorizontalAlignment="Left" Margin="281,170,0,0" VerticalAlignment="Top" Width="75" Click="buttonNacimiento_Click"/>
             </Grid>
         </Viewbox>
     </Grid>

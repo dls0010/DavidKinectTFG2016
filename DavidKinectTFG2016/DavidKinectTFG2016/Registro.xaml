@@ -14,15 +14,15 @@
                 <Label x:Name="labelContraseña" Content="{Binding labelContraseña, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,86,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelRepetirContraseña" Content="{Binding labelRepetirContraseña, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="35,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-0.385"/>
                 <Label x:Name="labelTipoUsuario" Content="{Binding labelTipoUsuario, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="39,177,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="comboBoxTipoUsuario" HorizontalAlignment="Left" Margin="154,177,0,0" VerticalAlignment="Top" Width="120">
+                <PasswordBox x:Name="passwordBoxContraseña1" HorizontalAlignment="Left" Margin="154,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="1,0" Width="120" Height="22"/>
+                <PasswordBox x:Name="passwordBoxContraseña2" HorizontalAlignment="Left" Margin="154,138,0,0" VerticalAlignment="Top" Width="120"/>
+                <ComboBox x:Name="comboBoxTipoUsuario" HorizontalAlignment="Left" Margin="154,177,0,0" VerticalAlignment="Top" Width="120">
                 <ComboBoxItem>Paciente</ComboBoxItem>
                 <ComboBoxItem>Terapeuta</ComboBoxItem>
                 <ComboBoxItem>Administrador</ComboBoxItem>
             </ComboBox>
                 <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="295,230,0,0" VerticalAlignment="Top" Width="75" Click="buttonRegistrar_Click"/>
                 <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="393,230,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click"/>
-            <PasswordBox x:Name="passwordBoxContraseña1" HorizontalAlignment="Left" Margin="154,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="1,0" Width="120" Height="22"/>
-            <PasswordBox x:Name="passwordBoxContraseña2" HorizontalAlignment="Left" Margin="154,138,0,0" VerticalAlignment="Top" Width="120"/>
         </Grid>
         </Viewbox>
     </Grid>

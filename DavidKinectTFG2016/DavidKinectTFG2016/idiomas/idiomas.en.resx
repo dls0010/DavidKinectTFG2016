@@ -231,4 +231,37 @@
   <data name="labelImagen" xml:space="preserve">
     <value>Image:</value>
   </data>
+  <data name="labelCrearEntrenamiento" xml:space="preserve">
+    <value>Create training: </value>
+  </data>
+  <data name="buttonCrear" xml:space="preserve">
+    <value>Create...</value>
+  </data>
+  <data name="labelTituloAsignarEntrenamiento" xml:space="preserve">
+    <value>Select the user that you want to assign training: </value>
+  </data>
+  <data name="labelPaciente" xml:space="preserve">
+    <value>Patient: </value>
+  </data>
+  <data name="labelEjercicio1" xml:space="preserve">
+    <value>Exercise 1:</value>
+  </data>
+  <data name="labelEjercicio2" xml:space="preserve">
+    <value>Exercise 2:</value>
+  </data>
+  <data name="labelEjercicio3" xml:space="preserve">
+    <value>Exercise 3:</value>
+  </data>
+  <data name="labelEjercicio4" xml:space="preserve">
+    <value>Exercise 4:</value>
+  </data>
+  <data name="labelEjercicio5" xml:space="preserve">
+    <value>Exercise 5:</value>
+  </data>
+  <data name="buttonAsignarEjercicio" xml:space="preserve">
+    <value>Create Exercises</value>
+  </data>
+  <data name="labelTituloAsignarEjercicios" xml:space="preserve">
+    <value>Select the exercises for the training (it isn't necessary to fill the 5):</value>
+  </data>
 </root>

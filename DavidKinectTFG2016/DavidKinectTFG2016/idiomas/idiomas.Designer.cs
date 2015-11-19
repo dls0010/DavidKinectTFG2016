@@ -70,6 +70,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Crear Ejercicios.
+        /// </summary>
+        public static string buttonAsignarEjercicio {
+            get {
+                return ResourceManager.GetString("buttonAsignarEjercicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
         public static string buttonCancelar {
@@ -93,6 +102,15 @@ namespace DavidKinectTFG2016.idiomas {
         public static string buttonConsultarPacientes {
             get {
                 return ResourceManager.GetString("buttonConsultarPacientes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Crear....
+        /// </summary>
+        public static string buttonCrear {
+            get {
+                return ResourceManager.GetString("buttonCrear", resourceCulture);
             }
         }
         
@@ -196,6 +214,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Crear entrenamiento:.
+        /// </summary>
+        public static string labelCrearEntrenamiento {
+            get {
+                return ResourceManager.GetString("labelCrearEntrenamiento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Descripción:.
         /// </summary>
         public static string labelDescripcion {
@@ -210,6 +237,51 @@ namespace DavidKinectTFG2016.idiomas {
         public static string labelEjercicio {
             get {
                 return ResourceManager.GetString("labelEjercicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ejercicio 1:.
+        /// </summary>
+        public static string labelEjercicio1 {
+            get {
+                return ResourceManager.GetString("labelEjercicio1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ejercicio 2:.
+        /// </summary>
+        public static string labelEjercicio2 {
+            get {
+                return ResourceManager.GetString("labelEjercicio2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ejercicio 3:.
+        /// </summary>
+        public static string labelEjercicio3 {
+            get {
+                return ResourceManager.GetString("labelEjercicio3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ejercicio 4:.
+        /// </summary>
+        public static string labelEjercicio4 {
+            get {
+                return ResourceManager.GetString("labelEjercicio4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ejercicio 5:.
+        /// </summary>
+        public static string labelEjercicio5 {
+            get {
+                return ResourceManager.GetString("labelEjercicio5", resourceCulture);
             }
         }
         
@@ -304,6 +376,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Paciente:.
+        /// </summary>
+        public static string labelPaciente {
+            get {
+                return ResourceManager.GetString("labelPaciente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Repetir contraseña:.
         /// </summary>
         public static string labelRepetirContraseña {
@@ -363,6 +444,24 @@ namespace DavidKinectTFG2016.idiomas {
         public static string labelTituloAdquerirPacientes {
             get {
                 return ResourceManager.GetString("labelTituloAdquerirPacientes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione los ejercicios para la tabla, (no es necesario rellenar los 5):.
+        /// </summary>
+        public static string labelTituloAsignarEjercicios {
+            get {
+                return ResourceManager.GetString("labelTituloAsignarEjercicios", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione el paciente al que quiere asignarle el entrenamiento:.
+        /// </summary>
+        public static string labelTituloAsignarEntrenamiento {
+            get {
+                return ResourceManager.GetString("labelTituloAsignarEntrenamiento", resourceCulture);
             }
         }
         

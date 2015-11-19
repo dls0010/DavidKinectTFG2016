@@ -75,6 +75,10 @@ namespace DavidKinectTFG2016
                         regAdministrador.Show();
                         this.Close();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Usuario ya existe. No puede registrarse con ese nombre.");
                 }      
             }
             else

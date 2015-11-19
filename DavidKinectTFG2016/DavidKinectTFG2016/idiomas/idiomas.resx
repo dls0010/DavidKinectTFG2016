@@ -234,4 +234,37 @@
   <data name="labelImagen" xml:space="preserve">
     <value>Imagen:</value>
   </data>
+  <data name="labelCrearEntrenamiento" xml:space="preserve">
+    <value>Crear entrenamiento:</value>
+  </data>
+  <data name="buttonCrear" xml:space="preserve">
+    <value>Crear...</value>
+  </data>
+  <data name="labelTituloAsignarEntrenamiento" xml:space="preserve">
+    <value>Seleccione el paciente al que quiere asignarle el entrenamiento:</value>
+  </data>
+  <data name="labelPaciente" xml:space="preserve">
+    <value>Paciente:</value>
+  </data>
+  <data name="labelEjercicio1" xml:space="preserve">
+    <value>Ejercicio 1:</value>
+  </data>
+  <data name="labelEjercicio2" xml:space="preserve">
+    <value>Ejercicio 2:</value>
+  </data>
+  <data name="labelEjercicio3" xml:space="preserve">
+    <value>Ejercicio 3:</value>
+  </data>
+  <data name="labelEjercicio4" xml:space="preserve">
+    <value>Ejercicio 4:</value>
+  </data>
+  <data name="labelEjercicio5" xml:space="preserve">
+    <value>Ejercicio 5:</value>
+  </data>
+  <data name="buttonAsignarEjercicio" xml:space="preserve">
+    <value>Crear Ejercicios</value>
+  </data>
+  <data name="labelTituloAsignarEjercicios" xml:space="preserve">
+    <value>Seleccione los ejercicios para la tabla, (no es necesario rellenar los 5):</value>
+  </data>
 </root>

@@ -88,6 +88,7 @@
     <Compile Include="BDComun.cs" />
     <Compile Include="clases\Administrador.cs" />
     <Compile Include="clases\Ejercicio.cs" />
+    <Compile Include="clases\Entrenamiento.cs" />
     <Compile Include="clases\Paciente.cs" />
     <Compile Include="clases\Relacion.cs" />
     <Compile Include="clases\Terapeuta.cs" />
@@ -151,6 +152,9 @@
     </Compile>
     <Compile Include="recursosTerapeuta\ConsultarPacientes.xaml.cs">
       <DependentUpon>ConsultarPacientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosTerapeuta\CrearEntrenamiento.xaml.cs">
+      <DependentUpon>CrearEntrenamiento.xaml</DependentUpon>
     </Compile>
     <Compile Include="Registro.xaml.cs">
       <DependentUpon>Registro.xaml</DependentUpon>
@@ -229,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="recursosTerapeuta\ConsultarPacientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosTerapeuta\CrearEntrenamiento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
