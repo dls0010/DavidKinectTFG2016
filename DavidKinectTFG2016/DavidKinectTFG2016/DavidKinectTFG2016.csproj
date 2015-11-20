@@ -140,6 +140,9 @@
     <Compile Include="recursosPaciente\ConsultaHistorial.xaml.cs">
       <DependentUpon>ConsultaHistorial.xaml</DependentUpon>
     </Compile>
+    <Compile Include="recursosPaciente\ConsultarEntrenamientos.xaml.cs">
+      <DependentUpon>ConsultarEntrenamientos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="recursosPaciente\Ejercicio1.xaml.cs">
       <DependentUpon>Ejercicio1.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,9 @@
     <Compile Include="recursosPaciente\Posture.cs" />
     <Compile Include="recursosTerapeuta\AdquerirPacientes.xaml.cs">
       <DependentUpon>AdquerirPacientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosTerapeuta\ConsultarEntrenamientos.xaml.cs">
+      <DependentUpon>ConsultarEntrenamientos.xaml</DependentUpon>
     </Compile>
     <Compile Include="recursosTerapeuta\ConsultarPacientes.xaml.cs">
       <DependentUpon>ConsultarPacientes.xaml</DependentUpon>
@@ -220,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="recursosPaciente\ConsultarEntrenamientos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="recursosPaciente\Ejercicio1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="recursosTerapeuta\AdquerirPacientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosTerapeuta\ConsultarEntrenamientos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

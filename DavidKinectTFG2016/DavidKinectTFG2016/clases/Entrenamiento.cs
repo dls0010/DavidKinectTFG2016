@@ -44,7 +44,6 @@ namespace DavidKinectTFG2016.clases
             }
             try
             {
-                //SqlCommand comando = new SqlCommand(string.Format("Insert Into Entrenamientos (nombrePaciente, usuarioPaciente,nombreTerapeuta,usuarioTerapeuta,ejercicio1,ejercicio2,ejercicio3,ejercicio4,ejercicio5,fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')",nombrePaciente,nombreUsuarioPaciente,nombreTerapeuta, nombreUsuarioTerapeuta, ejercicio1, ejercicio2, ejercicio3, ejercicio4, ejercicio5, fechaEntrenamiento, resultados, feedbackPaciente, feedbackTerapeuta), conn);
                 string query = "Insert Into Entrenamientos (nombrePaciente, usuarioPaciente,nombreTerapeuta,usuarioTerapeuta,ejercicio1,ejercicio2,ejercicio3,ejercicio4,ejercicio5,fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta)" + "values('" + nombrePaciente + "','" + nombreUsuarioPaciente + "','" + nombreTerapeuta + "','" + nombreUsuarioTerapeuta + "','" + ejercicio1 + "', @EJER2, @EJER3,@EJER4,@EJER5,@FECHA,@RESULTADOS,@FEEDBACKPACIENTE,@FEEDBACKTERAPEUTA);";
                 SqlCommand comando = new SqlCommand(query, conn);
                 if (ejercicio1 == "")
@@ -90,6 +89,42 @@ namespace DavidKinectTFG2016.clases
                 else
                     comando.Parameters.AddWithValue("@FEEDBACKTERAPEUTA", DBNull.Value);
 
+                resultado = comando.ExecuteNonQuery();
+                conn.Close();
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
+        }
+
+        /// <summary>
+        /// Metodo que actualiza el registro de entrenamiento del paciente.
+        /// con el feedback del terapeuta.
+        /// </summary>
+        /// <param name="idEntrenamiento"></param> idEntrenamiento a actualizar.
+        /// <param name="nombreUsuarioTerapeuta"></param> nombreUsuarioTerapeuta que actualiza.
+        /// <param name="feedbackTerapeuta"></param> Comentario del terapeuta.
+        /// <returns></returns>
+        public static int AñadirFeedback(int idEntrenamiento, string nombreUsuarioTerapeuta, string feedbackTerapeuta)
+        {
+            SqlConnection conn;
+            int resultado = 0;
+            int error = 0;
+            try
+            {
+                conn = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
+            try
+            {
+                string query = "Update Entrenamientos SET feedbackTerapeuta = '"+feedbackTerapeuta+"' WHERE usuarioTerapeuta = '"+nombreUsuarioTerapeuta+"' and idEntrenamiento = "+idEntrenamiento+"";
+                //SqlCommand comando = new SqlCommand(string.Format("Update Entrenamientos SET feedbackTerapeutan = '{0}' WHERE usuarioTerapeuta = '{1}' and idEntrenamiento = '{2}' )", feedbackTerapeuta,nombreUsuarioTerapeuta,idEntrenamiento ), conn);
+                SqlCommand comando = new SqlCommand(query,conn);
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
                 return resultado;

@@ -267,4 +267,25 @@
   <data name="labelTituloAsignarEjercicios" xml:space="preserve">
     <value>Seleccione los ejercicios para la tabla, (no es necesario rellenar los 5):</value>
   </data>
+  <data name="labelTituloConsultarEntrenamientosTerapeuta" xml:space="preserve">
+    <value>Entrenamientos de los pacientes:</value>
+  </data>
+  <data name="labelConsultarEntrenamiento" xml:space="preserve">
+    <value>Consultar entrenamientos:</value>
+  </data>
+  <data name="labelTituloFeedback" xml:space="preserve">
+    <value>Insertar feedback para el paciente:</value>
+  </data>
+  <data name="labelFeedbackPaciente" xml:space="preserve">
+    <value>Feedback del paciente:</value>
+  </data>
+  <data name="labelFeedbackTerapeuta" xml:space="preserve">
+    <value>Feedback de Terapeuta:</value>
+  </data>
+  <data name="buttonEnviar" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
+  <data name="labelTituloEntrenamientosPaciente" xml:space="preserve">
+    <value>Estos son tus entrenamientos: </value>
+  </data>
 </root>

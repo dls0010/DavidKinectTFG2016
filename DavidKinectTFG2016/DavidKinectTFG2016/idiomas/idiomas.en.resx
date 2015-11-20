@@ -264,4 +264,25 @@
   <data name="labelTituloAsignarEjercicios" xml:space="preserve">
     <value>Select the exercises for the training (it isn't necessary to fill the 5):</value>
   </data>
+  <data name="labelTituloConsultarEntrenamientosTerapeuta" xml:space="preserve">
+    <value>Training of your patients:</value>
+  </data>
+  <data name="labelConsultarEntrenamiento" xml:space="preserve">
+    <value>Consult training: </value>
+  </data>
+  <data name="labelTituloFeedback" xml:space="preserve">
+    <value>Insert feedback for the patient:</value>
+  </data>
+  <data name="labelFeedbackPaciente" xml:space="preserve">
+    <value>Patient feedback:</value>
+  </data>
+  <data name="labelFeedbackTerapeuta" xml:space="preserve">
+    <value>Therapist feedback: </value>
+  </data>
+  <data name="buttonEnviar" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="labelTituloEntrenamientosPaciente" xml:space="preserve">
+    <value>Your training:</value>
+  </data>
 </root>

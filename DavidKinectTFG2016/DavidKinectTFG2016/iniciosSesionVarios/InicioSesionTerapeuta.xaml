@@ -15,7 +15,9 @@
                 <Label x:Name="labelConsultar" Content="{Binding labelConsultarPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="102,120,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="buttonAdquerirPacientes" Content="{Binding buttonAdquerirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="245,80,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdquerir_Click"/>
                 <Label x:Name="labelCrearEntrenamiento" Content="{Binding labelCrearEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,160,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelConsultarEntrenamiento" Content="{Binding labelConsultarEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,200,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="buttonCrear" Content="{Binding buttonCrear, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="245,160,0,0" VerticalAlignment="Top" Width="75" Click="buttonCrear_Click"/>
+                <Button x:Name="buttonConsultarEntrenamientos" Content="{Binding buttonConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="245,200,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultarEntrenamientos_Click"/>
                 <Button x:Name="buttonConsultar" Content="{Binding buttonConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="245,120,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultar_Click"/>
                 <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="73" Margin="10,10,0,0" VerticalAlignment="Top" Width="70"/>
             </Grid>
