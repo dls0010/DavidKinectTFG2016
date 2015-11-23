@@ -21,7 +21,7 @@
                 <Button x:Name="buttonEnviar" Content="{Binding buttonEnviar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,516,0,0" VerticalAlignment="Top" Width="75" Click="buttonEnviar_Click"/>
                 <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,558,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click"/>
                 <ComboBox x:Name="comboBoxEntrenamiento" HorizontalAlignment="Left" Margin="312,267,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEntrenamiento_DropDownClosed"/>
-                <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="100" Margin="445,480,0,0" VerticalAlignment="Top" Width="100"/>
+                <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="120" Margin="445,480,0,0" VerticalAlignment="Top" Width="121"/>
             </Grid>
         </Viewbox>
     </Grid>

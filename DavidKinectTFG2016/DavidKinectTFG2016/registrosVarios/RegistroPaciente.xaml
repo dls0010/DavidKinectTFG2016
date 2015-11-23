@@ -25,10 +25,11 @@
                 <Button x:Name="buttonNacimiento" Content="OK" HorizontalAlignment="Left" Margin="283,200,0,0" VerticalAlignment="Top" Width="75" Click="buttonNacimiento_Click"/>
                 <TextBox x:Name="textBoxNacimiento" HorizontalAlignment="Left" Height="23" Margin="125,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
                 <TextBox x:Name="textBoxEstado" HorizontalAlignment="Left" Height="23" Margin="125,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Libre" IsEnabled="False"/>
-                <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="60" Margin="125,329,0,0" VerticalAlignment="Top" Width="60" Source="/images/usuario.jpg"/>
+                <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="86" Margin="125,329,0,0" VerticalAlignment="Top" Width="81" Source="/images/usuario.jpg"/>
                 <Button x:Name="buttonExaminar" Content="{Binding buttonExaminar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,333,0,0" VerticalAlignment="Top" Width="75" Click="buttonExaminar_Click"/>
                 <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="63" Margin="125,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
-                <Button x:Name="buttonHacerFoto" Content="{Binding buttonHacerFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,367,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="buttonHacerFoto" Content="{Binding buttonHacerFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,367,0,0" VerticalAlignment="Top" Width="75" Click="buttonHacerFoto_Click"/>
+                <Button x:Name="buttonTomarFoto" Content="{Binding buttonTomarFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="321,367,0,0" VerticalAlignment="Top" Width="88" Click="buttonTomarFoto_Click"/>
                 <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,505,0,0" Width="75" Click="buttonRegistrar_Click"/>
                 <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,505,0,0" Width="75" Click="buttonCancelar_Click"/>
             </Grid>

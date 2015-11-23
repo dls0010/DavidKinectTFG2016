@@ -288,4 +288,7 @@
   <data name="labelTituloEntrenamientosPaciente" xml:space="preserve">
     <value>Estos son tus entrenamientos: </value>
   </data>
+  <data name="buttonTomarFoto" xml:space="preserve">
+    <value>¡Guardar foto!</value>
+  </data>
 </root>

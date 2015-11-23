@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using DavidKinectTFG2016.clases;
 using Microsoft.Win32;
 using System.IO;
+using Microsoft.Kinect;
 
 namespace DavidKinectTFG2016.registrosVarios
 {
@@ -22,6 +23,8 @@ namespace DavidKinectTFG2016.registrosVarios
     /// </summary>
     public partial class RegistroTerapeuta : Window
     {
+        private KinectSensor kinect;
+        private byte[] pixelData;
         string nombreUsuario;
         string path = null;
         public RegistroTerapeuta(string nombre)
@@ -64,6 +67,10 @@ namespace DavidKinectTFG2016.registrosVarios
             string nacimientoTerapeuta = textBoxNacimiento.Text;
             string telefonoTerapeuta = textBoxTelefono.Text;
 
+            if (path == "miFoto.jpg")
+            {
+                path = AppDomain.CurrentDomain.BaseDirectory.ToString() + "miFoto.jpg";
+            }
             if (Terapeuta.registrarTerapeuta(nombreTerapeuta, apellidosTerapeuta, nombreUsuario, nifTerapeuta, nacimientoTerapeuta,telefonoTerapeuta,path) > 0)
             {
                 MessageBox.Show("Terapeuta registrado con exito.");
@@ -92,6 +99,76 @@ namespace DavidKinectTFG2016.registrosVarios
             {
                 path = openFile.FileName.ToString();
                 imagenFoto.Source = new BitmapImage(new Uri(path));
+            }
+        }
+
+        /// <summary>
+        /// Metodo que obtiene una foto del terapeuta a traves de la Kinect.
+        /// </summary>
+        /// <param name="sender"></param> Boton obtener fotografía.
+        /// <param name="e"></param> Evento del botón.
+        private void buttonHacerFoto_Click(object sender, RoutedEventArgs e)
+        {
+            buttonHacerFoto.IsEnabled = false;
+            kinect = KinectSensor.KinectSensors.FirstOrDefault(sensorItem => sensorItem.Status == KinectStatus.Connected);
+            kinect.Start();
+            kinect.ColorStream.Enable();
+            kinect.ColorFrameReady += kinect_ColorFrameReady;
+        }
+
+        /// <summary>
+        /// Manejador de evento para detectar el stream de la Kinect y sacar la foto.
+        /// </summary>
+        /// <param name="sender"></param> steam de la kinect.
+        /// <param name="e"></param> eventos de la kinect.
+        private void kinect_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
+        {
+            using (ColorImageFrame imageFrame = e.OpenColorImageFrame())
+            {
+                if (imageFrame == null)
+                {
+                    return;
+                }
+                else
+                {
+                    pixelData = new byte[imageFrame.PixelDataLength];
+                    imageFrame.CopyPixelDataTo(this.pixelData);
+                    int stride = imageFrame.Width * imageFrame.BytesPerPixel;
+                    this.imagenFoto.Source = BitmapSource.Create(imageFrame.Width, imageFrame.Height,
+                        96,
+                        96,
+                        PixelFormats.Bgr32,
+                        null,
+                        pixelData,
+                        stride);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Metodo que guarda la imagen tomada por parte de la kinect en nuestro ordenador.
+        /// dejando la ruta de la nueva foto en path.
+        /// </summary>
+        /// <param name="sender"></param> Boton Tomar Foto.
+        /// <param name="e"></param> Eventos del boton.
+        private void buttonTomarFoto_Click(object sender, RoutedEventArgs e)
+        {
+            path = "miFoto.jpg";
+            if (File.Exists(path))
+                File.Delete(path);
+
+            using (FileStream fotoGuardada = new FileStream(path, FileMode.CreateNew))
+            {
+                BitmapSource imagen = (BitmapSource)imagenFoto.Source;
+                JpegBitmapEncoder jpg = new JpegBitmapEncoder();
+                jpg.QualityLevel = 70;
+                jpg.Frames.Add(BitmapFrame.Create(imagen));
+                jpg.Save(fotoGuardada);
+                fotoGuardada.Close();
+                /*
+                kinect.ColorStream.Disable();
+                kinect.Stop();*/
+                buttonHacerFoto.IsEnabled = true;
             }
         }
     }

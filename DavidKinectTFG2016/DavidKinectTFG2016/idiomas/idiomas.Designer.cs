@@ -178,6 +178,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ¡Guardar foto!.
+        /// </summary>
+        public static string buttonTomarFoto {
+            get {
+                return ResourceManager.GetString("buttonTomarFoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Adquerir pacientes: .
         /// </summary>
         public static string labelAdquerirPacientes {
