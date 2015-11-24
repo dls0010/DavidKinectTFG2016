@@ -25,6 +25,7 @@ namespace DavidKinectTFG2016
     /// </summary>
     public partial class MainWindow : Window
     {
+        string idioma = "español";
         public MainWindow()
         {
             InitializeComponent();
@@ -95,6 +96,7 @@ namespace DavidKinectTFG2016
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             idiomas.WrapperIdiomas.ChangeCulture(Thread.CurrentThread.CurrentUICulture);
+            idioma = "español";
         }
 
         /// <summary>
@@ -106,6 +108,7 @@ namespace DavidKinectTFG2016
         {
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
             idiomas.WrapperIdiomas.ChangeCulture(Thread.CurrentThread.CurrentUICulture);
+            idioma = "ingles";
         }
 
         /// <summary>
@@ -136,23 +139,12 @@ namespace DavidKinectTFG2016
         /// <param name="e"></param> Evento del boton.
         private void buttonAyuda_Click(object sender, RoutedEventArgs e)
         {
-            /*Process p = new Process();
-            ProcessStartInfo pi = new ProcessStartInfo();
-            pi.UseShellExecute = true;
-            pi.FileName = AppDomain.CurrentDomain.BaseDirectory.ToString() + "\\ayuda.html";
-            p.StartInfo = pi;
-
             try
             {
-                p.Start();
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message);
-            }*/
-            try
-            {
-                System.Diagnostics.Process.Start("ayuda.html");
+                if (idioma == "ingles")
+                    System.Diagnostics.Process.Start("ayudaEN.html");
+                else
+                    System.Diagnostics.Process.Start("ayuda.html");
             }
             catch(Exception ex)
             {
