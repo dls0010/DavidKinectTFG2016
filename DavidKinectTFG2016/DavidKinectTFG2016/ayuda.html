@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title>AYUDA PROGRAMA</title>
+    <style type="text/css">
+        body {
+            padding-left: 7em;
+            color: purple;
+            background-color: #ADFFE6;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a la ayuda del programa:</h1>
+    <h2>RESUMEN:</h2>
+    <p>
+        <ul>
+            <li><a href="#primeraPantalla">1. Primera pantalla.</a></li>
+            <li><a href="#registro">2. Registros.</a></li>
+            <li><a href="#inicioSesion">3. Inicios de sesion.</a></li>
+            <li><a href="#acercaDe">4. Acerca de:</a></li>
+        </ul>
+    </p>
+    <a name="primeraPantalla"><h2>Primera pantalla</h2></a>
+        <p>
+            En la primera pantalla nos encontramos en el inicio de sesion, usted tiene dos opciones:
+            <ul>
+                <li>1. Si usted no esta registrado en el sistema, deberia de pulsar <a href="#registro">REGISTRARSE.</a></li>
+                <li>2. Si usted ya esta registrado, rellene los campos usuario y contraseña y pulse en <a href="#inicioSesion">INICIAR.</a></li>
+            </ul>
+        </p>
+    <a name="registro"><h2>Pantalla registro</h2></a>
+        <p>
+            En la pantalla de registro, tenemos un formulario con los siguientes campos:
+
+            <ul>
+                <li>Usuario: nombre de usuario que queremos.</li>
+                <li>Contraseña y repetir contraseña, para la cuenta de usuario.</li>
+                <li>Tipo de usuario: el tipo de usuario que queremos registrar. (Paciente, Terapeuta, Administrador).</li>
+            </ul>
+        </p>
+        <ul>
+            <li>
+                <h3>Registro paciente:</h3>
+                <p>
+                    En esta ventana tendremos que rellenar los datos personales del paciente, incluso podemos añadir una fotografia
+                    para asociar al paciente, podemos obtener esa foto, como archivo dentro de nuestro ordenador, o traves de una fotografia
+                    realizada por la cámara Kinect. Para finalizar podemos añadir una descripción especial acerca del paciente, si tiene algún problema
+                    que deba de conocer el terapeuta para que en la hora de asignar ejercicios no cree problemas.
+                </p>
+            </li>
+            <li>
+                <h3>Registro terapeuta:</h3>
+                <p>
+                    En esta ventana tendremos que rellenar los datos personales del terapeuta, incluso podemos añadir una fotografia
+                    para asociar al terapeuta, podemos obtener esa foto, como archivo dentro de nuestro ordenador, o traves de una fotografia
+                    realizada por la cámara Kinect
+                </p>
+            </li>
+            <li>
+                <h3>Registro administrador:</h3>
+                <p>
+                    En esta ventana tendremos que rellenar los datos personales del administrador.
+                </p>
+            </li>
+        </ul>
+
+        <a name="inicioSesion"><h2>Inicios de sesion</h2></a>
+        <p>
+            Las pantallas de inicio de sesion van variando según el tipo de usuario:
+            <ul>
+                <ul>
+                    <li>
+                        <h3>Pantalla de inicio paciente:</h3>
+                        <ul>
+                            <li>Seleccionar un ejercicio de la lista y realizarlo.</li>
+                            <li>Consultar mis ejercicios realizados hasta la fecha.</li>
+                            <li>Consultar mis entrenamientos asignados por el terapeuta.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Pantalla de inicio terapeuta:</h3>
+                        <ul>
+                            <li>Adquerir de los pacientes que estan en estado libre a su consulta.</li>
+                            <li>Consultar que pacientes tiene asignado ese terapeuta.</li>
+                            <li>Crear un entrenamiento con una serie de ejercicios al paciente que eliga.</li>
+                            <li>Consultar los entrenamientos realizados por parte de sus pacientes.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Pantalla de inicio administrador:</h3>
+                        <ul>
+                            <li>Modificar la tabla pacientes de la base de datos.</li>
+                            <li>Modificar la tabla terapeutas de la base de datos.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </ul>
+        </p>
+        <a name="acercaDe"><h2>Acerca de:</h2></a>
+        <p>
+            Aplicación desarrollada como trabajo fin de grado de Ingeneria Informática en la Universidad de Burgos
+            <ul>
+                <li>David López Santamaría.</li>
+                <li>2016.</li>
+            </ul>
+        </p>
+</body>
+</html>

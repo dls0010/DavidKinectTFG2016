@@ -79,6 +79,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Ayuda....
+        /// </summary>
+        public static string buttonAyuda {
+            get {
+                return ResourceManager.GetString("buttonAyuda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancelar.
         /// </summary>
         public static string buttonCancelar {

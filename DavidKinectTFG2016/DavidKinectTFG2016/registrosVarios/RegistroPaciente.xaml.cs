@@ -168,9 +168,6 @@ namespace DavidKinectTFG2016.registrosVarios
                 jpg.Frames.Add(BitmapFrame.Create(imagen));
                 jpg.Save(fotoGuardada);
                 fotoGuardada.Close();
-                /*
-                kinect.ColorStream.Disable();
-                kinect.Stop();*/
                 buttonHacerFoto.IsEnabled = true;
             }
         }

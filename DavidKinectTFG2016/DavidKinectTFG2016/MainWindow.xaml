@@ -32,6 +32,7 @@
                         <ImageBrush ImageSource="images/info.png"/>
                     </Button.Background>
                 </Button>
+                <Button x:Name="buttonAyuda"  Content="{Binding buttonAyuda, Source={StaticResource IdiomasRes}}" Margin="79,10,282,0" VerticalAlignment="Top" Height="20" Click="buttonAyuda_Click"/>
                 <Button x:Name="buttonSalir"  Margin="10,10,386,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="-0.456,0.46" Click="buttonSalir_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="images/salir.png"/>

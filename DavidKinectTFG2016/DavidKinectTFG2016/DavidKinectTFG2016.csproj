@@ -329,6 +329,9 @@
     <Resource Include="images\info.png" />
     <Resource Include="images\salir.png" />
     <Resource Include="images\usuario.jpg" />
+    <EmbeddedResource Include="ayuda.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="ModeloBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloBD.edmx</DependentUpon>

@@ -288,4 +288,7 @@
   <data name="buttonTomarFoto" xml:space="preserve">
     <value>Save photo!</value>
   </data>
+  <data name="buttonAyuda" xml:space="preserve">
+    <value>Help...</value>
+  </data>
 </root>

@@ -16,6 +16,7 @@ using DavidKinectTFG2016.iniciosSesionVarios;
 using DavidKinectTFG2016.clases;
 using System.Threading;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace DavidKinectTFG2016
 {
@@ -126,6 +127,37 @@ namespace DavidKinectTFG2016
         private void buttonSalir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Metodo que abre el documento HTML de ayuda en el navegador.
+        /// </summary>
+        /// <param name="sender"></param> Boton de ayuda...
+        /// <param name="e"></param> Evento del boton.
+        private void buttonAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            /*Process p = new Process();
+            ProcessStartInfo pi = new ProcessStartInfo();
+            pi.UseShellExecute = true;
+            pi.FileName = AppDomain.CurrentDomain.BaseDirectory.ToString() + "\\ayuda.html";
+            p.StartInfo = pi;
+
+            try
+            {
+                p.Start();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }*/
+            try
+            {
+                System.Diagnostics.Process.Start("ayuda.html");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
