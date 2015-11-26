@@ -129,7 +129,6 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <param name="e"></param> Eventos del stream esqueletos.
         private void kinect_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
-            //canvasEsqueleto.Children.Clear();
             esqueletos = null;
             using (SkeletonFrame framesEsqueleto = e.OpenSkeletonFrame())
             {
@@ -152,11 +151,15 @@ namespace DavidKinectTFG2016.recursosPaciente
                     SkeletonPoint posicionManoDerecha = manoDerecha.Position;
                     Joint manoIzquierda = esqueleto.Joints[JointType.HandLeft];
                     SkeletonPoint posicionManoIzquierda = manoIzquierda.Position;
+                    Joint hombroDerecho = esqueleto.Joints[JointType.ShoulderRight];
+                    SkeletonPoint posicionHombroDerecho = hombroDerecho.Position;
+                    Joint hombroIzquierdo = esqueleto.Joints[JointType.ShoulderLeft];
+                    SkeletonPoint posicionHombroIzquierdo = hombroIzquierdo.Position;
 
                     if (primeraVez == 1) //empezar el ejercicio teniendo manos alineadas.
                     {
                         mensaje = "Pon las manos a la misma altura para comenzar ejercicio";
-                        if (empezar(manoDerecha, manoIzquierda))
+                        if (empezar(manoDerecha, manoIzquierda,hombroDerecho,hombroIzquierdo))
                         {
                             if (postureDetector(Posture.Inicio))
                             {
@@ -169,7 +172,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                     {
                         //float distancia = (manoIzquierda.Position.X - cabeza.Position.X) + (manoIzquierda.Position.Y - cabeza.Position.Y) + (manoIzquierda.Position.Z - cabeza.Position.Z);
                         //textTitulo.Text = distancia.ToString();
-                        textTitulo.Text = "Sigue las instrucciones";
+                        //textTitulo.Text = "Sigue las instrucciones";
                         if (ejercicioManoCabeza(cabeza, manoDerecha))
                         {
                             if (postureDetector(Posture.RHandOnHead))
@@ -306,14 +309,29 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// true: comenzar ejercicio.
         /// false: aun no comenzar ejercicio.
         /// </returns>
-        private Boolean empezar(Joint manoDerecha, Joint manoIzquierda)
+        private Boolean empezar(Joint manoDerecha, Joint manoIzquierda, Joint hombroDerecho,Joint hombroIzquierdo)
         {
-            float numeroDerecha = (float)Math.Round(manoDerecha.Position.Y, 2);
-            float numeroIzquierda = (float)Math.Round(manoIzquierda.Position.Y, 2);
-            //Comprobamos diferencia de manos.
-            float restaManos = numeroDerecha - numeroIzquierda;
-            
-            if ((restaManos >= -0.07 && restaManos < 0) || (restaManos > 0 && restaManos <= 0.07))
+            float numeroManoDerecha = (float)Math.Round(manoDerecha.Position.Y, 2);
+            float numeroManoIzquierda = (float)Math.Round(manoIzquierda.Position.Y, 2);
+            float numeroHombroDerecho = (float)Math.Round(hombroDerecho.Position.Y, 2);
+            float numeroHombroIzquierdo = (float)Math.Round(hombroIzquierdo.Position.Y, 2);
+            //Comprobamos diferencia de manos y hombros.
+            float restaDerecha = numeroManoDerecha - numeroHombroDerecho;
+            float restaIzquierda = numeroManoIzquierda - numeroHombroIzquierdo;
+            float restaManos = numeroManoDerecha - numeroManoIzquierda;
+            /*
+            // float distancia =(manoDerecha.Position.Y - hombroDerecho.Position.Y) + (hombroDerecho.Position.Y - hombroIzquierdo.Position.Y) + (hombroIzquierdo.Position.Y - manoIzquierda.Position.Y);
+            float distancia = restaDerecha - restaIzquierda - restaManos;
+            textTitulo.Text = distancia.ToString() ;
+            if (Math.Abs(distancia) < 0.05f)
+            {
+                return true;
+            }
+            return false;*/
+            restaManos = Math.Abs(restaManos);
+            restaDerecha = Math.Abs(restaManos);
+            restaIzquierda = Math.Abs(restaIzquierda);
+            if ((restaManos > 0 && restaManos <= 0.07) && (restaDerecha > 0 && restaDerecha <=0.05) && (restaIzquierda>0 && restaIzquierda<=0.05))
             {
                 textTitulo.Text = "Ejercicio EMPEZADO";
                 textTitulo.Foreground = Brushes.Green;

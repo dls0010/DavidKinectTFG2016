@@ -151,7 +151,7 @@
     <value>User Type:</value>
   </data>
   <data name="labelTitulo" xml:space="preserve">
-    <value>WELCOME TO KINECT:</value>
+    <value>WELCOME TO UBU HEALTH KINECT:</value>
   </data>
   <data name="labelUsuario" xml:space="preserve">
     <value>User:</value>
@@ -290,5 +290,17 @@
   </data>
   <data name="buttonAyuda" xml:space="preserve">
     <value>Help...</value>
+  </data>
+  <data name="labelTituloAcercaDe" xml:space="preserve">
+    <value>Using Kinect for active aging and rehabilitation.</value>
+  </data>
+  <data name="labelCrearEjercicio" xml:space="preserve">
+    <value>Create the exercise:</value>
+  </data>
+  <data name="labelMoficiarEjercicio" xml:space="preserve">
+    <value>Modify exercise:</value>
+  </data>
+  <data name="labelTituloModificarEjercicio" xml:space="preserve">
+    <value>Choose an exercise to modify</value>
   </data>
 </root>

@@ -137,6 +137,9 @@
     <Compile Include="recursosAdministrador\EditarTerapeutas.xaml.cs">
       <DependentUpon>EditarTerapeutas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="recursosAdministrador\ModificarEjercicio.xaml.cs">
+      <DependentUpon>ModificarEjercicio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="recursosPaciente\ConsultaHistorial.xaml.cs">
       <DependentUpon>ConsultaHistorial.xaml</DependentUpon>
     </Compile>
@@ -219,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="recursosAdministrador\EditarTerapeutas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosAdministrador\ModificarEjercicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -315,9 +322,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\Kinect_Logo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +339,7 @@
     <EmbeddedResource Include="ayudaEn.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Resource Include="images\logo.png" />
     <Content Include="ModeloBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloBD.edmx</DependentUpon>

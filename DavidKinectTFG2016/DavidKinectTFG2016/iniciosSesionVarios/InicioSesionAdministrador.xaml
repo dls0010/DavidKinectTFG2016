@@ -14,6 +14,8 @@
                 <Button x:Name="buttonModificarPacientes" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="175,54,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarPacientes_Click"/>
                 <Label x:Name="labelModificarTerapeutas" Content="{Binding labelModificarTerapeutas, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="34,92,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="buttonModificarTerapeutas" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="175,92,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarTerapeutas_Click"/>
+                <Label x:Name="labelMoficiarEjercicio" Content="{Binding labelMoficiarEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="34,130,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonModificar" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="175,130,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificar_Click"/>
             </Grid>
         </Viewbox>
     </Grid>

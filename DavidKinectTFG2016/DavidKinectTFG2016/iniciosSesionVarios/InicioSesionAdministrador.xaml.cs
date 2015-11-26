@@ -48,5 +48,16 @@ namespace DavidKinectTFG2016.iniciosSesionVarios
             EditarTerapeutas editarTerapeutas = new EditarTerapeutas();
             editarTerapeutas.Show();
         }
+
+        /// <summary>
+        /// Metodo que abre ventana que permite modificar descripcion y forografia de un ejercicio ya existente.
+        /// </summary>
+        /// <param name="sender"></param> Boton modificar.
+        /// <param name="e"></param> Eventos del boton.
+        private void buttonModificar_Click(object sender, RoutedEventArgs e)
+        {
+            ModificarEjercicio modificarEjercicio = new ModificarEjercicio();
+            modificarEjercicio.Show();
+        }
     }
 }

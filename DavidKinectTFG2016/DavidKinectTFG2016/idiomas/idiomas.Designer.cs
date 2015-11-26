@@ -250,6 +250,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Crear ejercicio:.
+        /// </summary>
+        public static string labelCrearEjercicio {
+            get {
+                return ResourceManager.GetString("labelCrearEjercicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Crear entrenamiento:.
         /// </summary>
         public static string labelCrearEntrenamiento {
@@ -394,6 +403,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Modificar ejercicio..
+        /// </summary>
+        public static string labelMoficiarEjercicio {
+            get {
+                return ResourceManager.GetString("labelMoficiarEjercicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nacimiento:.
         /// </summary>
         public static string labelNacimiento {
@@ -475,11 +493,20 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a BIENVENIDO A KINECT:.
+        ///   Busca una cadena traducida similar a BIENVENIDO A  UBU HEALTH KINECT:.
         /// </summary>
         public static string labelTitulo {
             get {
                 return ResourceManager.GetString("labelTitulo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Uso de Kinect para el envejecimiento activo y rehabilitación..
+        /// </summary>
+        public static string labelTituloAcercaDe {
+            get {
+                return ResourceManager.GetString("labelTituloAcercaDe", resourceCulture);
             }
         }
         
@@ -561,6 +588,15 @@ namespace DavidKinectTFG2016.idiomas {
         public static string labelTituloHistorialPaciente {
             get {
                 return ResourceManager.GetString("labelTituloHistorialPaciente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Elige un ejercicio a modificar: .
+        /// </summary>
+        public static string labelTituloModificarEjercicio {
+            get {
+                return ResourceManager.GetString("labelTituloModificarEjercicio", resourceCulture);
             }
         }
         

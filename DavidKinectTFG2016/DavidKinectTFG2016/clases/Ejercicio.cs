@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -59,5 +60,55 @@ namespace DavidKinectTFG2016.clases
             }
         }
 
+        /// <summary>
+        /// Metodo que actualiza tanto la descripcion, como la imagen descriptiva de un ejercicio ya creado.
+        /// </summary>
+        /// <param name="ejercicio"></param> String que identifica al ejercicio que hay que modificar.
+        /// <param name="descripcion"></param> String de la descripcion a modificar.
+        /// <param name="pathImagen"></param> Ruta de la imagen que hay que guardar en la base de datos.
+        /// <returns></returns>
+        public static int modificarEjercicio(string ejercicio, string descripcion, string pathImagen)
+        {
+            byte[] imagen = null;
+            if (pathImagen != null)
+            {
+                FileStream fstream = new FileStream(pathImagen, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fstream);
+                imagen = br.ReadBytes((int)fstream.Length);
+            }
+
+            int resultado = 0;
+            int error = 0;
+            SqlConnection conn;
+
+            try
+            {
+                conn = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
+
+            string query = "UPDATE ejercicios set descripcion='"+descripcion+"', imagenEjercicio = @IMG where ejercicio = '"+ejercicio+"'";
+
+            SqlCommand comando = new SqlCommand(query, conn);
+            //SqlDataReader reader;
+            try
+            {
+                if (pathImagen != null)
+                    comando.Parameters.Add(new SqlParameter("@IMG", imagen));
+
+                //reader = comando.ExecuteReader();
+                resultado = comando.ExecuteNonQuery();
+                conn.Close();
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
+        }
     }
 }
