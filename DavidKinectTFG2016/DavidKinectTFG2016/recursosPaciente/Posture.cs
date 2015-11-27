@@ -12,8 +12,10 @@ namespace DavidKinectTFG2016.recursosPaciente
     enum Posture
     {
         None,
-        Inicio,
+        InicioBrazosExtendidos,
         RHandOnHead,
-        LHandOnHead
+        LHandOnHead,
+        RHandUp,
+        LHandUp
     }
 }

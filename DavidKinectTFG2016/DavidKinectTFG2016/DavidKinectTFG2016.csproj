@@ -152,9 +152,18 @@
     <Compile Include="recursosPaciente\Ejercicio1Paciente.xaml.cs">
       <DependentUpon>Ejercicio1Paciente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="recursosPaciente\Ejercicio2.xaml.cs">
+      <DependentUpon>Ejercicio2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosPaciente\EscribirFeedbackEjercicio.xaml.cs">
+      <DependentUpon>EscribirFeedbackEjercicio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="recursosPaciente\Posture.cs" />
     <Compile Include="recursosTerapeuta\AdquerirPacientes.xaml.cs">
       <DependentUpon>AdquerirPacientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosTerapeuta\ConsultarEjercicios.xaml.cs">
+      <DependentUpon>ConsultarEjercicios.xaml</DependentUpon>
     </Compile>
     <Compile Include="recursosTerapeuta\ConsultarEntrenamientos.xaml.cs">
       <DependentUpon>ConsultarEntrenamientos.xaml</DependentUpon>
@@ -245,7 +254,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="recursosPaciente\Ejercicio2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosPaciente\EscribirFeedbackEjercicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="recursosTerapeuta\AdquerirPacientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosTerapeuta\ConsultarEjercicios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -340,6 +361,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <Resource Include="images\logo.png" />
+    <Resource Include="images\stop.png" />
     <Content Include="ModeloBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloBD.edmx</DependentUpon>

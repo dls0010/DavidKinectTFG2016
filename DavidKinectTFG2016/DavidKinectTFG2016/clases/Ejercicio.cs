@@ -16,15 +16,16 @@ namespace DavidKinectTFG2016.clases
         /// <summary>
         /// Metodo que controla el registro una nueva actividad del paciente en la base de datos.
         /// </summary>
-        /// <param name="nombreUsuarioPaciente"></param> Nombre de usuario del paciente
-        /// <param name="ejercicio"></param> ejercicio realizado
-        /// <param name="repeticiones"></param> repeticiones hechas 
-        /// <param name="duracion"></param> duracion del ejercicio
+        /// <param name="nombreUsuarioPaciente"></param> Nombre de usuario del paciente.
+        /// <param name="ejercicio"></param> ejercicio realizado.
+        /// <param name="repeticiones"></param> repeticiones hechas. 
+        /// <param name="duracion"></param> duracion del ejercicio.
+        /// <param name="feedback"></param> feedback del paciente sobre el ejercicio.
         /// <returns>
-        /// 1-> bien
-        /// 0 -> mal
+        /// 1-> bien.
+        /// 0 -> mal.
         /// </returns>
-        public static int registrarEjercicio(string nombreUsuarioPaciente, string ejercicio, int repeticiones, string duracion)
+        public static int registrarEjercicio(string nombreUsuarioPaciente, string ejercicio, int repeticiones, string duracion, string feedback)
         {
             SqlConnection conn;
             DateTime hoy = DateTime.Today;
@@ -48,7 +49,11 @@ namespace DavidKinectTFG2016.clases
                 return error;
             }
             try {
-                SqlCommand comando = new SqlCommand(string.Format("Insert Into Historial (ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha), conn);
+                SqlCommand comando;
+                if (feedback == "")
+                    comando = new SqlCommand(string.Format("Insert Into Historial (ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, DBNull.Value), conn);
+                else
+                    comando = new SqlCommand(string.Format("Insert Into Historial (ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, feedback), conn);
 
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
@@ -90,16 +95,22 @@ namespace DavidKinectTFG2016.clases
                 return error;
             }
 
-            string query = "UPDATE ejercicios set descripcion='"+descripcion+"', imagenEjercicio = @IMG where ejercicio = '"+ejercicio+"'";
-
-            SqlCommand comando = new SqlCommand(query, conn);
-            //SqlDataReader reader;
             try
             {
+                SqlCommand comando;
+                string query;
                 if (pathImagen != null)
+                {
+                    query = "UPDATE ejercicios set descripcion='" + descripcion + "', imagenEjercicio = @IMG where ejercicio = '" + ejercicio + "'";
+                    comando = new SqlCommand(query, conn);
                     comando.Parameters.Add(new SqlParameter("@IMG", imagen));
-
-                //reader = comando.ExecuteReader();
+                }
+                else
+                {
+                    query = "UPDATE ejercicios set descripcion='" + descripcion + "' where ejercicio = '" + ejercicio + "'";
+                    comando = new SqlCommand(query, conn);
+                }
+                               
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
 

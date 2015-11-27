@@ -303,4 +303,19 @@
   <data name="labelTituloModificarEjercicio" xml:space="preserve">
     <value>Choose an exercise to modify</value>
   </data>
+  <data name="labelTituloFeedbackPaciente" xml:space="preserve">
+    <value>Write the feedback of training:</value>
+  </data>
+  <data name="buttonMandar" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="labelTituloElegirEjercicio" xml:space="preserve">
+    <value>Select a exercise:</value>
+  </data>
+  <data name="labelConsultarEjercicios" xml:space="preserve">
+    <value>Consult the exercises:</value>
+  </data>
+  <data name="labelRepeticiones" xml:space="preserve">
+    <value>Number of repetitions: </value>
+  </data>
 </root>

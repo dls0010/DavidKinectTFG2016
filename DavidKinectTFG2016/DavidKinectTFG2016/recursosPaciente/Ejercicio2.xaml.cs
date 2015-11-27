@@ -21,9 +21,9 @@ using System.Media;
 namespace DavidKinectTFG2016.recursosPaciente
 {
     /// <summary>
-    /// Lógica de interacción para Ejercicio1.xaml
+    /// Lógica de interacción para Ejercicio2.xaml
     /// </summary>
-    public partial class Ejercicio1 : Window
+    public partial class Ejercicio2 : Window
     {
         KinectSensorChooser miKinect;
         KinectSensor kinect;
@@ -47,10 +47,10 @@ namespace DavidKinectTFG2016.recursosPaciente
         DateTime final;
         TimeSpan duracion;
 
-        public Ejercicio1(string nombreUsuario, int repeticiones)
+        public Ejercicio2(string nombreUsuario,int repeticiones)
         {
-            nombreUsuarioPaciente = nombreUsuario;
             maximoRepeticiones = repeticiones;
+            nombreUsuarioPaciente = nombreUsuario;
             InitializeComponent();
         }
 
@@ -131,7 +131,7 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <param name="e"></param> Eventos del stream esqueletos.
         private void kinect_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
         {
-            string corregirPosicion="";
+            string corregirPosicion = "";
             esqueletos = null;
             using (SkeletonFrame framesEsqueleto = e.OpenSkeletonFrame())
             {
@@ -181,7 +181,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                     if (primeraVez == 1) //empezar el ejercicio teniendo manos alineadas.
                     {
                         mensaje = "Estira los brazos horizontalmente para comenzar el ejercicio";
-                        if (empezar(manoDerecha, manoIzquierda,hombroDerecho,hombroIzquierdo))
+                        if (empezar(manoDerecha, manoIzquierda, hombroDerecho, hombroIzquierdo))
                         {
                             if (postureDetector(Posture.InicioBrazosExtendidos))
                             {
@@ -193,43 +193,43 @@ namespace DavidKinectTFG2016.recursosPaciente
                     }
                     else
                     {
-                        if (ejercicioManoCabeza(cabeza, manoDerecha))
+                        if (ejercicioManoArriba(cabeza, manoDerecha,hombroDerecho))
                         {
-                            if (postureDetector(Posture.RHandOnHead) && corregirPosicion=="")
+                            if (postureDetector(Posture.RHandUp) && corregirPosicion == "")
                             {
                                 repeticionesD++;
                                 textRepeticionD.Text = repeticionesD.ToString();
                                 textRepeticionD.Foreground = Brushes.Green;
                                 textRepeticionI.Foreground = Brushes.Red;
                                 SystemSounds.Beep.Play();
-                                mensaje = "Ahora baja la mano derecha.";
+                                mensaje = "Ahora baja el brazo derecho.";
                             }
                         }
                         else
                         {
-                            if (ejercicioManoCabeza(cabeza, manoIzquierda))
+                            if (ejercicioManoArriba(cabeza, manoIzquierda,hombroIzquierdo))
                             {
-                                if (postureDetector(Posture.LHandOnHead) && corregirPosicion == "")
+                                if (postureDetector(Posture.LHandUp) && corregirPosicion == "")
                                 {
                                     repeticionesI++;
                                     textRepeticionI.Text = repeticionesI.ToString();
                                     textRepeticionI.Foreground = Brushes.Green;
                                     textRepeticionD.Foreground = Brushes.Red;
                                     SystemSounds.Beep.Play();
-                                    mensaje = "Ahora baja la mano izquierda.";
+                                    mensaje = "Ahora baja el brazo izquierdo.";
                                 }
                             }
                             else
                             {
                                 if (postureDetector(Posture.None))
                                 {
-                                    mensaje = "Lleva la mano a la cabeza.";
+                                    mensaje = "Estira el brazo arriba.";
                                 }
                             }
                         }
-                        
+
                     }
-                    if((repeticionesD >= maximoRepeticiones && repeticionesI >= maximoRepeticiones)&& finalEjercicio==false)
+                    if ((repeticionesD >= maximoRepeticiones && repeticionesI >= maximoRepeticiones) && finalEjercicio == false)
                     {
                         finalEjercicio = true;
                         finalizarEjercicio();
@@ -241,13 +241,31 @@ namespace DavidKinectTFG2016.recursosPaciente
         }
 
         /// <summary>
+        /// Metodo que comprueba la realizacion correcta del movimiento pedido.
+        /// </summary>
+        /// <param name="cabeza"></param> Joint de la cabeza.
+        /// <param name="mano"></param> Joint de la mano.
+        /// <param name="hombro"></param> Joint del hombro.
+        /// <returns></returns>
+        private Boolean ejercicioManoArriba(Joint cabeza, Joint mano,Joint hombro)
+        {
+            float distancia;
+            distancia = (mano.Position.X - hombro.Position.X);
+            if (Math.Abs(distancia) > 0.10f)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// Metodo que hace la transaccion a la BD de los resultados del paciente.
         /// </summary>
         private void finalizarEjercicio()
         {
             final = DateTime.Now;
             duracion = new TimeSpan(final.Ticks - comienzo.Ticks);
-            if (MessageBox.Show("¿Quieres escribir feedback acerca del ejercicio?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if(MessageBox.Show("¿Quieres escribir feedback acerca del ejercicio?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning)== MessageBoxResult.Yes)
             {
                 EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio 2", repeticionesD + repeticionesI, duracion.ToString());
                 feedback.Show();
@@ -255,7 +273,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             else
             {
-                if (Ejercicio.registrarEjercicio(nombreUsuarioPaciente, "Ejercicio 1", repeticionesD + repeticionesI, duracion.ToString(), "") > 0)
+                if (Ejercicio.registrarEjercicio(nombreUsuarioPaciente, "Ejercicio 2", repeticionesD + repeticionesI, duracion.ToString(), "") > 0)
                 {
                     textTitulo.Text = "ENHORABUENA";
                     textResultado.Text = "EJERCICIO COMPLETADO";
@@ -266,7 +284,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                     textTitulo.Text = "ERROR";
                     textResultado.Text = "AL GUARDAR RESULTADOS";
                 }
-            }
+            }       
         }
 
         /// <summary>
@@ -279,19 +297,19 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// </returns>
         private Boolean postureDetector(Posture posture)
         {
-            if(postureInDetection != posture)
+            if (postureInDetection != posture)
             {
                 accumulator = 0;
                 postureInDetection = posture;
                 return false;
             }
 
-            if(accumulator < PostureDetectionNumber)
+            if (accumulator < PostureDetectionNumber)
             {
                 accumulator++;
                 return false;
             }
-            if(posture != previousPosture)
+            if (posture != previousPosture)
             {
                 previousPosture = posture;
                 accumulator = 0;
@@ -303,37 +321,6 @@ namespace DavidKinectTFG2016.recursosPaciente
         }
 
         /// <summary>
-        /// Ejercicio de llevar la mano derecha sobre la cabeza.
-        /// </summary>
-        /// <param name="cabeza"></param> Joint que contiene la cabeza.
-        /// <param name="manoDerecha"></param> Joint que contiene la mano derecha.
-        /// <returns>
-        /// true: movimiento correcto.
-        /// false: movimiento incorrecto.
-        /// </returns>
-        private Boolean ejercicioManoCabeza(Joint cabeza, Joint mano)
-        {
-            float distancia;
-            if (mano.JointType.Equals(JointType.HandRight))
-            {
-                distancia = (mano.Position.X - cabeza.Position.X) + (mano.Position.Y - cabeza.Position.Y) + (mano.Position.Z - cabeza.Position.Z);
-                if (Math.Abs(distancia) > 0.20f)
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                distancia = (mano.Position.X - cabeza.Position.X) + (mano.Position.Y - cabeza.Position.Y) + (mano.Position.Z - cabeza.Position.Z);
-                if (Math.Abs(distancia) > 0.20f)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        /// <summary>
         /// Metodo que obliga al usuario a fijar las manos a la misma altura para comenzar el ejercicio.
         /// </summary>
         /// <param name="manoDerecha"></param> Joint que contiene la mano derecha.
@@ -342,7 +329,7 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// true: comenzar ejercicio.
         /// false: aun no comenzar ejercicio.
         /// </returns>
-        private Boolean empezar(Joint manoDerecha, Joint manoIzquierda, Joint hombroDerecho,Joint hombroIzquierdo)
+        private Boolean empezar(Joint manoDerecha, Joint manoIzquierda, Joint hombroDerecho, Joint hombroIzquierdo)
         {
             float numeroManoDerecha = (float)Math.Round(manoDerecha.Position.Y, 2);
             float numeroManoIzquierda = (float)Math.Round(manoIzquierda.Position.Y, 2);
@@ -356,7 +343,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             restaManos = Math.Abs(restaManos);
             restaDerecha = Math.Abs(restaManos);
             restaIzquierda = Math.Abs(restaIzquierda);
-            if ((restaManos > 0 && restaManos <= 0.07) && (restaDerecha > 0 && restaDerecha <=0.05) && (restaIzquierda>0 && restaIzquierda<=0.05))
+            if ((restaManos > 0 && restaManos <= 0.07) && (restaDerecha > 0 && restaDerecha <= 0.05) && (restaIzquierda > 0 && restaIzquierda <= 0.05))
             {
                 textTitulo.Text = "Ejercicio EMPEZADO";
                 textTitulo.Foreground = Brushes.Green;
@@ -367,7 +354,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Manejador de evento que muestra video por pantalla.
         /// </summary>
@@ -401,7 +388,7 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <param name="e"></param> Evento de cerrar.
         private void Window_Closed(object sender, EventArgs e)
         {
-            if(kinect!= null)
+            if (kinect != null)
             {
                 kinect.Stop();
                 kinect = null;

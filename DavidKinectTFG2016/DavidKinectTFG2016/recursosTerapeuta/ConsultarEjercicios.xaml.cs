@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,23 +13,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DavidKinectTFG2016.clases;
-using Microsoft.Win32;
-using System.IO;
 
-namespace DavidKinectTFG2016.recursosAdministrador
+namespace DavidKinectTFG2016.recursosTerapeuta
 {
     /// <summary>
-    /// Lógica de interacción para ModificarEjercicio.xaml
+    /// Lógica de interacción para ConsultarEjercicios.xaml
     /// </summary>
-    public partial class ModificarEjercicio : Window
+    public partial class ConsultarEjercicios : Window
     {
         SqlConnection conexion;
-        string pathImagen = null;
-        public ModificarEjercicio()
+        public ConsultarEjercicios()
         {
             InitializeComponent();
-           
         }
 
         /// <summary>
@@ -73,6 +69,23 @@ namespace DavidKinectTFG2016.recursosAdministrador
         }
 
         /// <summary>
+        /// Metodo que cierra la conexion con la base de datos al cerrar la ventana.
+        /// </summary>
+        /// <param name="sender"></param> Boton cerrar.
+        /// <param name="e"></param>Evento de cerrar.
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                conexion.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar la conexion con la BD");
+            }
+        }
+
+        /// <summary>
         /// Metodo que rellena el textbox descripcion de la pagina al seleccionar un ejercicio en el combobox.
         /// </summary>
         /// <param name="sender"></param> ComboboxEjercicios.
@@ -89,21 +102,14 @@ namespace DavidKinectTFG2016.recursosAdministrador
                     string descripcion = dr.GetString(0);
                     textBoxDescripcion.Text = descripcion;
 
-                    if (dr["imagenEjercicio"] != DBNull.Value)
-                    {
-                        byte[] imagen = (byte[])(dr["imagenEjercicio"]);
+                    byte[] imagen = (byte[])(dr["imagenEjercicio"]);
 
-                        MemoryStream mstream = new MemoryStream(imagen);
-                        BitmapImage image = new BitmapImage();
-                        image.BeginInit();
-                        image.StreamSource = mstream;
-                        image.EndInit();
-                        imagenFoto.Source = image;
-                    }
-                    else
-                    {
-                        imagenFoto.Source = null;
-                    }
+                    MemoryStream mstream = new MemoryStream(imagen);
+                    BitmapImage image = new BitmapImage();
+                    image.BeginInit();
+                    image.StreamSource = mstream;
+                    image.EndInit();
+                    imagenEjercicio.Source = image;
                 }
                 dr.Close();
             }
@@ -126,62 +132,9 @@ namespace DavidKinectTFG2016.recursosAdministrador
                 conexion.Close();
                 this.Close();
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error al cerrar la conexion con la BD");
-            }
-        }
-
-        /// <summary>
-        /// Metodo que cierra la conexion con la base de datos al cerrar la ventana.
-        /// </summary>
-        /// <param name="sender"></param> Boton cerrar.
-        /// <param name="e"></param>Evento de cerrar.
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            try
-            {
-                conexion.Close();
-            }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cerrar la conexion con la BD");
-            }
-        }
-
-        /// <summary>
-        /// Metodo que va a modificar tanto la descripcion como la foto descriptiva del ejercicio si es preciso.
-        /// </summary>
-        /// <param name="sender"></param> Boton Modificar.
-        /// <param name="e"></param> Eventos del boton.
-        private void buttonModificar_Click(object sender, RoutedEventArgs e)
-        {
-            //Por hacer.
-            if (Ejercicio.modificarEjercicio(comboBoxEjercicios.Text, textBoxDescripcion.Text,pathImagen) > 0)
-            {
-                MessageBox.Show("Ejercicio actualizado");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Error al actualizar el ejercicio");
-            }
-        }
-
-        /// <summary>
-        /// Metodo que permite la seleccion de una imagen en nuestro ordenador para el ejercicio.
-        /// </summary>
-        /// <param name="sender"></param> Boton Examinar.
-        /// <param name="e"></param>Evento del botón.
-        private void buttonExaminar_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Title = "Seleccione la Imagen a Mostrar";
-            openFile.Filter = "Todos(*.*) | *.*| Imagenes | *.jpg; *.gif; *.png; *.bmp";
-            if (openFile.ShowDialog() == true)
-            {
-                pathImagen = openFile.FileName.ToString();
-                imagenFoto.Source = new BitmapImage(new Uri(pathImagen));
             }
         }
     }
