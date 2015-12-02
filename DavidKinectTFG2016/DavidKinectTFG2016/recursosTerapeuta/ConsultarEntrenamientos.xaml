@@ -7,22 +7,20 @@
         mc:Ignorable="d"
         Title="Consultar Entrenamientos" Height="650" Width="600" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
-        <Viewbox Stretch="Uniform" >
-            <Grid>
-                <Label x:Name="labelTituloConsultarEntrenamientosTerapeuta" Content="{Binding labelTituloConsultarEntrenamientosTerapeuta, Source={StaticResource IdiomasRes}}" Margin="10,10,396,535"/>
-                <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="28,52,0,0" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="200" Width="Auto"/>
-                <Label x:Name="labelTituloFeedback" Content="{Binding labelTituloFeedback, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,267,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="labelDescripcionPaciente" Content="{Binding labelDescripcion, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,307,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="textBoxDescripcionPaciente" HorizontalAlignment="Left" Height="113" Margin="28,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" IsEnabled="False" VerticalScrollBarVisibility="Auto"/>
-                <Label x:Name="labelFeedbackPaciente1" Content="{Binding labelFeedbackPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,307,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="textBoxFeedbackPaciente" HorizontalAlignment="Left" Height="113" Margin="312,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" IsEnabled="False" VerticalScrollBarVisibility="Auto"/>
-                <TextBox x:Name="textBoxFeedbackTerapeuta" HorizontalAlignment="Left" Height="113" Margin="28,497,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" VerticalScrollBarVisibility="Auto"/>
-                <Label x:Name="labelFeedbackTerapeuta" Content="{Binding labelFeedbackTerapeuta, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,466,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="buttonEnviar" Content="{Binding buttonEnviar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,516,0,0" VerticalAlignment="Top" Width="75" Click="buttonEnviar_Click"/>
-                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,558,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click"/>
-                <ComboBox x:Name="comboBoxEntrenamiento" HorizontalAlignment="Left" Margin="312,267,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEntrenamiento_DropDownClosed"/>
-                <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="120" Margin="445,480,0,0" VerticalAlignment="Top" Width="121"/>
-            </Grid>
-        </Viewbox>
+        <Grid>
+            <Label x:Name="labelTituloConsultarEntrenamientosTerapeuta" Content="{Binding labelTituloConsultarEntrenamientosTerapeuta, Source={StaticResource IdiomasRes}}" Margin="10,10,396,535"/>
+            <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="28,52,0,0" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Height="200" Width="Auto"/>
+            <Label x:Name="labelTituloFeedback" Content="{Binding labelTituloFeedback, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,267,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="labelDescripcionPaciente" Content="{Binding labelDescripcion, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,307,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="textBoxDescripcionPaciente" HorizontalAlignment="Left" Height="113" Margin="28,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" IsEnabled="False" VerticalScrollBarVisibility="Auto"/>
+            <Label x:Name="labelFeedbackPaciente1" Content="{Binding labelFeedbackPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,307,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="textBoxFeedbackPaciente" HorizontalAlignment="Left" Height="113" Margin="312,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" IsEnabled="False" VerticalScrollBarVisibility="Auto"/>
+            <TextBox x:Name="textBoxFeedbackTerapeuta" HorizontalAlignment="Left" Height="113" Margin="28,497,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" VerticalScrollBarVisibility="Auto"/>
+            <Label x:Name="labelFeedbackTerapeuta" Content="{Binding labelFeedbackTerapeuta, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,466,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="buttonEnviar" Content="{Binding buttonEnviar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,516,0,0" VerticalAlignment="Top" Width="75" Click="buttonEnviar_Click"/>
+            <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,558,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click"/>
+            <ComboBox x:Name="comboBoxEntrenamiento" HorizontalAlignment="Left" Margin="312,267,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEntrenamiento_DropDownClosed"/>
+            <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="120" Margin="445,480,0,0" VerticalAlignment="Top" Width="121"/>
+        </Grid>
     </Grid>
 </Window>

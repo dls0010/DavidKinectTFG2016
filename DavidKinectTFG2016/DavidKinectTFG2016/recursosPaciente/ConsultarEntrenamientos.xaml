@@ -8,7 +8,10 @@
         Title="ConsultarEntrenamientos" Height="400" Width="400" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
         <Label x:Name="labelTituloEntrenamientosPaciente" Content="{Binding labelTituloEntrenamientosPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="25,61,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto"/>
+        <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="25,61,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" MaxHeight="300"/>
         <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="300,8,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click"/>
+        <ComboBox x:Name="comboBoxIDEntrenamiento" HorizontalAlignment="Left" Margin="222,274,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxIDEntrenamiento_DropDownClosed"/>
+        <Label x:Name="labelEscogerIDEntrenamiento" Content="{Binding labelEscogerIDEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="37,274,0,0" VerticalAlignment="Top" Width="170"/>
+        <Button x:Name="buttonEmpezar" Content="{Binding buttonEmpezar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="300,330,0,0" VerticalAlignment="Top" Width="75" Click="buttonEmpezar_Click"/>
     </Grid>
 </Window>

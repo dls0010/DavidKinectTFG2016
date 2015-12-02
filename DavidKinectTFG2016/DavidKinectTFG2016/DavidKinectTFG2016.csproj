@@ -155,8 +155,23 @@
     <Compile Include="recursosPaciente\Ejercicio2.xaml.cs">
       <DependentUpon>Ejercicio2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="recursosPaciente\Ejercicio3.xaml.cs">
+      <DependentUpon>Ejercicio3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosPaciente\Ejercicio4.xaml.cs">
+      <DependentUpon>Ejercicio4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosPaciente\Ejercicio5.xaml.cs">
+      <DependentUpon>Ejercicio5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosPaciente\Ejercicio6.xaml.cs">
+      <DependentUpon>Ejercicio6.xaml</DependentUpon>
+    </Compile>
     <Compile Include="recursosPaciente\EscribirFeedbackEjercicio.xaml.cs">
       <DependentUpon>EscribirFeedbackEjercicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosPaciente\EscribirFeedbackEntrenamiento.xaml.cs">
+      <DependentUpon>EscribirFeedbackEntrenamiento.xaml</DependentUpon>
     </Compile>
     <Compile Include="recursosPaciente\Posture.cs" />
     <Compile Include="recursosTerapeuta\AdquerirPacientes.xaml.cs">
@@ -258,7 +273,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="recursosPaciente\Ejercicio3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosPaciente\Ejercicio4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosPaciente\Ejercicio5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosPaciente\Ejercicio6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="recursosPaciente\EscribirFeedbackEjercicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosPaciente\EscribirFeedbackEntrenamiento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

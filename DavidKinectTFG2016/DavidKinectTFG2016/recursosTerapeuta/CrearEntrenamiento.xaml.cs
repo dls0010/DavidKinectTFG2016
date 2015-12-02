@@ -28,6 +28,11 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         string nombrePaciente;
         string apellidosPaciente;
         string nombreUsuarioPaciente;
+        int repeticiones1 = 0;
+        int repeticiones2 = 0;
+        int repeticiones3 = 0;
+        int repeticiones4 = 0;
+        int repeticiones5 = 0;
         public CrearEntrenamiento(string usuario)
         {
             nombreUsuarioTerapeuta = usuario;
@@ -171,6 +176,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         private void comboBoxEjercicio1_DropDownClosed(object sender, EventArgs e)
         {
             obtenerDescripcionEjercicio(comboBoxEjercicio1, textBoxDescripcionEjercicio1);
+            textBoxRepeticionesEjercicio1.IsEnabled = true;
+            textBoxRepeticionesEjercicio1.Text = Convert.ToString(10);
         }
 
         /// <summary>
@@ -181,6 +188,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         private void comboBoxEjercicio2_DropDownClosed(object sender, EventArgs e)
         {
             obtenerDescripcionEjercicio(comboBoxEjercicio2, textBoxDescripcionEjercicio2);
+            textBoxRepeticionesEjercicio2.IsEnabled = true;
+            textBoxRepeticionesEjercicio2.Text = Convert.ToString(10);
         }
 
         /// <summary>
@@ -191,6 +200,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         private void comboBoxEjercicio3_DropDownClosed(object sender, EventArgs e)
         {
             obtenerDescripcionEjercicio(comboBoxEjercicio3, textBoxDescripcionEjercicio3);
+            textBoxRepeticionesEjercicio3.IsEnabled = true;
+            textBoxRepeticionesEjercicio3.Text = Convert.ToString(10);
         }
 
         /// <summary>
@@ -201,6 +212,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         private void comboBoxEjercicio4_DropDownClosed(object sender, EventArgs e)
         {
             obtenerDescripcionEjercicio(comboBoxEjercicio4, textBoxDescripcionEjercicio4);
+            textBoxRepeticionesEjercicio4.IsEnabled = true;
+            textBoxRepeticionesEjercicio4.Text = Convert.ToString(10);
         }
 
         /// <summary>
@@ -211,6 +224,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         private void comboBoxEjercicio5_DropDownClosed(object sender, EventArgs e)
         {
             obtenerDescripcionEjercicio(comboBoxEjercicio5, textBoxDescripcionEjercicio5);
+            textBoxRepeticionesEjercicio5.IsEnabled = true;
+            textBoxRepeticionesEjercicio5.Text = Convert.ToString(10);
         }
 
         /// <summary>
@@ -286,9 +301,17 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         {
             string nombreCompletoPaciente = nombrePaciente + " " + apellidosPaciente;
             string nombreTerapeuta = Relacion.getTerapeuta(nombrePaciente, apellidosPaciente);
+            repeticiones1 = Convert.ToInt32(textBoxRepeticionesEjercicio1.Text);
+            if(textBoxRepeticionesEjercicio2.IsEnabled == true)
+                repeticiones2 = Convert.ToInt32(textBoxRepeticionesEjercicio2.Text);
+            if (textBoxRepeticionesEjercicio3.IsEnabled == true)
+                repeticiones3 = Convert.ToInt32(textBoxRepeticionesEjercicio3.Text);
+            if (textBoxRepeticionesEjercicio4.IsEnabled == true)
+                repeticiones4 = Convert.ToInt32(textBoxRepeticionesEjercicio4.Text);
+            if (textBoxRepeticionesEjercicio5.IsEnabled == true)
+                repeticiones5 = Convert.ToInt32(textBoxRepeticionesEjercicio5.Text);
 
-
-            if (Entrenamiento.RegistrarEntrenamiento(nombreCompletoPaciente, nombreUsuarioPaciente,nombreTerapeuta,nombreUsuarioTerapeuta,comboBoxEjercicio1.Text,comboBoxEjercicio2.Text,comboBoxEjercicio3.Text,comboBoxEjercicio4.Text,comboBoxEjercicio5.Text,null,null,null,null ) > 0)
+            if (Entrenamiento.RegistrarEntrenamiento(nombreCompletoPaciente, nombreUsuarioPaciente,nombreTerapeuta,nombreUsuarioTerapeuta,comboBoxEjercicio1.Text, repeticiones1,comboBoxEjercicio2.Text, repeticiones2,comboBoxEjercicio3.Text, repeticiones3, comboBoxEjercicio4.Text, repeticiones4, comboBoxEjercicio5.Text, repeticiones5, null, null,null,null ) > 0)
             {
                 MessageBox.Show("Entrenamiento registrado con exito.");
                 this.Close();

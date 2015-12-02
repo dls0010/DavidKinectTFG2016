@@ -17,6 +17,7 @@ using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 using Microsoft.Kinect.Toolkit.Controls;
 using System.Media;
+using System.IO;
 
 namespace DavidKinectTFG2016.recursosPaciente
 {
@@ -30,11 +31,11 @@ namespace DavidKinectTFG2016.recursosPaciente
         string nombreUsuarioPaciente;
         byte[] bytesColor;
         Skeleton[] esqueletos = null;
-        int primeraVez = 1;
+        int primeraVez;
         int maximoRepeticiones;
         string mensaje;
-        int repeticionesD = 0;
-        int repeticionesI = 0;
+        int repeticionesD;
+        int repeticionesI;
         //Deteccion de posturas.
         const int PostureDetectionNumber = 5;
         int accumulator = 0;
@@ -61,6 +62,9 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <param name="e"></param> Evento de abrir ventana.
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            primeraVez = 1;
+            repeticionesD = 0;
+            repeticionesI = 0;
             miKinect = new KinectSensorChooser();
             miKinect.KinectChanged += miKinect_KinectChanged;
             sensorChooserUI.KinectSensorChooser = miKinect;
@@ -86,6 +90,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                 {
                     e.OldSensor.DepthStream.Disable();
                     e.OldSensor.SkeletonStream.Disable();
+                    e.OldSensor.ColorStream.Disable();
                 }
                 catch (Exception)
                 {
@@ -95,32 +100,39 @@ namespace DavidKinectTFG2016.recursosPaciente
 
             if (e.NewSensor == null) //conectamos un Kinect a la computadora.
                 return;
-            try
+
+            // Look through all sensors and start the first connected one.
+            // This requires that a Kinect is connected at the time of app startup.
+            // To make your app robust against plug/unplug, 
+            // it is recommended to use KinectSensorChooser provided in Microsoft.Kinect.Toolkit (See components in Toolkit Browser).
+            foreach (var potentialSensor in KinectSensor.KinectSensors)
             {
-                kinect = e.NewSensor;
-                kinect.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
-                kinect.SkeletonStream.Enable();
-                kinect.ColorStream.Enable();
-
-                //Manejador de eventos:
-                kinect.SkeletonFrameReady += kinect_SkeletonFrameReady;
-                kinect.ColorFrameReady += kinect_ColorFrameReady;
-
-                try
+                if (potentialSensor.Status == KinectStatus.Connected)
                 {
-                    e.NewSensor.SkeletonStream.TrackingMode = SkeletonTrackingMode.Seated; //cuando estamos sentados.
-                    e.NewSensor.DepthStream.Range = DepthRange.Near;
-                    e.NewSensor.SkeletonStream.EnableTrackingInNearRange = true;
-                }
-                catch (InvalidOperationException)
-                {
-                    e.NewSensor.DepthStream.Range = DepthRange.Default;
-                    e.NewSensor.SkeletonStream.EnableTrackingInNearRange = false;
+                    this.kinect = potentialSensor;
+                    break;
                 }
             }
-            catch (InvalidOperationException)
+
+            if (null != this.kinect)
             {
-                error = true;
+                // Turn on the skeleton stream to receive skeleton frames
+                this.kinect.SkeletonStream.Enable();
+                this.kinect.ColorStream.Enable();
+
+                // Add an event handler to be called whenever there is new color frame data
+                this.kinect.SkeletonFrameReady += this.kinect_SkeletonFrameReady;
+                this.kinect.ColorFrameReady += this.kinect_ColorFrameReady;
+
+                // Start the sensor!
+                try
+                {
+                    this.kinect.Start();
+                }
+                catch (IOException)
+                {
+                    this.kinect = null;
+                }
             }
         }
 
@@ -249,8 +261,8 @@ namespace DavidKinectTFG2016.recursosPaciente
             duracion = new TimeSpan(final.Ticks - comienzo.Ticks);
             if (MessageBox.Show("¿Quieres escribir feedback acerca del ejercicio?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio 2", repeticionesD + repeticionesI, duracion.ToString());
-                feedback.Show();
+                EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio 1", repeticionesD + repeticionesI, duracion.ToString());
+                feedback.ShowDialog();
                 this.Close();
             }
             else
@@ -421,6 +433,15 @@ namespace DavidKinectTFG2016.recursosPaciente
         private void buttonParar_Click(object sender, RoutedEventArgs e)
         {
             finalizarEjercicio();
+        }
+
+        /// <summary>
+        /// Metodo que devuelve la suma de las repeticiones realizadas.
+        /// </summary>
+        /// <returns></returns>
+        public string devolverResumen()
+        {
+            return "Repeticiones mano derecha: " + repeticionesD + " repeticiones mano izquierda: " + repeticionesI;
         }
     }
 }

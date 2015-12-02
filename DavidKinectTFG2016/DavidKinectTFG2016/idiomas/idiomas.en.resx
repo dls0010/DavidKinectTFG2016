@@ -318,4 +318,10 @@
   <data name="labelRepeticiones" xml:space="preserve">
     <value>Number of repetitions: </value>
   </data>
+  <data name="labelEscogerIDEntrenamiento" xml:space="preserve">
+    <value>Choose the training id: </value>
+  </data>
+  <data name="buttonEmpezar" xml:space="preserve">
+    <value>Empezar</value>
+  </data>
 </root>

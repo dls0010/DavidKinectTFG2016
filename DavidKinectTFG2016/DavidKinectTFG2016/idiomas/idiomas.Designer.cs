@@ -133,6 +133,15 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Empezar.
+        /// </summary>
+        public static string buttonEmpezar {
+            get {
+                return ResourceManager.GetString("buttonEmpezar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Enviar.
         /// </summary>
         public static string buttonEnviar {
@@ -354,6 +363,15 @@ namespace DavidKinectTFG2016.idiomas {
         public static string labelEnunciadoElegirPaciente {
             get {
                 return ResourceManager.GetString("labelEnunciadoElegirPaciente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Elige el id del entrenamiento:.
+        /// </summary>
+        public static string labelEscogerIDEntrenamiento {
+            get {
+                return ResourceManager.GetString("labelEscogerIDEntrenamiento", resourceCulture);
             }
         }
         

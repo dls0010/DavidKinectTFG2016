@@ -13,9 +13,13 @@ namespace DavidKinectTFG2016.recursosPaciente
     {
         None,
         InicioBrazosExtendidos,
+        InicioBrazosDelante,
         RHandOnHead,
         LHandOnHead,
         RHandUp,
-        LHandUp
+        LHandUp,
+        ArmsDown,
+        HandsToKnees,
+        KneesUp
     }
 }
