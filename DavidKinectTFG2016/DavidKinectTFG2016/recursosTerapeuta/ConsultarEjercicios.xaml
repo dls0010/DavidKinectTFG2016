@@ -13,6 +13,6 @@
         <Label x:Name="labelDescripcion" Content="{Binding labelDescripcion, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelImagen" Content="{Binding labelImagen, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
         <Image x:Name="imagenEjercicio" HorizontalAlignment="Left" Height="115" Margin="23,201,0,0" VerticalAlignment="Top" Width="332"/>
-        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Click="buttonCancelar_Click"/>
+        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
     </Grid>
 </Window>

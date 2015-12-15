@@ -74,6 +74,15 @@ namespace DavidKinectTFG2016.registrosVarios
         /// <param name="e"></param> Evento del boton.
         private void buttonCancelar_Click(object sender, RoutedEventArgs e)
         {
+            if (Usuario.BorrarUsuario(nombreUsuario) > 0)
+            {
+                MessageBox.Show("Has cancelado el proceso de registro.");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error al cancelar el proceso de registro.");
+            }
             this.Close();
         }
 

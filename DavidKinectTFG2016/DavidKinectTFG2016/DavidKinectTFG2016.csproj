@@ -401,6 +401,7 @@
     <Resource Include="images\logo.png" />
     <Resource Include="images\stop.png" />
     <Resource Include="images\icon.png" />
+    <Resource Include="images\empezar.jpg" />
     <Content Include="ModeloBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloBD.edmx</DependentUpon>

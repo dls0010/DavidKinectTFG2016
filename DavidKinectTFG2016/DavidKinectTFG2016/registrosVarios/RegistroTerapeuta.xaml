@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.registrosVarios"
         mc:Ignorable="d"
-        Title="RegistroTerapeuta" Height="600" Width="600" Icon="/DavidKinectTFG2016;component/images/icon.png">
+        Title="RegistroTerapeuta" Height="600" Width="600" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
             <Grid Height="428" Width="418">
@@ -26,8 +26,8 @@
                 <Button x:Name="buttonExaminar" Content="{Binding buttonExaminar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,304,0,0" VerticalAlignment="Top" Width="75" Click="buttonExaminar_Click"/>
                 <Button x:Name="buttonHacerFoto" Content="{Binding buttonHacerFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,342,0,0" VerticalAlignment="Top" Width="75" Click="buttonHacerFoto_Click"/>
                 <Button x:Name="buttonTomarFoto" Content="{Binding buttonTomarFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="311,342,0,0" VerticalAlignment="Top" Width="80" Click="buttonTomarFoto_Click"/>
-                <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="78,401,0,0" VerticalAlignment="Top" Width="75" Click="buttonRegistrar_Click" Height="27"/>
-                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="247,401,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Height="27"/>
+                <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="78,401,0,0" VerticalAlignment="Top" Width="75" Click="buttonRegistrar_Click" Height="27" Background="#FF80FF00"/>
+                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="247,401,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Height="27" Background="#FFFF2C2C"/>
             </Grid>
         </Viewbox>
     </Grid>

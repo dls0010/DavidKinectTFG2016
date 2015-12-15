@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosPaciente"
         mc:Ignorable="d"
-        Title="ConsultarEntrenamientos" Height="400" Width="400" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
+        Title="ConsultarEntrenamientos" Height="450" Width="450" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Label x:Name="labelTituloEntrenamientosPaciente" Content="{Binding labelTituloEntrenamientosPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
         <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="25,61,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" MaxHeight="300"/>
-        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="300,8,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click"/>
+        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="300,8,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
         <ComboBox x:Name="comboBoxIDEntrenamiento" HorizontalAlignment="Left" Margin="222,274,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxIDEntrenamiento_DropDownClosed"/>
         <Label x:Name="labelEscogerIDEntrenamiento" Content="{Binding labelEscogerIDEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="37,274,0,0" VerticalAlignment="Top" Width="170"/>
-        <Button x:Name="buttonEmpezar" Content="{Binding buttonEmpezar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="300,330,0,0" VerticalAlignment="Top" Width="75" Click="buttonEmpezar_Click"/>
+        <Button x:Name="buttonEmpezar" HorizontalAlignment="Left" Margin="300,330,0,0" VerticalAlignment="Top" Width="75" Click="buttonEmpezar_Click" Height="80">
+            <Button.Background>
+                <ImageBrush ImageSource="/DavidKinectTFG2016;component/images/empezar.jpg"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

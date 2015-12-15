@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.registrosVarios"
         mc:Ignorable="d"
-        Title="RegistroPaciente" Height="700" Width="550" Icon="/DavidKinectTFG2016;component/images/icon.png">
+        Title="RegistroPaciente" Height="700" Width="550" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
             <Grid Height="528" Width="419">
@@ -30,8 +30,8 @@
                 <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="63" Margin="125,420,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
                 <Button x:Name="buttonHacerFoto" Content="{Binding buttonHacerFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="231,367,0,0" VerticalAlignment="Top" Width="75" Click="buttonHacerFoto_Click"/>
                 <Button x:Name="buttonTomarFoto" Content="{Binding buttonTomarFoto, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="321,367,0,0" VerticalAlignment="Top" Width="88" Click="buttonTomarFoto_Click"/>
-                <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,505,0,0" Width="75" Click="buttonRegistrar_Click"/>
-                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,505,0,0" Width="75" Click="buttonCancelar_Click"/>
+                <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,505,0,0" Width="75" Click="buttonRegistrar_Click" Background="#FF91FF23"/>
+                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,505,0,0" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
             </Grid>
         </Viewbox>
     </Grid>

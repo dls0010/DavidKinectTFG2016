@@ -171,8 +171,8 @@
   <data name="labelTituloAdministrador" xml:space="preserve">
     <value>Seleccione la opción que desee:</value>
   </data>
-  <data name="buttonAdquerirPacientes" xml:space="preserve">
-    <value>Adquerir...</value>
+  <data name="buttonAdquirirPacientes" xml:space="preserve">
+    <value>Adquirir...</value>
   </data>
   <data name="buttonConsultar" xml:space="preserve">
     <value>Consultar...</value>
@@ -183,8 +183,8 @@
   <data name="buttonEjercicio" xml:space="preserve">
     <value>Ejercicio...</value>
   </data>
-  <data name="labelAdquerirPacientes" xml:space="preserve">
-    <value>Adquerir pacientes: </value>
+  <data name="labelAdquirirPacientes" xml:space="preserve">
+    <value>Adquirir pacientes: </value>
   </data>
   <data name="labelConsultar" xml:space="preserve">
     <value>Consultar mis ejercicios:</value>

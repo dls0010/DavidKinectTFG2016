@@ -38,8 +38,8 @@
                 <TextBox x:Name="textBoxRepeticionesEjercicio4" HorizontalAlignment="Left" Height="41" Margin="626,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" VerticalScrollBarVisibility="Auto" IsEnabled="False"/>
                 <TextBox x:Name="textBoxRepeticionesEjercicio5" HorizontalAlignment="Left" Height="41" Margin="626,514,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" VerticalScrollBarVisibility="Auto" IsEnabled="False"/>
                 <Label x:Name="labelRepeticiones" Content="{Binding labelRepeticiones, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="597,229,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.376,1.437"/>
-                <Button x:Name="buttonAsignarEjercicio" Content="{Binding buttonAsignarEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="421,170,0,0" VerticalAlignment="Top" Width="116" Height="36" Click="buttonAsignarEjercicio_Click"/>
-                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="549,170,0,0" VerticalAlignment="Top" Width="116" Height="36" Click="buttonCancelar_Click"/>
+                <Button x:Name="buttonAsignarEjercicio" Content="{Binding buttonAsignarEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="421,170,0,0" VerticalAlignment="Top" Width="116" Height="36" Click="buttonAsignarEjercicio_Click" Background="#FF71FF2F"/>
+                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="549,170,0,0" VerticalAlignment="Top" Width="116" Height="36" Click="buttonCancelar_Click" Background="#FFFD2C2C"/>
             </Grid>
         </Viewbox>
     </Grid>

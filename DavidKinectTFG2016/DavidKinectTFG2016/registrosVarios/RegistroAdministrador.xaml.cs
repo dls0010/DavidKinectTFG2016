@@ -28,12 +28,21 @@ namespace DavidKinectTFG2016.registrosVarios
         }
 
         /// <summary>
-        /// Comportamiento del boton cancelar. Cerrará la ventana.
+        /// Metodo que cierra la ventana.
         /// </summary>
-        /// <param name="sender"></param> Boton cancelar.
-        /// <param name="e"></param> Argumento del evento.
+        /// <param name="sender"></param> Boton Cancelar.
+        /// <param name="e"></param> Evento del boton.
         private void buttonCancelar_Click(object sender, RoutedEventArgs e)
         {
+            if (Usuario.BorrarUsuario(nombreUsuario) > 0)
+            {
+                MessageBox.Show("Has cancelado el proceso de registro.");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Error al cancelar el proceso de registro.");
+            }
             this.Close();
         }
 

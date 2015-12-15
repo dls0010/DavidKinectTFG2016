@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosPaciente"
         mc:Ignorable="d"
-        Title="EscribirFeedbackEjercicio" Height="300" Width="400" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
+        Title="EscribirFeedbackEjercicio" Height="300" Width="400" Loaded="Window_Loaded" Closed="Window_Closed" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         
         <TextBox x:Name="textBoxFeedback" HorizontalAlignment="Left" Height="124" Margin="46,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301"/>
-        <Button x:Name="buttonMandar" Content="{Binding buttonMandar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,241,0,0" Width="75" Click="buttonMandar_Click" />
-        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,241,0,0" Width="75" Click="buttonCancelar_Click"/>
+        <Button x:Name="buttonMandar" Content="{Binding buttonMandar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,243,0,-2" Width="75" Click="buttonMandar_Click" Background="#FF50D313" />
+        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,241,0,0" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
         <Label x:Name="labelTituloFeedbackPaciente" Content="{Binding labelTituloFeedbackPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="46,27,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="57" Margin="303,10,0,0" VerticalAlignment="Top" Width="79" Source="/DavidKinectTFG2016;component/images/logo.png"/>
     </Grid>
 </Window>

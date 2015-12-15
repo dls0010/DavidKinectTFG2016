@@ -128,5 +128,43 @@ namespace DavidKinectTFG2016.clases
                 return false;
             }
         }
+
+        /// <summary>
+        /// Metodo que borra el usuario, si al registrarse se arrepiente y da a cancelar.
+        /// </summary>
+        /// <param name="nombreUsuario"></param>
+        /// <returns></returns>
+        public static int BorrarUsuario(string nombreUsuario)
+        {
+            int resultado = 1;
+            int error = 0;
+            SqlConnection conn;
+
+            try
+            {
+                conn = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
+
+            string query = "DELETE usuarios from Usuarios where usuario='" + nombreUsuario + "'";
+            SqlCommand comando = new SqlCommand(query, conn);
+
+            try
+            {
+                comando.ExecuteNonQuery();
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

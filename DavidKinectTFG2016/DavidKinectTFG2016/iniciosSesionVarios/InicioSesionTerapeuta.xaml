@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.iniciosSesionVarios"
         mc:Ignorable="d"
-        Title="Inicio Sesion Terapeuta" Loaded="Window_Loaded" Closed="Window_Closed" Height="700" Width="700" Icon="/DavidKinectTFG2016;component/images/icon.png">
+        Title="Inicio Sesion Terapeuta" Loaded="Window_Loaded" Closed="Window_Closed" Height="700" Width="700" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
             <Grid Height="362" Width="352">
 
                 <Label x:Name="labelTituloTerapeuta" Content="{Binding labelTituloTerapeuta, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,10,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="labelAdquerirPacientes" Content="{Binding labelAdquerirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="102,80,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelAdquirirPacientes" Content="{Binding labelAdquirirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="102,80,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelConsultar" Content="{Binding labelConsultarPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="102,120,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="buttonAdquerirPacientes" Content="{Binding buttonAdquerirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdquerir_Click"/>
+                <Button x:Name="buttonAdquirirPacientes" Content="{Binding buttonAdquirirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdquerir_Click"/>
                 <Label x:Name="labelCrearEntrenamiento" Content="{Binding labelCrearEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,160,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelConsultarEntrenamiento" Content="{Binding labelConsultarEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,200,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelConsultarEjercicios" Content="{Binding labelConsultarEjercicios, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,240,0,0" VerticalAlignment="Top"/>
@@ -21,6 +21,7 @@
                 <Button x:Name="buttonConsultarEntrenamientos" Content="{Binding buttonConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="250,200,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultarEntrenamientos_Click"/>
                 <Button x:Name="buttonConsultarEjercicios" Content="{Binding buttonConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="250,240,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultarEjercicios_Click"/>
                 <Button x:Name="buttonConsultar" Content="{Binding buttonConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="250,120,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultar_Click"/>
+                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="250,330,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
                 <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="73" Margin="10,10,0,0" VerticalAlignment="Top" Width="70"/>
             </Grid>
         </Viewbox>

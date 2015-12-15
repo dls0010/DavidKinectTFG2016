@@ -61,11 +61,11 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Adquerir....
+        ///   Busca una cadena traducida similar a Adquirir....
         /// </summary>
-        public static string buttonAdquerirPacientes {
+        public static string buttonAdquirirPacientes {
             get {
-                return ResourceManager.GetString("buttonAdquerirPacientes", resourceCulture);
+                return ResourceManager.GetString("buttonAdquirirPacientes", resourceCulture);
             }
         }
         
@@ -214,11 +214,11 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Adquerir pacientes: .
+        ///   Busca una cadena traducida similar a Adquirir pacientes: .
         /// </summary>
-        public static string labelAdquerirPacientes {
+        public static string labelAdquirirPacientes {
             get {
-                return ResourceManager.GetString("labelAdquerirPacientes", resourceCulture);
+                return ResourceManager.GetString("labelAdquirirPacientes", resourceCulture);
             }
         }
         

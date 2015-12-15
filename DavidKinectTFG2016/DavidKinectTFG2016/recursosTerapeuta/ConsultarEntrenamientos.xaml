@@ -17,8 +17,8 @@
             <TextBox x:Name="textBoxFeedbackPaciente" HorizontalAlignment="Left" Height="113" Margin="312,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" IsEnabled="False" VerticalScrollBarVisibility="Auto"/>
             <TextBox x:Name="textBoxFeedbackTerapeuta" HorizontalAlignment="Left" Height="113" Margin="28,497,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" VerticalScrollBarVisibility="Auto"/>
             <Label x:Name="labelFeedbackTerapeuta" Content="{Binding labelFeedbackTerapeuta, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,466,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="buttonEnviar" Content="{Binding buttonEnviar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,516,0,0" VerticalAlignment="Top" Width="75" Click="buttonEnviar_Click"/>
-            <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,558,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click"/>
+            <Button x:Name="buttonEnviar" Content="{Binding buttonEnviar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,516,0,0" VerticalAlignment="Top" Width="75" Click="buttonEnviar_Click" Background="#FF41F319"/>
+            <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="320,558,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
             <ComboBox x:Name="comboBoxEntrenamiento" HorizontalAlignment="Left" Margin="312,267,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEntrenamiento_DropDownClosed"/>
             <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="120" Margin="445,480,0,0" VerticalAlignment="Top" Width="121"/>
         </Grid>
