@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosAdministrador"
         mc:Ignorable="d"
-        Title="ModificarEjercicio" Height="400" Width="400" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="ModificarEjercicio" Height="400" Width="400" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Label x:Name="labelTituloModificarEjercicio" Content="{Binding labelTituloModificarEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBoxEjercicios" HorizontalAlignment="Left" Margin="203,10,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEjercicios_DropDownClosed"/>

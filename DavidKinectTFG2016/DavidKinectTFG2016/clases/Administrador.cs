@@ -10,7 +10,7 @@ namespace DavidKinectTFG2016.clases
     /// <summary>
     /// Clase Administrador que registrar en la base de datos.
     /// </summary>
-    class Administrador
+    public class Administrador
     {
         /// <summary>
         /// Metodo que controla el registro un nuevo administrador en la base de datos.

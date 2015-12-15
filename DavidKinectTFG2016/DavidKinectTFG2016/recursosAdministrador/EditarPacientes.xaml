@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosAdministrador"
         mc:Ignorable="d"
-        Title="EditarPacientes" Height="400" Width="500" Loaded="Window_Loaded" WindowState="Maximized">
+        Title="EditarPacientes" Height="400" Width="500" Loaded="Window_Loaded" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png" >
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
             <Grid>

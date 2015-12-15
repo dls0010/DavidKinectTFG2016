@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosTerapeuta"
         mc:Ignorable="d"
-        Title="Crear entrenamiento" Height="600" Width="750" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="Crear entrenamiento" Height="600" Width="750" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0">
             <Grid Height="600" Width="747">

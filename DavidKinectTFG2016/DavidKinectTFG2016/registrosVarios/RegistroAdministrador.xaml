@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.registrosVarios"
         mc:Ignorable="d"
-        Title="RegistroAdministrador" Height="300" Width="400">
+        Title="RegistroAdministrador" Height="300" Width="500" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
-            <Grid>
+            <Grid Width="449">
                 <Label x:Name="labelNombre" Content="{Binding labelNombre, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="24,22,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelApellidos" Content="{Binding labelApellidos, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="24,64,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelNIF" Content="{Binding labelNIF, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="24,104,0,0" VerticalAlignment="Top"/>

@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosPaciente"
         mc:Ignorable="d"
-        Title="Ejercicio1Paciente" Height="300" Width="300" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="Ejercicio1Paciente" Height="300" Width="300" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <k:KinectRegion Name="zonaCursor">
             <Grid>

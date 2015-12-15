@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosTerapeuta"
         mc:Ignorable="d"
-        Title="Consultar Entrenamientos" Height="650" Width="600" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="Consultar Entrenamientos" Height="650" Width="600" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Grid>
             <Label x:Name="labelTituloConsultarEntrenamientosTerapeuta" Content="{Binding labelTituloConsultarEntrenamientosTerapeuta, Source={StaticResource IdiomasRes}}" Margin="10,10,396,535"/>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosPaciente"
         mc:Ignorable="d"
-        Title="ConsultaHistorial" Height="300" Width="400" Loaded="Window_Loaded" WindowState="Maximized">
+        Title="ConsultaHistorial" Height="300" Width="400" Loaded="Window_Loaded" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelTituloHistorialPaciente" Content="{Binding labelTituloHistorialPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.388,0.114"/>

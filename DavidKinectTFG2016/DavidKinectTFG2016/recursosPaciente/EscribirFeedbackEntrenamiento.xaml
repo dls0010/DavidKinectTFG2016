@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosPaciente"
         mc:Ignorable="d"
-        Title="EscribirFeedbackEntrenamiento" Height="300" Width="400">
+        Title="EscribirFeedbackEntrenamiento" Height="300" Width="400" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <TextBox x:Name="textBoxFeedback" HorizontalAlignment="Left" Height="124" Margin="46,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301"/>
         <Button x:Name="buttonMandar" Content="{Binding buttonMandar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,241,0,0" Width="75" Click="buttonMandar_Click" />
