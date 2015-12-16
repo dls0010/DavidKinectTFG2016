@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosAdministrador"
         mc:Ignorable="d"
-        Title="ModificarEjercicio" Height="400" Width="400" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
+        Title="Modificar Ejercicio" Height="400" Width="400" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Label x:Name="labelTituloModificarEjercicio" Content="{Binding labelTituloModificarEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBoxEjercicios" HorizontalAlignment="Left" Margin="203,10,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEjercicios_DropDownClosed"/>
@@ -14,8 +14,8 @@
         <Label x:Name="labelImagen" Content="{Binding labelImagen, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
         <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="100" Margin="23,201,0,0" VerticalAlignment="Top" Width="242"/>
         <Button x:Name="buttonExaminar" Content="{Binding buttonExaminar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="280,200,0,0" VerticalAlignment="Top" Width="75" Click="buttonExaminar_Click"/>
-        <Button x:Name="buttonModificar" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,342,0,0" Width="75" Click="buttonModificar_Click" />
-        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,342,0,0" Width="75" Click="buttonCancelar_Click"/>
+        <Button x:Name="buttonModificar" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,323,0,19" Width="75" Click="buttonModificar_Click" />
+        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="258,323,0,19" Width="75" Click="buttonCancelar_Click"/>
 
     </Grid>
 </Window>

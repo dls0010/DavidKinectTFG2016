@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosAdministrador"
         mc:Ignorable="d"
-        Title="EditarPacientes" Height="400" Width="500" Loaded="Window_Loaded" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png" >
+        Title="Editar Pacientes" Height="400" Width="500" Loaded="Window_Loaded" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png" >
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
             <Grid>
@@ -14,8 +14,8 @@
                         <DataGridComboBoxColumn ClipboardContentBinding="{x:Null}" SelectedValueBinding="{x:Null}" SelectedItemBinding="{x:Null}" TextBinding="{x:Null}"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="buttonModificar" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="buttonModificar_Click"/>
-                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Margin="75,0,-75,0" Click="buttonCancelar_Click"/>
+                <Button x:Name="buttonModificar" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="buttonModificar_Click" Background="#FF65FF0D"/>
+                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Margin="75,0,-75,0" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
             </Grid>
         </Viewbox>
     </Grid>

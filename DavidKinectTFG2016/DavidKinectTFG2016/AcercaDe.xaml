@@ -13,6 +13,7 @@
                 <Label x:Name="labelVersion" Content="Version 1.0" Margin="10,120,-10,-118"/>
                 <Label x:Name="labelNombre" Content="David López Santamaría" Margin="10,150,-10,-146"/>
                 <Label x:Name="labelFecha" Content="2016" Margin="10,180,-10,-146"/>
+                <Image x:Name="image" HorizontalAlignment="Left" Height="85" Margin="93,0,0,0" VerticalAlignment="Top" Width="149" Source="images/logo.png"/>
             </Grid>
         </Viewbox>
     </Grid>

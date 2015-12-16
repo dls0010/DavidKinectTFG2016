@@ -27,7 +27,7 @@ namespace DavidKinectTFG2016.clases
                 if (Existe(pUsuario) == false && pTipoUsuario.Length != 0)
                 {
                     SqlConnection conn = BDComun.ObtnerConexion();
-                    SqlCommand comando = new SqlCommand(string.Format("Insert Into Usuarios (usuario,contraseña,tipoUsuario) values ('{0}','{1}','{2}')", pUsuario, pContraseña, pTipoUsuario), conn);
+                    SqlCommand comando = new SqlCommand(string.Format("Insert Into Usuarios (Usuario,Contraseña,TipoUsuario) values ('{0}',PwdEncrypt('{1}'),'{2}')", pUsuario, pContraseña, pTipoUsuario), conn);
 
                     resultado = comando.ExecuteNonQuery();
                     conn.Close();
@@ -57,7 +57,7 @@ namespace DavidKinectTFG2016.clases
             SqlConnection conn;
             try {
                 conn = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand(string.Format("Select * from Usuarios where usuario = '{0}' and contraseña = '{1}'", pUsuario, pContraseña), conn);
+                SqlCommand comando = new SqlCommand(string.Format("Select * from Usuarios where usuario = '{0}' and PwdCompare('{1}',contraseña) = 1 ", pUsuario, pContraseña), conn);
 
                 SqlDataReader reader = comando.ExecuteReader();
 
