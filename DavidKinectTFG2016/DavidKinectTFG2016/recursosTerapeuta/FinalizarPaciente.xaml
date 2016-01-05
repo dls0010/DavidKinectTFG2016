@@ -1,0 +1,42 @@
+﻿<Window x:Class="DavidKinectTFG2016.recursosTerapeuta.FinalizarPaciente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DavidKinectTFG2016.recursosTerapeuta"
+        mc:Ignorable="d"
+        Title="Adquerir Pacientes" Height="600" Width="600" Loaded="Window_Loaded" Closed="Window_Closed" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
+    <Grid>
+        <Viewbox Stretch="Uniform" Margin="10,0,10,10">
+            <Grid Height="541">
+                <Label x:Name="labelNombre" Content="{Binding labelNombre, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,281,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelApellidos" Content="{Binding labelApellidos, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,312,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelTituloFinalizarPacientes" Content="{Binding labelTituloFinalizarPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="labelNIF" Content="{Binding labelNIF, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,343,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelTelefono" Content="{Binding labelTelefono, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,374,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelEstado" Content="{Binding labelEstado, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,434,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBoxNombre" HorizontalAlignment="Left" Height="23" Margin="107,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label x:Name="labelDescripcion" Content="{Binding labelDescripcion, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,473,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBoxApellidos" HorizontalAlignment="Left" Height="23" Margin="107,315,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBoxNIF" HorizontalAlignment="Left" Height="23" Margin="107,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBoxTelefono" HorizontalAlignment="Left" Height="23" Margin="107,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="textBoxEstado" HorizontalAlignment="Left" Height="23" Margin="107,437,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label x:Name="labelNombreElegirPaciente" Content="{Binding labelNombreElegirPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="244,343,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="59" Margin="107,473,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217"/>
+
+                <Label x:Name="labelEnunciadoElegirPaciente" Content="{Binding labelEnunciadoElegirPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="244,297,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="comboBoxNombre" HorizontalAlignment="Left" Margin="419,347,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" DropDownClosed="comboBoxNombre_DropDownClosed">
+                    <ListBoxItem Content="Elegir paciente..." IsEnabled="False"/>
+                </ComboBox>
+                <Label x:Name="labelNacimiento" Content="{Binding labelNacimiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,402,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBoxNacimiento" HorizontalAlignment="Left" Height="23" Margin="107,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <DataGrid AutoGenerateColumns="True" x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonFinalizarTratamiento" Content="{Binding buttonFinalizarTratamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="454,404,0,0" VerticalAlignment="Top" Width="75" Click="buttonFinalizar_Click" Background="#FF7DE811"/>
+                <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="91" Margin="264,377,0,0" VerticalAlignment="Top" Width="86"/>
+                <Label x:Name="labelIDPaciente" Content="{Binding labelIDPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,253,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBoxIDPaciente" HorizontalAlignment="Left" Height="23" Margin="107,256,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="454,460,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>

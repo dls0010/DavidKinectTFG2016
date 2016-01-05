@@ -49,50 +49,64 @@ namespace DavidKinectTFG2016.clases
             }
             try
             {
-                string query = "Insert Into Entrenamientos (nombrePaciente, usuarioPaciente,nombreTerapeuta,usuarioTerapeuta,ejercicio1,repeticiones1,ejercicio2,repeticiones2,ejercicio3,repeticiones3, ejercicio4,repeticiones4,ejercicio5,repeticiones5, fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta)" + "values('" + nombrePaciente + "','" + nombreUsuarioPaciente + "','" + nombreTerapeuta + "','" + nombreUsuarioTerapeuta + "','" + ejercicio1 + "','" + repeticiones1 + "', @EJER2,@REP2, @EJER3,@REP3,@EJER4,@REP4,@EJER5,@REP5,@FECHA,@RESULTADOS,@FEEDBACKPACIENTE,@FEEDBACKTERAPEUTA);";
+                int idEjercicio1 = Ejercicio.getIdEjercicio(ejercicio1);
+                string query = "Insert Into Entrenamientos (nombrePaciente, usuarioPaciente,nombreTerapeuta,usuarioTerapeuta,idEjercicio1, ejercicio1,repeticiones1,idEjercicio2,ejercicio2,repeticiones2,idEjercicio3,ejercicio3,repeticiones3, idEjercicio4,ejercicio4,repeticiones4,idEjercicio5,ejercicio5,repeticiones5, fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta)" + "values('" + nombrePaciente + "','" + nombreUsuarioPaciente + "','" + nombreTerapeuta + "','" + nombreUsuarioTerapeuta + "','" + idEjercicio1 + "','" + ejercicio1 + "','" + repeticiones1 + "',@IDEJER2,@EJER2,@REP2,@IDEJER3,@EJER3,@REP3,@IDEJER4,@EJER4,@REP4,@IDEJER5,@EJER5,@REP5,@FECHA,@RESULTADOS,@FEEDBACKPACIENTE,@FEEDBACKTERAPEUTA);";
                 SqlCommand comando = new SqlCommand(query, conn);
                 if (ejercicio1 == "")
                     return error;
 
                 if (ejercicio2 != "")
                 {
+                    int IDEjercicio2 = Ejercicio.getIdEjercicio(ejercicio2);
+                    comando.Parameters.AddWithValue("@IDEJER2", IDEjercicio2);
                     comando.Parameters.AddWithValue("@EJER2", ejercicio2);
                     comando.Parameters.AddWithValue("@REP2", repeticiones2);
                 }
                 else
                 {
+                    comando.Parameters.AddWithValue("@IDEJER2", DBNull.Value);
                     comando.Parameters.AddWithValue("@EJER2", DBNull.Value);
                     comando.Parameters.AddWithValue("@REP2", DBNull.Value);
                 }
 
                 if (ejercicio3 != "")
                 {
+                    int IDEjercicio3 = Ejercicio.getIdEjercicio(ejercicio3);
+                    comando.Parameters.AddWithValue("@IDEJER3", IDEjercicio3);
                     comando.Parameters.AddWithValue("@EJER3", ejercicio3);
                     comando.Parameters.AddWithValue("@REP3", repeticiones3);
                 }
+                else
                 {
+                    comando.Parameters.AddWithValue("@IDEJER3", DBNull.Value);
                     comando.Parameters.AddWithValue("@EJER3", DBNull.Value);
                     comando.Parameters.AddWithValue("@REP3", DBNull.Value);
                 }
 
                 if (ejercicio4 != "")
                 {
+                    int IDEjercicio4= Ejercicio.getIdEjercicio(ejercicio4);
+                    comando.Parameters.AddWithValue("@IDEJER4", IDEjercicio4);
                     comando.Parameters.AddWithValue("@EJER4", ejercicio4);
                     comando.Parameters.AddWithValue("@REP4", repeticiones4);
                 }
                 else
                 {
+                    comando.Parameters.AddWithValue("@IDEJER4", DBNull.Value);
                     comando.Parameters.AddWithValue("@EJER4", DBNull.Value);
                     comando.Parameters.AddWithValue("@REP4", DBNull.Value);
                 }
 
                 if (ejercicio5 != "")
                 {
+                    int IDEjercicio5 = Ejercicio.getIdEjercicio(ejercicio5);
+                    comando.Parameters.AddWithValue("@IDEJER5", IDEjercicio5);
                     comando.Parameters.AddWithValue("@EJER5", ejercicio5);
                     comando.Parameters.AddWithValue("@REP5", repeticiones5);
                 }
                 else
                 {
+                    comando.Parameters.AddWithValue("@IDEJER5", DBNull.Value);
                     comando.Parameters.AddWithValue("@EJER5", DBNull.Value);
                     comando.Parameters.AddWithValue("@REP5", DBNull.Value);
                 }
@@ -151,7 +165,6 @@ namespace DavidKinectTFG2016.clases
             try
             {
                 string query = "Update Entrenamientos SET feedbackTerapeuta = '"+feedbackTerapeuta+"' WHERE usuarioTerapeuta = '"+nombreUsuarioTerapeuta+"' and idEntrenamiento = "+idEntrenamiento+"";
-                //SqlCommand comando = new SqlCommand(string.Format("Update Entrenamientos SET feedbackTerapeutan = '{0}' WHERE usuarioTerapeuta = '{1}' and idEntrenamiento = '{2}' )", feedbackTerapeuta,nombreUsuarioTerapeuta,idEntrenamiento ), conn);
                 SqlCommand comando = new SqlCommand(query,conn);
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();

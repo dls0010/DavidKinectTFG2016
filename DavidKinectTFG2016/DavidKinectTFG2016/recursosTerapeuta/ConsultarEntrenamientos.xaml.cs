@@ -189,6 +189,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         private void buttonEnviar_Click(object sender, RoutedEventArgs e)
         {
             string feedbackTerapeuta = textBoxFeedbackTerapeuta.Text;
+            idEntrenamiento = Convert.ToInt32(comboBoxEntrenamiento.Text);
             if (feedbackTerapeuta != "")
             {
                 if (Entrenamiento.AñadirFeedback(idEntrenamiento,nombreUsuarioTerapeuta, feedbackTerapeuta) > 0)

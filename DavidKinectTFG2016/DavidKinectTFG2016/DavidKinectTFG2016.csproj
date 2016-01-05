@@ -152,9 +152,6 @@
     <Compile Include="recursosPaciente\Ejercicio1.xaml.cs">
       <DependentUpon>Ejercicio1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="recursosPaciente\Ejercicio1Paciente.xaml.cs">
-      <DependentUpon>Ejercicio1Paciente.xaml</DependentUpon>
-    </Compile>
     <Compile Include="recursosPaciente\Ejercicio2.xaml.cs">
       <DependentUpon>Ejercicio2.xaml</DependentUpon>
     </Compile>
@@ -191,6 +188,9 @@
     </Compile>
     <Compile Include="recursosTerapeuta\CrearEntrenamiento.xaml.cs">
       <DependentUpon>CrearEntrenamiento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="recursosTerapeuta\FinalizarPaciente.xaml.cs">
+      <DependentUpon>FinalizarPaciente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Registro.xaml.cs">
       <DependentUpon>Registro.xaml</DependentUpon>
@@ -268,10 +268,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="recursosPaciente\Ejercicio1Paciente.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="recursosPaciente\Ejercicio2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -317,6 +313,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="recursosTerapeuta\CrearEntrenamiento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="recursosTerapeuta\FinalizarPaciente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -402,6 +402,8 @@
     <Resource Include="images\stop.png" />
     <Resource Include="images\icon.png" />
     <Resource Include="images\empezar.jpg" />
+    <Resource Include="images\tool.jpg" />
+    <Resource Include="images\print.png" />
     <Content Include="ModeloBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModeloBD.edmx</DependentUpon>

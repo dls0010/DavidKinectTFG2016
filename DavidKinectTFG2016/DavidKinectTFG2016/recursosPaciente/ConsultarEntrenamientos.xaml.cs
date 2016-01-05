@@ -120,7 +120,7 @@ namespace DavidKinectTFG2016.recursosPaciente
         {
             try
             {
-                string query = "Select idEntrenamiento from entrenamientos where fechaEntrenamiento IS NULL";
+                string query = "Select idEntrenamiento from entrenamientos where fechaEntrenamiento IS NULL and usuarioPaciente='"+nombreUsuarioPaciente+"'";
                 SqlCommand comando = new SqlCommand(query, conexion);
                 SqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
@@ -136,6 +136,11 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
         }
 
+        /// <summary>
+        /// Metodo que escoge del combobox el entrenamiento seleccionado por el paciente.
+        /// </summary>
+        /// <param name="sender"></param> ComboboxIDEntrenamiento 
+        /// <param name="e"></param> Evento del combobox
         private void comboBoxIDEntrenamiento_DropDownClosed(object sender, EventArgs e)
         {
             try
@@ -150,31 +155,31 @@ namespace DavidKinectTFG2016.recursosPaciente
                     nombrePaciente = dr.GetString(1);
                     nombreTerapeuta  = dr.GetString(3);
                     usuarioTerapeuta = dr.GetString(4);
-                    ejercicio1 = dr.GetString(5);
+                    ejercicio1 = dr.GetString(6);
                     listaEjercicios.Add(ejercicio1);
-                    listaRepeticiones.Add(dr.GetInt32(6));
+                    listaRepeticiones.Add(dr.GetInt32(7));
                     if (dr["ejercicio2"] != DBNull.Value)
                     {
-                        ejercicio2 = dr.GetString(7);
-                        listaRepeticiones.Add(dr.GetInt32(8));
+                        ejercicio2 = dr.GetString(9);
+                        listaRepeticiones.Add(dr.GetInt32(10));
                         listaEjercicios.Add(ejercicio2);
                     }
                     if (dr["ejercicio3"] != DBNull.Value)
                     {
-                        ejercicio3 = dr.GetString(9);
-                        listaRepeticiones.Add(dr.GetInt32(10));
+                        ejercicio3 = dr.GetString(12);
+                        listaRepeticiones.Add(dr.GetInt32(13));
                         listaEjercicios.Add(ejercicio3);
                     }
                     if (dr["ejercicio4"] != DBNull.Value)
                     {
-                        ejercicio4 = dr.GetString(11);
-                        listaRepeticiones.Add(dr.GetInt32(12));
+                        ejercicio4 = dr.GetString(15);
+                        listaRepeticiones.Add(dr.GetInt32(16));
                         listaEjercicios.Add(ejercicio4);
                     }
                     if (dr["ejercicio5"] != DBNull.Value)
                     {
-                        ejercicio5 = dr.GetString(13);
-                        listaRepeticiones.Add(dr.GetInt32(14));
+                        ejercicio5 = dr.GetString(18);
+                        listaRepeticiones.Add(dr.GetInt32(19));
                         listaEjercicios.Add(ejercicio5);
                     }
                 }
@@ -182,7 +187,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener la descripcion de los ejercicios");
+                MessageBox.Show("Error al seleccionar el entrenamiento");
             }
         }
 
@@ -216,14 +221,14 @@ namespace DavidKinectTFG2016.recursosPaciente
             foreach (string ejercicio in listaEjercicios)
             {
                 string nuevo = "NUEVO EJERCICIO: \n";
-                if(ejercicio == "Ejercicio 1")
+                if(ejercicio == "Ejercicio1")
                 {
                     Ejercicio1 ejer1 = new Ejercicio1(nombreUsuarioPaciente,listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
                     MessageBox.Show(nuevo + listaDescripciones[0] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer1.ShowDialog();
                     resumenResultados += "\n Ejercicio 1: \n" + ejer1.devolverResumen();
                 }
-                if (ejercicio == "Ejercicio 2")
+                if (ejercicio == "Ejercicio2")
                 {
                     Ejercicio2 ejer2 = new Ejercicio2(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
                     MessageBox.Show(nuevo + listaDescripciones[1] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
@@ -231,28 +236,28 @@ namespace DavidKinectTFG2016.recursosPaciente
                     resumenResultados += "\n Ejercicio 2: \n" + ejer2.devolverResumen();
 
                 }
-                if (ejercicio == "Ejercicio 3")
+                if (ejercicio == "Ejercicio3")
                 {
                     Ejercicio3 ejer3 = new Ejercicio3(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
                     MessageBox.Show(nuevo + listaDescripciones[2] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer3.ShowDialog();
                     resumenResultados += "\n Ejercicio 3: \n" + ejer3.devolverResumen();
                 }
-                if (ejercicio == "Ejercicio 4")
+                if (ejercicio == "Ejercicio4")
                 {
                     Ejercicio4 ejer4 = new Ejercicio4(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
                     MessageBox.Show(nuevo + listaDescripciones[3] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer4.ShowDialog();
                     resumenResultados += "\n Ejercicio 4: \n" + ejer4.devolverResumen();
                 }
-                if (ejercicio == "Ejercicio 5")
+                if (ejercicio == "Ejercicio5")
                 {
                     Ejercicio5 ejer5 = new Ejercicio5(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
                     MessageBox.Show(nuevo + listaDescripciones[4] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer5.ShowDialog();
                     resumenResultados += "\n Ejercicio 5: \n" + ejer5.devolverResumen();
                 }
-                if (ejercicio == "Ejercicio 6")
+                if (ejercicio == "Ejercicio6")
                 {
                     Ejercicio6 ejer6 = new Ejercicio6(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
                     MessageBox.Show(nuevo + listaDescripciones[5] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());

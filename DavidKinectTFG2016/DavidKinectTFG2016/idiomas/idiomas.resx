@@ -327,4 +327,19 @@
   <data name="buttonEmpezar" xml:space="preserve">
     <value>Empezar</value>
   </data>
+  <data name="labelFinalizarTratamiento" xml:space="preserve">
+    <value>Finalizar tratamiento</value>
+  </data>
+  <data name="buttonFinalizarTratamiento" xml:space="preserve">
+    <value>Finalizar</value>
+  </data>
+  <data name="labelTituloFinalizarPacientes" xml:space="preserve">
+    <value>Tus pacientes:</value>
+  </data>
+  <data name="labelEnunciadoElegirPacienteOcupado" xml:space="preserve">
+    <value>Elige el paciente:</value>
+  </data>
+  <data name="labelTerapeuta" xml:space="preserve">
+    <value>Terapeuta:</value>
+  </data>
 </root>

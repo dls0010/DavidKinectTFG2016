@@ -160,5 +160,42 @@ namespace DavidKinectTFG2016.clases
                 return null;
             }
         }
+
+        /// <summary>
+        /// Metodo que establece la fecha de hoy como fecha Fin del Tratamiento.
+        /// </summary>
+        /// <param name="idPaciente"></param> id del Paciente.
+        /// <param name="pUsuarioTerapeuta"></param> Nombre de usuario del terapeuta.
+        /// <param name="nombrePaciente"></param>Nombre del paciente.
+        /// <param name="apellidosPaciente"></param> Apellidos del paciente.
+        /// <param name="fechaFin"></param> Fecha que finaliza el tratamiento.
+        /// <returns></returns>
+        public static int finalizarRelacion(string idPaciente, string pUsuarioTerapeuta, string nombrePaciente, string apellidosPaciente, string fechaFin)
+        {
+            int resultado = 0;
+            int error = 0;
+            int pIdTerapeuta = obtenerIdTerapeuta(pUsuarioTerapeuta);
+            string pNombreTerapeuta = obtenerNombreTerapeuta(pUsuarioTerapeuta);
+
+            if (pIdTerapeuta < 0 || pNombreTerapeuta == null)
+                return error;
+
+            SqlConnection conn;
+            try
+            {
+                conn = BDComun.ObtnerConexion();
+                string query = "Update relaciones set fechaFin ='"+fechaFin+"' where nombrePaciente = '" + nombrePaciente+ "'and idTerapeuta ='"+pIdTerapeuta+"' ";
+
+                SqlCommand comando = new SqlCommand(query, conn);
+                resultado = comando.ExecuteNonQuery();
+                conn.Close();
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                return error;
+            }
+        }
     }
 }

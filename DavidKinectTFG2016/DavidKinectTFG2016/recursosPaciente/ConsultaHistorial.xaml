@@ -9,6 +9,5 @@
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelTituloHistorialPaciente" Content="{Binding labelTituloHistorialPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.388,0.114"/>
-
     </Grid>
 </Window>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Media;
 using System.IO;
+using System.Data;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -70,6 +71,70 @@ namespace DavidKinectTFG2016.clases
                 return error;
             }
 
+        }
+
+        /// <summary>
+        /// Metodo que obtiene el nombre del terapeuta pasandole el nombre de usuario.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>
+        /// nombre: nombre del terapeuta
+        /// </returns>
+        public static string getNombreTerapeuta(string usuario)
+        {
+            string nombre = "";
+           
+            try
+            {
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = string.Format("Select nombreTerapeuta from Terapeutas where usuario = '" + usuario + "'");
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    nombre = reader.GetString(0);
+                }
+                return nombre;
+            }
+            catch (Exception ex)
+            {
+                return nombre;
+            }
+        }
+
+        /// <summary>
+        /// Metodo que obtiene el nombre completo del terapeuta pasandole el nombre de usuario.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>
+        /// nombre: nombre completo del terapeuta
+        /// </returns>
+        public static string getNombreCompletoTerapeuta(string usuario)
+        {
+            string nombreCompleto = "";
+
+            try
+            {
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = string.Format("Select nombreTerapeuta, apellidosTerapeuta from Terapeutas where usuario = '" + usuario + "'");
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    nombreCompleto = reader.GetString(0);
+                    nombreCompleto = nombreCompleto + " ";
+                    nombreCompleto = nombreCompleto + reader.GetString(1);
+                }
+                return nombreCompleto;
+            }
+            catch (Exception ex)
+            {
+                return nombreCompleto;
+            }
         }
     }
 }

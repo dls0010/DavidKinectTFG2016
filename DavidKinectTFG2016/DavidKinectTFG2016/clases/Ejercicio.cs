@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
+using System.Data;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -34,6 +35,9 @@ namespace DavidKinectTFG2016.clases
             string fecha = hoy.ToString("yyyy/MM/dd");
             string[] nombrePaciente = Paciente.getPaciente(nombreUsuarioPaciente);
             string nombreUsuarioTerapeuta = Relacion.getTerapeuta(nombrePaciente[0], nombrePaciente[1]);
+
+            int idEjercicio = getIdEjercicio(ejercicio);
+            
             if (nombrePaciente==null || nombreUsuarioTerapeuta== null)
             {
                 return error;
@@ -51,9 +55,9 @@ namespace DavidKinectTFG2016.clases
             try {
                 SqlCommand comando;
                 if (feedback == "")
-                    comando = new SqlCommand(string.Format("Insert Into Historial (ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, DBNull.Value), conn);
+                    comando = new SqlCommand(string.Format("Insert Into Historial (idEjercicio,ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", idEjercicio, ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, DBNull.Value), conn);
                 else
-                    comando = new SqlCommand(string.Format("Insert Into Historial (ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, feedback), conn);
+                    comando = new SqlCommand(string.Format("Insert Into Historial (idEjercicio,ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", idEjercicio, ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, feedback), conn);
 
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
@@ -62,6 +66,34 @@ namespace DavidKinectTFG2016.clases
             catch(Exception ex)
             {
                 return error;
+            }
+        }
+
+        /// <summary>
+        /// Metodo publico que obtiene el id del ejercicio pasado
+        /// </summary>
+        /// <param name="ejercicio">ejercicio elegido</param>
+        /// <returns>id del ejercicio</returns>
+        public static int getIdEjercicio(string ejercicio)
+        {
+            int id=-1;
+            try
+            {
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = string.Format("Select id from Ejercicios where ejercicio = '" + ejercicio + "'");
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                return id;
+            }
+            catch (Exception ex)
+            {
+                return id;
             }
         }
 

@@ -33,10 +33,12 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         int repeticiones3 = 0;
         int repeticiones4 = 0;
         int repeticiones5 = 0;
+
         public CrearEntrenamiento(string usuario)
         {
             nombreUsuarioTerapeuta = usuario;
             InitializeComponent();
+            textBoxNombreTerapeuta.Text = Terapeuta.getNombreCompletoTerapeuta(nombreUsuarioTerapeuta);
         }
 
         /// <summary>
@@ -46,7 +48,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         {
             SqlCommand comando;
             SqlDataReader dr;
-            string nombreTerapeuta="";
+            string nombreTerapeuta = "";
             try
             {
                 string queryTerapeuta = "select nombreTerapeuta from Terapeutas where usuario='" + nombreUsuarioTerapeuta + "'";
@@ -63,8 +65,9 @@ namespace DavidKinectTFG2016.recursosTerapeuta
                 MessageBox.Show("Error al obtener los datos del terapeuta");
             }
 
-            try { 
-            string query = "Select apellidosPaciente from relaciones where nombreTerapeuta ='"+nombreTerapeuta+"'";
+            try
+            {
+                string query = "Select apellidosPaciente from relaciones where nombreTerapeuta ='" + nombreTerapeuta + "'";
                 comando = new SqlCommand(query, conexion);
                 dr = comando.ExecuteReader();
                 while (dr.Read())
@@ -141,11 +144,12 @@ namespace DavidKinectTFG2016.recursosTerapeuta
                 SqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
-                    nombrePaciente= dr.GetString(1);
+                    nombrePaciente = dr.GetString(1);
                     apellidosPaciente = dr.GetString(2);
                     nombreUsuarioPaciente = dr.GetString(3);
                     descripcion = dr.GetString(8);
                     textBoxDescripcion.Text = descripcion;
+                    textBoxNombrePaciente.Text = Paciente.getNombreCompletoPaciente(nombreUsuarioPaciente);
 
                     byte[] imagen = (byte[])(dr["imagenPaciente"]);
                     if (imagen == null)
@@ -290,7 +294,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
                 MessageBox.Show("Error al cerrar la conexion con la base de datos");
             }
         }
-        
+
         /// <summary>
         /// Metodo que comprueba el formulario de los entrenamientos.
         /// y manda guardar los datos en la base de datos.
@@ -302,7 +306,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             string nombreCompletoPaciente = nombrePaciente + " " + apellidosPaciente;
             string nombreTerapeuta = Relacion.getTerapeuta(nombrePaciente, apellidosPaciente);
             repeticiones1 = Convert.ToInt32(textBoxRepeticionesEjercicio1.Text);
-            if(textBoxRepeticionesEjercicio2.IsEnabled == true)
+            if (textBoxRepeticionesEjercicio2.IsEnabled == true)
                 repeticiones2 = Convert.ToInt32(textBoxRepeticionesEjercicio2.Text);
             if (textBoxRepeticionesEjercicio3.IsEnabled == true)
                 repeticiones3 = Convert.ToInt32(textBoxRepeticionesEjercicio3.Text);
@@ -311,7 +315,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             if (textBoxRepeticionesEjercicio5.IsEnabled == true)
                 repeticiones5 = Convert.ToInt32(textBoxRepeticionesEjercicio5.Text);
 
-            if (Entrenamiento.RegistrarEntrenamiento(nombreCompletoPaciente, nombreUsuarioPaciente,nombreTerapeuta,nombreUsuarioTerapeuta,comboBoxEjercicio1.Text, repeticiones1,comboBoxEjercicio2.Text, repeticiones2,comboBoxEjercicio3.Text, repeticiones3, comboBoxEjercicio4.Text, repeticiones4, comboBoxEjercicio5.Text, repeticiones5, null, null,null,null ) > 0)
+            if (Entrenamiento.RegistrarEntrenamiento(nombreCompletoPaciente, nombreUsuarioPaciente, nombreTerapeuta, nombreUsuarioTerapeuta, comboBoxEjercicio1.Text, repeticiones1, comboBoxEjercicio2.Text, repeticiones2, comboBoxEjercicio3.Text, repeticiones3, comboBoxEjercicio4.Text, repeticiones4, comboBoxEjercicio5.Text, repeticiones5, null, null, null, null) > 0)
             {
                 MessageBox.Show("Entrenamiento registrado con exito.");
                 this.Close();
@@ -324,6 +328,18 @@ namespace DavidKinectTFG2016.recursosTerapeuta
                     MessageBox.Show("Error al registrar entrenamiento. Pruebe de nuevo.");
             }
         }
-    }
 
+        /// <summary>
+        /// Metodo que imprime la pantalla con todo el plan de entrenamiento.
+        /// </summary>
+        /// <param name="sender"></param> Boton Imprimir.
+        /// <param name="e"></param> Evento del boton imprimir.
+        private void buttonImprimir_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDlg = new PrintDialog();
+            var ret = printDlg.ShowDialog();
+            printDlg.PrintVisual(Formulario, "Imprimiendo...");
+
+        }
+    }
 }

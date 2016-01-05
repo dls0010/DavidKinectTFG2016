@@ -130,5 +130,69 @@ namespace DavidKinectTFG2016.clases
                 return nombreCompleto;
             }
         }
+
+        /// <summary>
+        /// Metodo que obtiene el nombre completo del paciente pasandole el nombre de usuario.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>
+        /// nombre: nombre completo del paciente
+        /// </returns>
+        public static string getNombreCompletoPaciente(string usuario)
+        {
+            string nombreCompleto = "";
+
+            try
+            {
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = string.Format("Select nombrePaciente, apellidosPaciente from Pacientes where usuario = '" + usuario + "'");
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    nombreCompleto = reader.GetString(0);
+                    nombreCompleto = nombreCompleto + " ";
+                    nombreCompleto = nombreCompleto + reader.GetString(1);
+                }
+                return nombreCompleto;
+            }
+            catch (Exception ex)
+            {
+                return nombreCompleto;
+            }
+        }
+
+        /// <summary>
+        /// Metodo que obtiene el nombre de usuario de un paciente pasandole los apellidos.
+        /// </summary>
+        /// <param name="apellidos"></param>
+        /// <returns>
+        /// nombre de usuario.
+        /// </returns>
+        public static string getUsuario (string apellidos)
+        {
+            string nombreUsuario = "";
+
+            try
+            {
+                SqlConnection con = BDComun.ObtnerConexion();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = con;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = string.Format("Select usuario from Pacientes where apellidosPaciente = '" + apellidos + "'");
+                SqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    nombreUsuario = reader.GetString(0);
+                }
+                return nombreUsuario;
+            }
+            catch (Exception ex)
+            {
+                return nombreUsuario;
+            }
+        }
     }
 }

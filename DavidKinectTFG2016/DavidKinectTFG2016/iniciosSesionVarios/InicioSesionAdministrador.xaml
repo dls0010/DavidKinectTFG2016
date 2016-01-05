@@ -5,17 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.iniciosSesionVarios"
         mc:Ignorable="d"
-        Title="Inicio Sesion Administrador" Height="300" Width="400" Icon="/DavidKinectTFG2016;component/images/icon.png" >
+        Title="Inicio Sesion Administrador" Height="400" Width="600" Icon="/DavidKinectTFG2016;component/images/icon.png" >
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
             <Grid>
-                <Label x:Name="labelTituloAdministrador" Content="{Binding labelTituloAdministrador, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelTituloAdministrador" Content="{Binding labelTituloAdministrador, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelModificarPacientes" Content="{Binding labelModificarPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="34,54,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="buttonModificarPacientes" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="175,54,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarPacientes_Click"/>
                 <Label x:Name="labelModificarTerapeutas" Content="{Binding labelModificarTerapeutas, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="34,92,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="buttonModificarTerapeutas" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="175,92,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificarTerapeutas_Click"/>
                 <Label x:Name="labelMoficiarEjercicio" Content="{Binding labelMoficiarEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="34,130,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="buttonModificar" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="175,130,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificar_Click"/>
+                <Image x:Name="image" HorizontalAlignment="Left" Height="29" Margin="193,10,0,0" VerticalAlignment="Top" Width="30" Source="/DavidKinectTFG2016;component/images/tool.jpg"/>
             </Grid>
         </Viewbox>
     </Grid>

@@ -37,10 +37,10 @@ namespace DavidKinectTFG2016.recursosPaciente
         int repeticionesD = 0;
         int repeticionesI = 0;
         //Deteccion de posturas.
-        const int PostureDetectionNumber = 5;
-        int accumulator = 0;
-        Posture postureInDetection = Posture.None;
-        Posture previousPosture = Posture.None;
+        const int NumeroDeteccionPostura = 5;
+        int acumulador = 0;
+        Posture posturaEnDeteccion = Posture.None;
+        Posture posturaAnterior = Posture.None;
         Boolean finalEjercicio = false;
 
         //Tiempo que comienza
@@ -199,7 +199,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                         mensaje = "Estira los brazos horizontalmente para comenzar el ejercicio";
                         if (empezar(manoDerecha, manoIzquierda, hombroDerecho, hombroIzquierdo))
                         {
-                            if (postureDetector(Posture.InicioBrazosExtendidos))
+                            if (detectarPostura(Posture.InicioBrazosExtendidos))
                             {
                                 primeraVez = 2;
                                 mensaje = "Vale, comienza el ejercicio.";
@@ -211,7 +211,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                     {
                         if (ejercicioSubirRodilla(rodillaDerecha,cadera))
                         {
-                            if (postureDetector(Posture.KneesUp) && corregirPosicion == "")
+                            if (detectarPostura(Posture.KneesUp) && corregirPosicion == "" && finalEjercicio == false)
                             {
                                 repeticionesD++;
                                 textRepeticionD.Text = repeticionesD.ToString();
@@ -225,7 +225,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                         {
                             if (ejercicioSubirRodilla(rodillaIzquierda, cadera))
                             {
-                                if (postureDetector(Posture.KneesUp) && corregirPosicion == "")
+                                if (detectarPostura(Posture.KneesUp) && corregirPosicion == "" && finalEjercicio == false)
                                 {
                                     repeticionesI++;
                                     textRepeticionI.Text = repeticionesI.ToString();
@@ -237,7 +237,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                             }
                             else
                             {
-                                if (postureDetector(Posture.None))
+                                if (detectarPostura(Posture.None))
                                 {
                                     mensaje = "Sube una rodilla a la altura de la cintura.";
                                 }
@@ -245,7 +245,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                         }
 
                     }
-                    if ((repeticionesD >= maximoRepeticiones && repeticionesI >= maximoRepeticiones) && finalEjercicio == false)
+                    if ((repeticionesD == maximoRepeticiones && repeticionesI == maximoRepeticiones) && finalEjercicio == false)
                     {
                         finalEjercicio = true;
                         finalizarEjercicio();
@@ -284,13 +284,13 @@ namespace DavidKinectTFG2016.recursosPaciente
             duracion = new TimeSpan(final.Ticks - comienzo.Ticks);
             if (MessageBox.Show("¿Quieres escribir feedback acerca del ejercicio?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio 6", repeticionesD + repeticionesI, duracion.ToString());
+                EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio6", repeticionesD + repeticionesI, duracion.ToString());
                 feedback.ShowDialog();
                 this.Close();
             }
             else
             {
-                if (Ejercicio.registrarEjercicio(nombreUsuarioPaciente, "Ejercicio 6", repeticionesD + repeticionesI, duracion.ToString(), "") > 0)
+                if (Ejercicio.registrarEjercicio(nombreUsuarioPaciente, "Ejercicio6", repeticionesD + repeticionesI, duracion.ToString(), "") > 0)
                 {
                     textTitulo.Text = "ENHORABUENA";
                     textResultado.Text = "EJERCICIO COMPLETADO";
@@ -307,33 +307,33 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <summary>
         /// Metodo que detecta si se esta realizando una determinada postura.
         /// </summary>
-        /// <param name="posture"></param> Postura del esqueleto.
+        /// <param name="postura"></param> Postura del esqueleto.
         /// <returns>
         /// true: postura esperada.
         /// false: postura no esperada.
         /// </returns>
-        private Boolean postureDetector(Posture posture)
+        private Boolean detectarPostura(Posture postura)
         {
-            if (postureInDetection != posture)
+            if (posturaEnDeteccion != postura)
             {
-                accumulator = 0;
-                postureInDetection = posture;
+                acumulador = 0;
+                posturaEnDeteccion = postura;
                 return false;
             }
 
-            if (accumulator < PostureDetectionNumber)
+            if (acumulador < NumeroDeteccionPostura)
             {
-                accumulator++;
+                acumulador++;
                 return false;
             }
-            if (posture != previousPosture)
+            if (postura != posturaAnterior)
             {
-                previousPosture = posture;
-                accumulator = 0;
+                posturaAnterior = postura;
+                acumulador = 0;
                 return true;
             }
             else
-                accumulator = 0;
+                acumulador = 0;
             return false;
         }
 
