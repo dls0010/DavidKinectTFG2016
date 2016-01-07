@@ -34,6 +34,7 @@ namespace DavidKinectTFG2016.recursosPaciente
         string ejercicio5=null;
         List<int> listaRepeticiones;
         List<string> listaEjercicios;
+        string entrenamientosTabla = "Todos";
     
         public ConsultarEntrenamientos(string usuario)
         {
@@ -57,9 +58,26 @@ namespace DavidKinectTFG2016.recursosPaciente
             {
                 MessageBox.Show("Error al conectar con la base de datos");
             }
+            
+            llenarComboBox();
+            cargarEntrenamientos(entrenamientosTabla);
+        }
+
+        /// <summary>
+        /// Metodo que carga en la tabla superior los entrenamientos del paciente.
+        /// </summary>
+        /// <param name="entrenamientosTabla"></param> Parametro que especifica si los datos.
+        /// de los entrenamientos serán TODOS o solo los entrenamientos pendientes.
+        private void cargarEntrenamientos(string entrenamientosTabla)
+        {
             try
             {
-                string query = "Select * from entrenamientos where usuarioPaciente = '" + nombreUsuarioPaciente + "'";
+                string query = "";
+                if (entrenamientosTabla == "Todos")
+                    query = "Select * from entrenamientos where usuarioPaciente = '" + nombreUsuarioPaciente + "'";
+                else if (entrenamientosTabla == "Pendientes") 
+                    query = "Select * from entrenamientos where fechaEntrenamiento IS NULL and usuarioPaciente='" + nombreUsuarioPaciente + "'";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
 
@@ -67,13 +85,12 @@ namespace DavidKinectTFG2016.recursosPaciente
                 DataTable dt = new DataTable("entrenamientos");
                 adaptador.Fill(dt);
                 dataGridEntrenamientos.ItemsSource = dt.DefaultView;
-                adaptador.Update(dt);
+                adaptador.Update(dt);    
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los datos en la tabla");
+                MessageBox.Show("Error al obtener los datos en la tabla: " + ex.ToString());
             }
-            llenarComboBox();
         }
 
         /// <summary>
@@ -89,7 +106,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
 
@@ -109,7 +126,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
 
@@ -132,7 +149,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los datos de los entrenamientos en el combobox");
+                MessageBox.Show("Error al cargar los datos de los entrenamientos en el combobox: " + ex.ToString());
             }
         }
 
@@ -187,7 +204,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al seleccionar el entrenamiento");
+                MessageBox.Show("Error al seleccionar el entrenamiento: " + ex.ToString());
             }
         }
 
@@ -215,23 +232,24 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los datos de los entrenamientos en el combobox");
+                MessageBox.Show("Error al cargar los datos de los entrenamientos en el combobox: " + ex.ToString());
             }
 
             foreach (string ejercicio in listaEjercicios)
             {
-                string nuevo = "NUEVO EJERCICIO: \n";
+                int repeticiones = listaRepeticiones[listaEjercicios.IndexOf(ejercicio)];
+                PrevisualizarEjercicio previsualizar = new PrevisualizarEjercicio(ejercicio, repeticiones);
+                previsualizar.ShowDialog();
+
                 if(ejercicio == "Ejercicio1")
                 {
                     Ejercicio1 ejer1 = new Ejercicio1(nombreUsuarioPaciente,listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    MessageBox.Show(nuevo + listaDescripciones[0] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer1.ShowDialog();
                     resumenResultados += "\n Ejercicio 1: \n" + ejer1.devolverResumen();
                 }
                 if (ejercicio == "Ejercicio2")
                 {
                     Ejercicio2 ejer2 = new Ejercicio2(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    MessageBox.Show(nuevo + listaDescripciones[1] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer2.ShowDialog();
                     resumenResultados += "\n Ejercicio 2: \n" + ejer2.devolverResumen();
 
@@ -239,35 +257,31 @@ namespace DavidKinectTFG2016.recursosPaciente
                 if (ejercicio == "Ejercicio3")
                 {
                     Ejercicio3 ejer3 = new Ejercicio3(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    MessageBox.Show(nuevo + listaDescripciones[2] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer3.ShowDialog();
                     resumenResultados += "\n Ejercicio 3: \n" + ejer3.devolverResumen();
                 }
                 if (ejercicio == "Ejercicio4")
                 {
                     Ejercicio4 ejer4 = new Ejercicio4(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    MessageBox.Show(nuevo + listaDescripciones[3] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer4.ShowDialog();
                     resumenResultados += "\n Ejercicio 4: \n" + ejer4.devolverResumen();
                 }
                 if (ejercicio == "Ejercicio5")
                 {
                     Ejercicio5 ejer5 = new Ejercicio5(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    MessageBox.Show(nuevo + listaDescripciones[4] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer5.ShowDialog();
                     resumenResultados += "\n Ejercicio 5: \n" + ejer5.devolverResumen();
                 }
                 if (ejercicio == "Ejercicio6")
                 {
                     Ejercicio6 ejer6 = new Ejercicio6(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    MessageBox.Show(nuevo + listaDescripciones[5] + "\n LAS REPETICIONES SON: " + listaRepeticiones[listaEjercicios.IndexOf(ejercicio)].ToString());
                     ejer6.ShowDialog();
                     resumenResultados += "\n Ejercicio 6: \n" + ejer6.devolverResumen();
                 }
             }
 
-            DateTime hoy = DateTime.Today;
-            string fecha = hoy.ToString("yyyy/MM/dd");
+            DateTime hoy = DateTime.Now;
+            string fecha = hoy.ToString("yyyy/MM/dd HH:mm:ss tt");
 
             if (MessageBox.Show("¿Quieres escribir feedback acerca del entrenamiento?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
@@ -288,6 +302,30 @@ namespace DavidKinectTFG2016.recursosPaciente
             {
                 MessageBox.Show("Ha ocurrido un error al registrar tu entrenamiento");
             }
+        }
+
+        /// <summary>
+        /// Metodo que llama al metodo cargarEntrenamientos que cargará en la tabla.
+        /// todos los entrenamientos del paciente, hechos y pendientes.
+        /// </summary>
+        /// <param name="sender"></param> Boton Todos.
+        /// <param name="e"></param>Evento del boton.
+        private void buttonTodos_Click(object sender, RoutedEventArgs e)
+        {
+            entrenamientosTabla = "Todos";
+            cargarEntrenamientos(entrenamientosTabla);
+        }
+
+        /// <summary>
+        /// Metodo que llama al metodo cargarEntrenamientos que cargará en la tabla.
+        /// todos los entrenamientos pendientes del paciente.
+        /// </summary>
+        /// <param name="sender"></param> Boton Pendientes.
+        /// <param name="e"></param>Evento del boton.
+        private void buttonPendientes_Click(object sender, RoutedEventArgs e)
+        {
+            entrenamientosTabla = "Pendientes";
+            cargarEntrenamientos(entrenamientosTabla);
         }
     }
 }

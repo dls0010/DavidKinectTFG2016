@@ -339,4 +339,10 @@
   <data name="labelTerapeuta" xml:space="preserve">
     <value>Therapist:</value>
   </data>
+  <data name="buttonPendientes" xml:space="preserve">
+    <value>Pending training</value>
+  </data>
+  <data name="buttonTodos" xml:space="preserve">
+    <value>All training</value>
+  </data>
 </root>

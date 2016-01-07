@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Windows.Media;
 using System.IO;
 using System.Data;
+using System.Windows;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -49,6 +50,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
 
@@ -68,6 +70,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
 
@@ -100,6 +103,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return nombre;
             }
         }
@@ -133,6 +137,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return nombreCompleto;
             }
         }

@@ -62,7 +62,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los datos del terapeuta");
+                MessageBox.Show("Error al obtener los datos del terapeuta: " + ex.ToString());
             }
 
             try
@@ -79,7 +79,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los pacientes del terapeuta");
+                MessageBox.Show("Error al obtener los pacientes del terapeuta: " + ex.ToString());
             }
 
             try
@@ -100,7 +100,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los pacientes del terapeuta");
+                MessageBox.Show("Error al obtener los pacientes del terapeuta: " + ex.ToString());
             }
 
         }
@@ -124,7 +124,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conectar con la base de datos");
+                MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
             llenarComboBox();
@@ -168,7 +168,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los datos del paciente seleccionado");
+                MessageBox.Show("Error al obtener los datos del paciente seleccionado: " + ex.ToString());
             }
         }
 
@@ -254,7 +254,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los datos del paciente seleccionado");
+                MessageBox.Show("Error al obtener los datos del paciente seleccionado: " + ex.ToString());
             }
         }
 
@@ -274,7 +274,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
 
@@ -291,7 +291,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
 

@@ -42,7 +42,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error al conectar con la base de datos");
+                MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
             string query = "Select idPaciente,nombrePaciente,apellidosPaciente,usuario,nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente,descripcionPaciente from pacientes";
@@ -58,7 +58,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error al cargar la tabla");
+                MessageBox.Show("Error al cargar la tabla: " + ex.ToString());
             }
         }
 
@@ -79,7 +79,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
                     MessageBox.Show("No se ha actualizado ningun registro");
             }catch(Exception ex)
             {
-                MessageBox.Show("Error al modificar la tabla");
+                MessageBox.Show("Error al modificar la tabla: " + ex.ToString());
             }
         }
 
@@ -96,7 +96,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
 
@@ -114,7 +114,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
     }

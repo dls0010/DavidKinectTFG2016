@@ -28,12 +28,20 @@ namespace DavidKinectTFG2016.recursosPaciente
         private string duracion;
         private string feedback;
 
-        public EscribirFeedbackEjercicio(string nombreUsuario, string ejercicio, int repeticiones, string tiempo)
+        /// <summary>
+        /// Clase que recibe tanto el nombre de usuario, el ejercicio, el numero de repeticiones y el tiempo del ejercicio.
+        /// Consulta y obtiene la valoración por parte del paciente acerca del ejercicio realizado.
+        /// </summary>
+        /// <param name="nombreUsuario"></param> nombre de usuario del paciente.
+        /// <param name="ejercicio"></param> nombre del ejercicio realizado.
+        /// <param name="repeticiones"></param> repeticiones realizadas en el ejercicio.
+        /// <param name="tiempo"></param> tiempo que ha llevado la realización del ejercicio.
+        public EscribirFeedbackEjercicio(string nombreUsuario, string ejercicio, int repeticiones, TimeSpan tiempo)
         {
             nombreUsuarioPaciente = nombreUsuario;
             this.ejercicio = ejercicio;
             this.repeticiones = repeticiones;
-            this.duracion = tiempo;
+            this.duracion = tiempo.ToString(@"dd\.hh\:mm\:ss");
             InitializeComponent();
         }
 
@@ -50,7 +58,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conectar con la Base de datos");
+                MessageBox.Show("Error al conectar con la Base de datos: " + ex.ToString());
             }
         }
 
@@ -68,7 +76,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la BD");
+                MessageBox.Show("Error al cerrar la conexion con la BD: " + ex.ToString());
             }
         }
 
@@ -85,7 +93,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la BD");
+                MessageBox.Show("Error al cerrar la conexion con la BD: " + ex.ToString());
             }
         }
 

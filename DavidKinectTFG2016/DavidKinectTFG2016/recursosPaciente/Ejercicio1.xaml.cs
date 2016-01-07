@@ -36,6 +36,7 @@ namespace DavidKinectTFG2016.recursosPaciente
         string mensaje;
         int repeticionesD;
         int repeticionesI;
+
         //Deteccion de posturas.
         const int NumeroDeteccionPostura = 5;
         int acumulador = 0;
@@ -80,10 +81,7 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// - OldSensor: cambia a nulo para verificar que esta desconectado.
         /// - NewSensor: cambia a nulo para verificar que esta conectado.
         private void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
-        {
-            //verifica si hay error en el codigo:
-            bool error = true;
-
+        { 
             if (e.OldSensor == null)//desconectamos el Kinect de la computadora.
             {
                 try
@@ -92,19 +90,16 @@ namespace DavidKinectTFG2016.recursosPaciente
                     e.OldSensor.SkeletonStream.Disable();
                     e.OldSensor.ColorStream.Disable();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    error = true;
+                    System.Console.WriteLine(ex.ToString());
                 }
             }
 
             if (e.NewSensor == null) //conectamos un Kinect a la computadora.
                 return;
 
-            // Look through all sensors and start the first connected one.
-            // This requires that a Kinect is connected at the time of app startup.
-            // To make your app robust against plug/unplug, 
-            // it is recommended to use KinectSensorChooser provided in Microsoft.Kinect.Toolkit (See components in Toolkit Browser).
+            
             foreach (var potentialSensor in KinectSensor.KinectSensors)
             {
                 if (potentialSensor.Status == KinectStatus.Connected)
@@ -192,6 +187,8 @@ namespace DavidKinectTFG2016.recursosPaciente
 
                     if (primeraVez == 1) //empezar el ejercicio teniendo manos alineadas.
                     {
+                        textRepeticionD.Text = "0/" + maximoRepeticiones.ToString();
+                        textRepeticionI.Text = "0/" + maximoRepeticiones.ToString();
                         mensaje = "Estira los brazos horizontalmente para comenzar el ejercicio";
                         if (empezar(manoDerecha, manoIzquierda,hombroDerecho,hombroIzquierdo))
                         {
@@ -210,7 +207,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                             if (detectarPostura(Posture.RHandOnHead) && corregirPosicion=="" && finalEjercicio==false)
                             {
                                 repeticionesD++;
-                                textRepeticionD.Text = repeticionesD.ToString();
+                                textRepeticionD.Text = repeticionesD.ToString() + "/" + maximoRepeticiones.ToString();
                                 textRepeticionD.Foreground = Brushes.Green;
                                 textRepeticionI.Foreground = Brushes.Red;
                                 SystemSounds.Beep.Play();
@@ -224,7 +221,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                                 if (detectarPostura(Posture.LHandOnHead) && corregirPosicion == "" && finalEjercicio == false)
                                 {
                                     repeticionesI++;
-                                    textRepeticionI.Text = repeticionesI.ToString();
+                                    textRepeticionI.Text = repeticionesI.ToString() + "/" + maximoRepeticiones.ToString();
                                     textRepeticionI.Foreground = Brushes.Green;
                                     textRepeticionD.Foreground = Brushes.Red;
                                     SystemSounds.Beep.Play();
@@ -241,7 +238,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                         }
                         
                     }
-                    if((repeticionesD == maximoRepeticiones && repeticionesI == maximoRepeticiones) && finalEjercicio==false)
+                    if((repeticionesD >= maximoRepeticiones && repeticionesI >= maximoRepeticiones) && finalEjercicio==false)
                     {
                         textTitulo.Text = "FINALIZADO";
                         finalEjercicio = true;
@@ -262,7 +259,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             duracion = new TimeSpan(final.Ticks - comienzo.Ticks);
             if (MessageBox.Show("¿Quieres escribir feedback acerca del ejercicio?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio1", repeticionesD + repeticionesI, duracion.ToString());
+                EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio1", repeticionesD + repeticionesI, duracion);
                 feedback.ShowDialog();
                 this.Close();
             }
@@ -272,6 +269,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                 {
                     textTitulo.Text = "ENHORABUENA";
                     textResultado.Text = "EJERCICIO COMPLETADO";
+                    
                     this.Close();
                 }
                 else
@@ -439,7 +437,9 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <summary>
         /// Metodo que devuelve la suma de las repeticiones realizadas.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// string con el resumen del resultado del ejercicio realizado.
+        /// </returns>
         public string devolverResumen()
         {
             return "Repeticiones mano derecha: " + repeticionesD + " repeticiones mano izquierda: " + repeticionesI;

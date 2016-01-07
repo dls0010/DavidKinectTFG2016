@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.IO;
+using System.Windows;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -50,6 +51,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
    
@@ -69,6 +71,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }
@@ -95,6 +98,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return null;
             }
         }
@@ -127,6 +131,7 @@ namespace DavidKinectTFG2016.clases
                 return nombreCompleto;
             }catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return nombreCompleto;
             }
         }
@@ -160,6 +165,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return nombreCompleto;
             }
         }
@@ -191,6 +197,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return nombreUsuario;
             }
         }

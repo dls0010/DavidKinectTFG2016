@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -46,13 +47,16 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }
         /// <summary>
         /// Metodo que nos da todos las relaciones de las Base de datos.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// DataTable que contiene las relaciones que hay en la base de datos.
+        /// </returns>
         public static DataTable getRelaciones()
         {
             try {
@@ -68,6 +72,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return null;
             }
         }
@@ -76,7 +81,8 @@ namespace DavidKinectTFG2016.clases
         /// Metodo adicional usado obtener el id del terapeuta asignado.
         /// </summary>
         /// <param name="terapeuta"></param>Nombre de usuario del Terapeuta.
-        /// <returns>string: id del terapeuta asignado.
+        /// <returns>
+        /// string: id del terapeuta asignado.
         /// </returns>
         public static int obtenerIdTerapeuta(string terapeuta)
         {
@@ -98,6 +104,7 @@ namespace DavidKinectTFG2016.clases
                 return idTerapeuta;
             }catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }
@@ -106,7 +113,8 @@ namespace DavidKinectTFG2016.clases
         /// Metodo adicional usado para obtener el Nombre del Terapeuta.
         /// </summary>
         /// <param name="terapeuta"></param>Nombre de usuario del Terapeuta.
-        /// <returns>String: nombre del terapeuta asignado.
+        /// <returns>
+        /// String: nombre del terapeuta asignado.
         /// </returns>
         public static string obtenerNombreTerapeuta(string terapeuta)
         {
@@ -128,6 +136,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return null;
             }
         }
@@ -157,6 +166,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return null;
             }
         }
@@ -169,7 +179,10 @@ namespace DavidKinectTFG2016.clases
         /// <param name="nombrePaciente"></param>Nombre del paciente.
         /// <param name="apellidosPaciente"></param> Apellidos del paciente.
         /// <param name="fechaFin"></param> Fecha que finaliza el tratamiento.
-        /// <returns></returns>
+        /// <returns>
+        /// 1-> bien.
+        /// 0 -> mal.
+        /// </returns>
         public static int finalizarRelacion(string idPaciente, string pUsuarioTerapeuta, string nombrePaciente, string apellidosPaciente, string fechaFin)
         {
             int resultado = 0;
@@ -194,6 +207,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }

@@ -54,7 +54,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conectar con la base de datos");
+                MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
             
             try
@@ -73,7 +73,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los datos en la tabla");
+                MessageBox.Show("Error al cargar los datos en la tabla: " + ex.ToString());
             }
         }
         /// <summary>
@@ -95,7 +95,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los pacientes del terapeuta");
+                MessageBox.Show("Error al obtener los pacientes del terapeuta: " + ex.ToString());
             }
         }
 
@@ -148,7 +148,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los datos del paciente seleccionado");
+                MessageBox.Show("Error al obtener los datos del paciente seleccionado: " + ex.ToString());
             }
         }
 
@@ -179,7 +179,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fallo al actualizar el campo estado del paciente");
+                MessageBox.Show("Fallo al actualizar el campo estado del paciente: " + ex.ToString());
             }
         }
 
@@ -209,7 +209,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
     }

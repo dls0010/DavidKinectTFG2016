@@ -47,7 +47,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error al modificar la tabla");
+                MessageBox.Show("Error al modificar la tabla:" + ex.ToString());
             }
         }
 
@@ -63,7 +63,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error al conectar con la base de datos");
+                MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
             string query = "Select idTerapeuta,nombreTerapeuta,apellidosTerapeuta,usuario,nifTerapeuta,telefonoTerapeuta,nacimientoTerapeuta from terapeutas";
@@ -78,7 +78,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
                 adaptador.Update(dt);
             }catch(Exception ex)
             {
-                MessageBox.Show("Error al cargar la tabla");
+                MessageBox.Show("Error al cargar la tabla " + ex.ToString());
             }
         }
 
@@ -95,7 +95,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
 
@@ -113,7 +113,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la base de datos");
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
     }

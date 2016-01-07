@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -33,6 +34,8 @@ namespace DavidKinectTFG2016.clases
         /// <param name="resultados"></param> resultados del entrenamiento.
         /// <param name="feedbackPaciente"></param> feedback por parte del paciente.
         /// <param name="feedbackTerapeuta"></param> feedback por parte del terapeuta.
+        /// 1-> bien.
+        /// 0 -> mal.
         /// <returns></returns>
         public static int RegistrarEntrenamiento(string nombrePaciente, string nombreUsuarioPaciente, string nombreTerapeuta, string nombreUsuarioTerapeuta, string ejercicio1, int repeticiones1, string ejercicio2, int repeticiones2, string ejercicio3, int repeticiones3, string ejercicio4, int repeticiones4, string ejercicio5, int repeticiones5, object fechaEntrenamiento, object resultados, object feedbackPaciente, object feedbackTerapeuta)
         {
@@ -45,6 +48,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
             try
@@ -137,6 +141,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }
@@ -148,7 +153,10 @@ namespace DavidKinectTFG2016.clases
         /// <param name="idEntrenamiento"></param> idEntrenamiento a actualizar.
         /// <param name="nombreUsuarioTerapeuta"></param> nombreUsuarioTerapeuta que actualiza.
         /// <param name="feedbackTerapeuta"></param> Comentario del terapeuta.
-        /// <returns></returns>
+        /// <returns>
+        /// 1-> bien.
+        /// 0 -> mal.
+        /// </returns>
         public static int AñadirFeedback(int idEntrenamiento, string nombreUsuarioTerapeuta, string feedbackTerapeuta)
         {
             SqlConnection conn;
@@ -160,6 +168,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
             try
@@ -172,6 +181,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }
@@ -183,7 +193,10 @@ namespace DavidKinectTFG2016.clases
         /// <param name="fecha"></param> Fecha de realización del entrenamiento.
         /// <param name="resumenResultados"></param> Resumen de los resultados del entrenamiento.
         /// <param name="feedbackPaciente"></param> Feedback aportado por el paciente (opcional).
-        /// <returns></returns>
+        /// <returns>
+        /// 1-> bien.
+        /// 0 -> mal.
+        /// </returns>
         public static int modificarEntrenamiento(int idEntrenamiento, string fecha, string resumenResultados, string feedbackPaciente)
         {
             SqlConnection conn;
@@ -195,6 +208,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
             try
@@ -211,6 +225,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }

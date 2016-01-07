@@ -36,6 +36,7 @@ namespace DavidKinectTFG2016.recursosPaciente
         string mensaje;
         int repeticionesD = 0;
         int repeticionesI = 0;
+
         //Deteccion de posturas.
         const int NumeroDeteccionPostura = 5;
         int acumulador = 0;
@@ -81,9 +82,6 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// - NewSensor: cambia a nulo para verificar que esta conectado.
         private void miKinect_KinectChanged(object sender, KinectChangedEventArgs e)
         {
-            //verifica si hay error en el codigo:
-            bool error = true;
-
             if (e.OldSensor == null)//desconectamos el Kinect de la computadora.
             {
                 try
@@ -92,9 +90,9 @@ namespace DavidKinectTFG2016.recursosPaciente
                     e.OldSensor.SkeletonStream.Disable();
                     e.OldSensor.ColorStream.Disable();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    error = true;
+                    System.Console.WriteLine(ex.ToString());
                 }
             }
 
@@ -194,6 +192,8 @@ namespace DavidKinectTFG2016.recursosPaciente
 
                     if (primeraVez == 1) //empezar el ejercicio teniendo manos alineadas.
                     {
+                        textRepeticionD.Text = "0/" + maximoRepeticiones.ToString();
+                        textRepeticionI.Text = "0/" + maximoRepeticiones.ToString();
                         mensaje = "Estira los brazos hacia delante para comenzar el ejercicio";
                         if (empezar(manoDerecha, manoIzquierda, hombroDerecho, hombroIzquierdo))
                         {
@@ -213,8 +213,8 @@ namespace DavidKinectTFG2016.recursosPaciente
                             {
                                 repeticionesD++;
                                 repeticionesI++;
-                                textRepeticionD.Text = repeticionesD.ToString();
-                                textRepeticionI.Text = repeticionesI.ToString();
+                                textRepeticionD.Text = repeticionesD.ToString() + "/" + maximoRepeticiones.ToString();
+                                textRepeticionI.Text = repeticionesI.ToString() + "/" + maximoRepeticiones.ToString();
                                 SystemSounds.Beep.Play();
                                 mensaje = "Ahora los brazos.";
                             }
@@ -230,7 +230,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                         }
 
                     }
-                    if ((repeticionesD == maximoRepeticiones && repeticionesI == maximoRepeticiones) && finalEjercicio == false)
+                    if ((repeticionesD >= maximoRepeticiones && repeticionesI >= maximoRepeticiones) && finalEjercicio == false)
                     {
                         finalEjercicio = true;
                         finalizarEjercicio();
@@ -274,7 +274,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             duracion = new TimeSpan(final.Ticks - comienzo.Ticks);
             if (MessageBox.Show("¿Quieres escribir feedback acerca del ejercicio?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio5", repeticionesD + repeticionesI, duracion.ToString());
+                EscribirFeedbackEjercicio feedback = new EscribirFeedbackEjercicio(nombreUsuarioPaciente, "Ejercicio5", repeticionesD + repeticionesI, duracion);
                 feedback.ShowDialog();
                 this.Close();
             }
@@ -423,7 +423,9 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <summary>
         /// Metodo que devuelve la suma de las repeticiones realizadas.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// string con el resumen del resultado del ejercicio realizado.
+        /// </returns>
         public string devolverResumen()
         {
             return "Repeticiones de los dos brazos: " + repeticionesD;

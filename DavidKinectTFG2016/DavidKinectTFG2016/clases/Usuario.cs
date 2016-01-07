@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -37,6 +38,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }
@@ -70,6 +72,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }
@@ -96,6 +99,7 @@ namespace DavidKinectTFG2016.clases
                 return tipoUsuario;
             }catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return null;
             }
 
@@ -105,7 +109,8 @@ namespace DavidKinectTFG2016.clases
         /// Metodo adicional usado para comprobacion de la existencia de ese usuario en la base de datos.
         /// </summary>
         /// <param name="usuario"></param>
-        /// <returns>True: Existe un usuario con ese nombre. 
+        /// <returns>
+        /// True: Existe un usuario con ese nombre. 
         /// False: No existe un usuario con ese nombre.
         /// </returns>
         public static bool Existe(string usuario)
@@ -125,6 +130,7 @@ namespace DavidKinectTFG2016.clases
                 }
             }catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return false;
             }
         }
@@ -133,7 +139,10 @@ namespace DavidKinectTFG2016.clases
         /// Metodo que borra el usuario, si al registrarse se arrepiente y da a cancelar.
         /// </summary>
         /// <param name="nombreUsuario"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// 1-> bien.
+        /// 0 -> mal.
+        /// </returns>
         public static int BorrarUsuario(string nombreUsuario)
         {
             int resultado = 1;
@@ -146,6 +155,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
 
@@ -159,6 +169,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
             finally

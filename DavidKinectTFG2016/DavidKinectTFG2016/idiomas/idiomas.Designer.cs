@@ -205,11 +205,29 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Pendientes.
+        /// </summary>
+        public static string buttonPendientes {
+            get {
+                return ResourceManager.GetString("buttonPendientes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Registrarse....
         /// </summary>
         public static string buttonRegistrar {
             get {
                 return ResourceManager.GetString("buttonRegistrar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Todos.
+        /// </summary>
+        public static string buttonTodos {
+            get {
+                return ResourceManager.GetString("buttonTodos", resourceCulture);
             }
         }
         

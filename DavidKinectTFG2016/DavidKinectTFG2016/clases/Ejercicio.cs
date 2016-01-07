@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
 using System.Data;
+using System.Windows;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -29,10 +30,10 @@ namespace DavidKinectTFG2016.clases
         public static int registrarEjercicio(string nombreUsuarioPaciente, string ejercicio, int repeticiones, string duracion, string feedback)
         {
             SqlConnection conn;
-            DateTime hoy = DateTime.Today;
+            DateTime hoy = DateTime.Now;
             int resultado = 0;
             int error = 0;
-            string fecha = hoy.ToString("yyyy/MM/dd");
+            string fecha = hoy.ToString("yyyy/MM/dd HH:mm:ss tt");
             string[] nombrePaciente = Paciente.getPaciente(nombreUsuarioPaciente);
             string nombreUsuarioTerapeuta = Relacion.getTerapeuta(nombrePaciente[0], nombrePaciente[1]);
 
@@ -50,6 +51,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
             try {
@@ -65,6 +67,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }
@@ -93,6 +96,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                System.Console.WriteLine(ex);
                 return id;
             }
         }
@@ -103,7 +107,10 @@ namespace DavidKinectTFG2016.clases
         /// <param name="ejercicio"></param> String que identifica al ejercicio que hay que modificar.
         /// <param name="descripcion"></param> String de la descripcion a modificar.
         /// <param name="pathImagen"></param> Ruta de la imagen que hay que guardar en la base de datos.
-        /// <returns></returns>
+        /// <returns>
+        /// 1-> bien.
+        /// 0 -> mal.
+        /// </returns>
         public static int modificarEjercicio(string ejercicio, string descripcion, string pathImagen)
         {
             byte[] imagen = null;
@@ -124,6 +131,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
 
@@ -150,6 +158,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString()); ;
                 return error;
             }
         }

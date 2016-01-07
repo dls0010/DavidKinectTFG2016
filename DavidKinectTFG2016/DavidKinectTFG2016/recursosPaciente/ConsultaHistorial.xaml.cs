@@ -40,7 +40,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                 conexion = BDComun.ObtnerConexion();
             }catch(Exception ex)
             {
-                MessageBox.Show("Error al conectar con la base de datos");
+                MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
             string query = "Select * from historial where usuarioPaciente = '" + nombreUsuario + "'";
@@ -56,7 +56,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                 adaptador.Update(dt);
             }catch(Exception ex)
             {
-                MessageBox.Show("Error al cargar los datos en la tabla");
+                MessageBox.Show("Error al cargar los datos en la tabla: " + ex.ToString());
             }
         }
     }

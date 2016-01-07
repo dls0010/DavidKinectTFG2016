@@ -44,7 +44,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al conectar con la Base de datos");
+                MessageBox.Show("Error al conectar con la Base de datos: " + ex.ToString());
             }
             llenarComboBox();
         }
@@ -68,7 +68,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los datos de los ejercicios");
+                MessageBox.Show("Error al cargar los datos de los ejercicios: " + ex.ToString());
             }
         }
 
@@ -109,7 +109,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener la descripcion de los ejercicios");
+                MessageBox.Show("Error al obtener la descripcion de los ejercicios: " + ex.ToString());
             }
 
         }
@@ -128,7 +128,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la BD");
+                MessageBox.Show("Error al cerrar la conexion con la BD: " + ex.ToString());
             }
         }
 
@@ -145,7 +145,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cerrar la conexion con la BD");
+                MessageBox.Show("Error al cerrar la conexion con la BD: " + ex.ToString());
             }
         }
 

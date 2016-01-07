@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -35,6 +36,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch(Exception ex)
             {
+                System.Console.WriteLine(ex);
                 return error;
             }
             try {
@@ -45,6 +47,7 @@ namespace DavidKinectTFG2016.clases
                 return resultado;
             }catch(Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return error;
             }
         }

@@ -20,11 +20,20 @@ namespace DavidKinectTFG2016.recursosPaciente
     public partial class EscribirFeedbackEntrenamiento : Window
     {
         private string feedback;
+        /// <summary>
+        /// Clase que obtiene la valoracion del entrenamiento por parte del paciente.
+        /// </summary>
         public EscribirFeedbackEntrenamiento()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Boton cuya accion es mandar el texto de la valoracion del entrenamiento.
+        /// introducido por parte del paciente a la variable feedback.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonMandar_Click(object sender, RoutedEventArgs e)
         {
             feedback = textBoxFeedback.Text;
@@ -44,7 +53,9 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <summary>
         /// Metodo que obtiene el feedback del paciente
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// string de la valoracion del paciente acerca del entrenamiento.
+        /// </returns>
         public string devolverFeedback()
         {
             return feedback;
