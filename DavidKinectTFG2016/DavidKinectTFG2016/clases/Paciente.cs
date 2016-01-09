@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.IO;
 using System.Windows;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -41,9 +41,9 @@ namespace DavidKinectTFG2016.clases
                 imagen = br.ReadBytes((int)fstream.Length);
             }
 
-            int resultado =1;
+            int resultado = 1;
             int error = 0;
-            SqlConnection conn;
+            MySqlConnection conn;
 
             try
             {
@@ -51,27 +51,27 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
-   
-            string query = "Insert Into Pacientes (nombrePaciente,apellidosPaciente,usuario, nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente,descripcionPaciente,imagenPaciente)" + "values('" + pNombre + "','" + pApellidos + "','" + pNombreUsuario + "','" + pNIF + "','" + pTelefono + "','" + pNacimiento + "','" + pEstado +"','"+pDescripcion+ "',@IMG);";
-            SqlCommand comando = new SqlCommand(query,conn);
-            SqlDataReader reader;
+
+            string query = "Insert Into pacientes (nombrePaciente,apellidosPaciente,usuario, nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente,descripcionPaciente,imagenPaciente)" + "values('" + pNombre + "','" + pApellidos + "','" + pNombreUsuario + "','" + pNIF + "','" + pTelefono + "','" + pNacimiento + "','" + pEstado + "','" + pDescripcion + "',@IMG);";
+            MySqlCommand comando = new MySqlCommand(query, conn);
+            MySqlDataReader reader;
             try
             {
-                if(pathImagen != null)
-                    comando.Parameters.Add(new SqlParameter("@IMG",imagen));
+                if (pathImagen != null)
+                    comando.Parameters.Add(new MySqlParameter("@IMG", imagen));
 
                 reader = comando.ExecuteReader();
-               
+
                 conn.Close();
 
                 return resultado;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }
@@ -85,20 +85,21 @@ namespace DavidKinectTFG2016.clases
         public static DataTable getPacientes()
         {
             DataTable table;
-            try {
-                SqlConnection con = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand();
+            try
+            {
+                MySqlConnection con = BDComun.ObtnerConexion();
+                MySqlCommand comando = new MySqlCommand();
                 comando.Connection = con;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "Select * from Pacientes";
-                SqlDataReader reader = comando.ExecuteReader();
+                comando.CommandText = "Select * from pacientes";
+                MySqlDataReader reader = comando.ExecuteReader();
                 table = new DataTable();
                 table.Load(reader);
                 return table;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return null;
             }
         }
@@ -114,13 +115,14 @@ namespace DavidKinectTFG2016.clases
             string nombre = "";
             string apellido = "";
             string[] nombreCompleto = new string[] { "nombre", "apellido" };
-            try {
-                SqlConnection con = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand();
+            try
+            {
+                MySqlConnection con = BDComun.ObtnerConexion();
+                MySqlCommand comando = new MySqlCommand();
                 comando.Connection = con;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = string.Format("Select nombrePaciente, apellidosPaciente from Pacientes where usuario = '" + usuario + "'");
-                SqlDataReader reader = comando.ExecuteReader();
+                comando.CommandText = string.Format("Select nombrePaciente, apellidosPaciente from pacientes where usuario = '" + usuario + "'");
+                MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     nombre = reader.GetString(0);
@@ -129,9 +131,10 @@ namespace DavidKinectTFG2016.clases
                     nombreCompleto[1] = apellido;
                 }
                 return nombreCompleto;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return nombreCompleto;
             }
         }
@@ -149,12 +152,12 @@ namespace DavidKinectTFG2016.clases
 
             try
             {
-                SqlConnection con = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand();
+                MySqlConnection con = BDComun.ObtnerConexion();
+                MySqlCommand comando = new MySqlCommand();
                 comando.Connection = con;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = string.Format("Select nombrePaciente, apellidosPaciente from Pacientes where usuario = '" + usuario + "'");
-                SqlDataReader reader = comando.ExecuteReader();
+                comando.CommandText = string.Format("Select nombrePaciente, apellidosPaciente from pacientes where usuario = '" + usuario + "'");
+                MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     nombreCompleto = reader.GetString(0);
@@ -165,7 +168,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return nombreCompleto;
             }
         }
@@ -177,18 +180,18 @@ namespace DavidKinectTFG2016.clases
         /// <returns>
         /// nombre de usuario.
         /// </returns>
-        public static string getUsuario (string apellidos)
+        public static string getUsuario(string apellidos)
         {
             string nombreUsuario = "";
 
             try
             {
-                SqlConnection con = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand();
+                MySqlConnection con = BDComun.ObtnerConexion();
+                MySqlCommand comando = new MySqlCommand();
                 comando.Connection = con;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = string.Format("Select usuario from Pacientes where apellidosPaciente = '" + apellidos + "'");
-                SqlDataReader reader = comando.ExecuteReader();
+                comando.CommandText = string.Format("Select usuario from pacientes where apellidosPaciente = '" + apellidos + "'");
+                MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     nombreUsuario = reader.GetString(0);
@@ -197,7 +200,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return nombreUsuario;
             }
         }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Windows;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -30,24 +30,27 @@ namespace DavidKinectTFG2016.clases
         {
             int resultado = 0;
             int error = 0;
-            SqlConnection conn;
-            try {
+            MySqlConnection conn;
+            try
+            {
                 conn = BDComun.ObtnerConexion();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Console.WriteLine(ex);
                 return error;
             }
-            try {
-                SqlCommand comando = new SqlCommand(string.Format("Insert Into Administradores (nombreAdministrador,apellidosAdministrador,usuario,nifAdministrador,nacimientoAdministrador) values ('{0}','{1}','{2}','{3}','{4}')", pNombre, pApellidos, pNombreUsuario, pNIF, pNacimiento), conn);
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(string.Format("Insert Into administradores (nombreAdministrador,apellidosAdministrador,usuario,nifAdministrador,nacimientoAdministrador) values ('{0}','{1}','{2}','{3}','{4}')", pNombre, pApellidos, pNombreUsuario, pNIF, pNacimiento), conn);
 
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
                 return resultado;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }

@@ -54,12 +54,12 @@ namespace DavidKinectTFG2016
                     InicioSesionPaciente inicioPaciente = new InicioSesionPaciente(usuarioIntroducido);
                     inicioPaciente.Show();
                 }
-                if (tipoUsuario == "Terapeuta")
+                else if (tipoUsuario == "Terapeuta")
                 {
                     InicioSesionTerapeuta inicioTerapeuta = new InicioSesionTerapeuta(usuarioIntroducido);
                     inicioTerapeuta.Show();
                 }
-                if (tipoUsuario == "Administrador")
+                else if (tipoUsuario == "Administrador")
                 {
                     InicioSesionAdministrador inicioAdministrador = new InicioSesionAdministrador(usuarioIntroducido);
                     inicioAdministrador.Show();
@@ -129,7 +129,7 @@ namespace DavidKinectTFG2016
         /// <param name="e"></param> Evento del boton.
         private void buttonSalir_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+           App.Current.Shutdown();
         }
 
         /// <summary>

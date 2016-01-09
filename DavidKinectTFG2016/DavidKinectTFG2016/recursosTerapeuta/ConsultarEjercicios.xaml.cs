@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,7 +21,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
     /// </summary>
     public partial class ConsultarEjercicios : Window
     {
-        SqlConnection conexion;
+        MySqlConnection conexion;
         public ConsultarEjercicios()
         {
             InitializeComponent();
@@ -53,8 +53,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select * from ejercicios";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     string nombreEjercicio = dr.GetString(1);
@@ -95,8 +95,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select descripcion,imagenEjercicio from ejercicios where ejercicio = '" + comboBoxEjercicios.Text + "'";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     string descripcion = dr.GetString(0);

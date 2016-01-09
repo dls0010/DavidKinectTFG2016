@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DavidKinectTFG2016.clases;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.recursosTerapeuta
 {
@@ -22,7 +22,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
     /// </summary>
     public partial class CrearEntrenamiento : Window
     {
-        SqlConnection conexion;
+        MySqlConnection conexion;
         string nombreUsuarioTerapeuta;
         string descripcion;
         string nombrePaciente;
@@ -34,6 +34,10 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         int repeticiones4 = 0;
         int repeticiones5 = 0;
 
+        /// <summary>
+        /// Constructor recibe el nombre del usuario y lo guarda en la variable nombreUsuarioTerapeuta.
+        /// </summary>
+        /// <param name="usuario"></param> usuario terapeuta.
         public CrearEntrenamiento(string usuario)
         {
             nombreUsuarioTerapeuta = usuario;
@@ -46,13 +50,13 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         /// </summary>
         private void llenarComboBox()
         {
-            SqlCommand comando;
-            SqlDataReader dr;
+            MySqlCommand comando;
+            MySqlDataReader dr;
             string nombreTerapeuta = "";
             try
             {
-                string queryTerapeuta = "select nombreTerapeuta from Terapeutas where usuario='" + nombreUsuarioTerapeuta + "'";
-                comando = new SqlCommand(queryTerapeuta, conexion);
+                string queryTerapeuta = "select nombreTerapeuta from terapeutas where usuario='" + nombreUsuarioTerapeuta + "'";
+                comando = new MySqlCommand(queryTerapeuta, conexion);
                 dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
@@ -68,7 +72,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select apellidosPaciente from relaciones where nombreTerapeuta ='" + nombreTerapeuta + "'";
-                comando = new SqlCommand(query, conexion);
+                comando = new MySqlCommand(query, conexion);
                 dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
@@ -85,7 +89,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select ejercicio from ejercicios";
-                comando = new SqlCommand(query, conexion);
+                comando = new MySqlCommand(query, conexion);
                 dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
@@ -140,8 +144,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select * from pacientes where apellidosPaciente = '" + comboBoxPaciente.Text + "'";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     nombrePaciente = dr.GetString(1);
@@ -243,8 +247,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select descripcion from ejercicios where ejercicio = '" + comboBoxEjercicio.Text + "'";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     string descripcion = dr.GetString(0);

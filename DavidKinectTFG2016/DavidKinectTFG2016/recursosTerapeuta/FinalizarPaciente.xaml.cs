@@ -1,8 +1,8 @@
 ﻿using DavidKinectTFG2016.clases;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,8 +24,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
     public partial class FinalizarPaciente : Window
     {
         string nombreUsuario;
-        SqlConnection conexion;
-        string nombreTerapeuta="";
+        MySqlConnection conexion;
+        string nombreTerapeuta = "";
         public FinalizarPaciente(string usuario)
         {
             nombreUsuario = usuario;
@@ -56,16 +56,16 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             {
                 MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
-            
+
             try
             {
                 nombreTerapeuta = Terapeuta.getNombreTerapeuta(nombreUsuario);
                 llenarComboBox();
-                string query = "Select nombrePaciente, apellidosPaciente, fechaInicio, fechaFin from relaciones where nombreTerapeuta = '"+nombreTerapeuta+"' ";
-                SqlCommand comando = new SqlCommand(query, conexion);
+                string query = "Select nombrePaciente, apellidosPaciente, fechaInicio, fechaFin from relaciones where nombreTerapeuta = '" + nombreTerapeuta + "' ";
+                MySqlCommand comando = new MySqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
 
-                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 DataTable dt = new DataTable("relaciones");
                 adaptador.Fill(dt);
                 dataGrid.ItemsSource = dt.DefaultView;
@@ -83,9 +83,9 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         {
             try
             {
-                string query = "Select nombrePaciente from relaciones where nombreTerapeuta = '"+nombreTerapeuta+"'";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                string query = "Select nombrePaciente from relaciones where nombreTerapeuta = '" + nombreTerapeuta + "'";
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     string nombre = dr.GetString(0);
@@ -109,8 +109,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select * from pacientes where nombrePaciente = '" + comboBoxNombre.Text + "'";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     int idPaciente = dr.GetInt32(0);
@@ -168,7 +168,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
                 {
                     MessageBox.Show("Paciente recuperado.");
                     string query = "Update pacientes set estadoPaciente ='Recuperado' where nifPaciente = '" + textBoxNIF.Text + "'";
-                    SqlCommand comando = new SqlCommand(query, conexion);
+                    MySqlCommand comando = new MySqlCommand(query, conexion);
                     comando.ExecuteNonQuery();
                     this.Window_Loaded(this, e);
                 }

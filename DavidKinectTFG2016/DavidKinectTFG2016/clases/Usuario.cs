@@ -1,9 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Windows;
 
 namespace DavidKinectTFG2016.clases
@@ -24,11 +24,12 @@ namespace DavidKinectTFG2016.clases
         {
             int resultado = 0;
             int error = 0;
-            try {
+            try
+            {
                 if (Existe(pUsuario) == false && pTipoUsuario.Length != 0)
                 {
-                    SqlConnection conn = BDComun.ObtnerConexion();
-                    SqlCommand comando = new SqlCommand(string.Format("Insert Into Usuarios (Usuario,Contraseña,TipoUsuario) values ('{0}',PwdEncrypt('{1}'),'{2}')", pUsuario, pContraseña, pTipoUsuario), conn);
+                    MySqlConnection conn = BDComun.ObtnerConexion();
+                    MySqlCommand comando = new MySqlCommand(string.Format("Insert Into usuarios (Usuario,Contraseña,TipoUsuario) values ('{0}',PASSWORD('{1}'),'{2}')", pUsuario, pContraseña, pTipoUsuario), conn);
 
                     resultado = comando.ExecuteNonQuery();
                     conn.Close();
@@ -36,9 +37,9 @@ namespace DavidKinectTFG2016.clases
                 }
                 return resultado;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }
@@ -56,12 +57,14 @@ namespace DavidKinectTFG2016.clases
         {
             int resultado = -1;
             int error = -1;
-            SqlConnection conn;
-            try {
+            MySqlConnection conn;
+            try
+            {
                 conn = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand(string.Format("Select * from Usuarios where usuario = '{0}' and PwdCompare('{1}',contraseña) = 1 ", pUsuario, pContraseña), conn);
+                MySqlCommand comando = new MySqlCommand(string.Format("Select * from usuarios where usuario = '{0}' and contraseña= password('{1}')", pUsuario, pContraseña), conn);
 
-                SqlDataReader reader = comando.ExecuteReader();
+                MySqlDataReader reader = comando.ExecuteReader();
+
 
                 while (reader.Read())
                 {
@@ -70,9 +73,9 @@ namespace DavidKinectTFG2016.clases
                 conn.Close();
                 return resultado;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }
@@ -86,20 +89,23 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static string obtenerTipo(String pUsuario)
         {
-            try {
+            try
+            {
                 string tipoUsuario = " ";
-                SqlConnection conn = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand(string.Format("Select tipoUsuario from Usuarios where usuario like '{0}' ", pUsuario), conn);
-                SqlDataReader reader = comando.ExecuteReader();
+                MySqlConnection conn = BDComun.ObtnerConexion();
+                MySqlCommand comando = new MySqlCommand(string.Format("Select tipoUsuario from usuarios where usuario like '{0}' ", pUsuario), conn);
+                MySqlDataReader reader = comando.ExecuteReader();
+
                 while (reader.Read())
                 {
                     tipoUsuario = reader.GetString(0);
                 }
                 reader.Close();
                 return tipoUsuario;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return null;
             }
 
@@ -115,11 +121,12 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static bool Existe(string usuario)
         {
-            try {
-                using (SqlConnection conexion = BDComun.ObtnerConexion())
+            try
+            {
+                using (MySqlConnection conexion = BDComun.ObtnerConexion())
                 {
-                    string query = "SELECT COUNT(*) FROM Usuarios WHERE Usuario=@Usuario";
-                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    string query = "SELECT COUNT(*) FROM usuarios WHERE Usuario=@Usuario";
+                    MySqlCommand cmd = new MySqlCommand(query, conexion);
                     cmd.Parameters.AddWithValue("Usuario", usuario);
 
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
@@ -128,9 +135,10 @@ namespace DavidKinectTFG2016.clases
                     else
                         return true;
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return false;
             }
         }
@@ -147,7 +155,7 @@ namespace DavidKinectTFG2016.clases
         {
             int resultado = 1;
             int error = 0;
-            SqlConnection conn;
+            MySqlConnection conn;
 
             try
             {
@@ -155,12 +163,12 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
 
-            string query = "DELETE usuarios from Usuarios where usuario='" + nombreUsuario + "'";
-            SqlCommand comando = new SqlCommand(query, conn);
+            string query = "DELETE usuarios from usuarios where usuario='" + nombreUsuario + "'";
+            MySqlCommand comando = new MySqlCommand(query, conn);
 
             try
             {
@@ -169,7 +177,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
             finally

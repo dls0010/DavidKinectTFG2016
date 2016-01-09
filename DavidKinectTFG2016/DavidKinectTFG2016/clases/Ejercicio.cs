@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Data;
 using System.Windows;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -29,7 +30,7 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static int registrarEjercicio(string nombreUsuarioPaciente, string ejercicio, int repeticiones, string duracion, string feedback)
         {
-            SqlConnection conn;
+            MySqlConnection conn;
             DateTime hoy = DateTime.Now;
             int resultado = 0;
             int error = 0;
@@ -38,36 +39,38 @@ namespace DavidKinectTFG2016.clases
             string nombreUsuarioTerapeuta = Relacion.getTerapeuta(nombrePaciente[0], nombrePaciente[1]);
 
             int idEjercicio = getIdEjercicio(ejercicio);
-            
-            if (nombrePaciente==null || nombreUsuarioTerapeuta== null)
+
+            if (nombrePaciente == null || nombreUsuarioTerapeuta == null)
             {
                 return error;
             }
 
             string nombreCompletoUsuario = nombrePaciente[0] + " " + nombrePaciente[1];
 
-            try {
-               conn = BDComun.ObtnerConexion();
-            }
-            catch(Exception ex)
+            try
             {
-                MessageBox.Show(ex.ToString());
+                conn = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
                 return error;
             }
-            try {
-                SqlCommand comando;
+            try
+            {
+                MySqlCommand comando;
                 if (feedback == "")
-                    comando = new SqlCommand(string.Format("Insert Into Historial (idEjercicio,ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", idEjercicio, ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, DBNull.Value), conn);
+                    comando = new MySqlCommand(string.Format("Insert Into historial (idEjercicio,ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", idEjercicio, ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, DBNull.Value), conn);
                 else
-                    comando = new SqlCommand(string.Format("Insert Into Historial (idEjercicio,ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", idEjercicio, ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, feedback), conn);
+                    comando = new MySqlCommand(string.Format("Insert Into historial (idEjercicio,ejercicio,nombrePaciente,usuarioPaciente, usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", idEjercicio, ejercicio, nombreCompletoUsuario, nombreUsuarioPaciente, nombreUsuarioTerapeuta, repeticiones, duracion, fecha, feedback), conn);
 
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
                 return resultado;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }
@@ -79,15 +82,15 @@ namespace DavidKinectTFG2016.clases
         /// <returns>id del ejercicio</returns>
         public static int getIdEjercicio(string ejercicio)
         {
-            int id=-1;
+            int id = -1;
             try
             {
-                SqlConnection con = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand();
+                MySqlConnection con = BDComun.ObtnerConexion();
+                MySqlCommand comando = new MySqlCommand();
                 comando.Connection = con;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = string.Format("Select id from Ejercicios where ejercicio = '" + ejercicio + "'");
-                SqlDataReader reader = comando.ExecuteReader();
+                comando.CommandText = string.Format("Select id from ejercicios where ejercicio = '" + ejercicio + "'");
+                MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     id = reader.GetInt32(0);
@@ -123,7 +126,7 @@ namespace DavidKinectTFG2016.clases
 
             int resultado = 0;
             int error = 0;
-            SqlConnection conn;
+            MySqlConnection conn;
 
             try
             {
@@ -131,26 +134,26 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
 
             try
             {
-                SqlCommand comando;
+                MySqlCommand comando;
                 string query;
                 if (pathImagen != null)
                 {
                     query = "UPDATE ejercicios set descripcion='" + descripcion + "', imagenEjercicio = @IMG where ejercicio = '" + ejercicio + "'";
-                    comando = new SqlCommand(query, conn);
-                    comando.Parameters.Add(new SqlParameter("@IMG", imagen));
+                    comando = new MySqlCommand(query, conn);
+                    comando.Parameters.Add(new MySqlParameter("@IMG", imagen));
                 }
                 else
                 {
                     query = "UPDATE ejercicios set descripcion='" + descripcion + "' where ejercicio = '" + ejercicio + "'";
-                    comando = new SqlCommand(query, conn);
+                    comando = new MySqlCommand(query, conn);
                 }
-                               
+
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
 
@@ -158,7 +161,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString()); ;
+                System.Console.WriteLine(ex);
                 return error;
             }
         }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -39,7 +40,7 @@ namespace DavidKinectTFG2016.clases
         /// <returns></returns>
         public static int RegistrarEntrenamiento(string nombrePaciente, string nombreUsuarioPaciente, string nombreTerapeuta, string nombreUsuarioTerapeuta, string ejercicio1, int repeticiones1, string ejercicio2, int repeticiones2, string ejercicio3, int repeticiones3, string ejercicio4, int repeticiones4, string ejercicio5, int repeticiones5, object fechaEntrenamiento, object resultados, object feedbackPaciente, object feedbackTerapeuta)
         {
-            SqlConnection conn;
+            MySqlConnection conn;
             int resultado = 0;
             int error = 0;
             try
@@ -48,14 +49,14 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
             try
             {
                 int idEjercicio1 = Ejercicio.getIdEjercicio(ejercicio1);
-                string query = "Insert Into Entrenamientos (nombrePaciente, usuarioPaciente,nombreTerapeuta,usuarioTerapeuta,idEjercicio1, ejercicio1,repeticiones1,idEjercicio2,ejercicio2,repeticiones2,idEjercicio3,ejercicio3,repeticiones3, idEjercicio4,ejercicio4,repeticiones4,idEjercicio5,ejercicio5,repeticiones5, fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta)" + "values('" + nombrePaciente + "','" + nombreUsuarioPaciente + "','" + nombreTerapeuta + "','" + nombreUsuarioTerapeuta + "','" + idEjercicio1 + "','" + ejercicio1 + "','" + repeticiones1 + "',@IDEJER2,@EJER2,@REP2,@IDEJER3,@EJER3,@REP3,@IDEJER4,@EJER4,@REP4,@IDEJER5,@EJER5,@REP5,@FECHA,@RESULTADOS,@FEEDBACKPACIENTE,@FEEDBACKTERAPEUTA);";
-                SqlCommand comando = new SqlCommand(query, conn);
+                string query = "Insert Into entrenamientos (nombrePaciente, usuarioPaciente,nombreTerapeuta,usuarioTerapeuta,idEjercicio1, ejercicio1,repeticiones1,idEjercicio2,ejercicio2,repeticiones2,idEjercicio3,ejercicio3,repeticiones3, idEjercicio4,ejercicio4,repeticiones4,idEjercicio5,ejercicio5,repeticiones5, fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta)" + "values('" + nombrePaciente + "','" + nombreUsuarioPaciente + "','" + nombreTerapeuta + "','" + nombreUsuarioTerapeuta + "','" + idEjercicio1 + "','" + ejercicio1 + "','" + repeticiones1 + "',@IDEJER2,@EJER2,@REP2,@IDEJER3,@EJER3,@REP3,@IDEJER4,@EJER4,@REP4,@IDEJER5,@EJER5,@REP5,@FECHA,@RESULTADOS,@FEEDBACKPACIENTE,@FEEDBACKTERAPEUTA);";
+                MySqlCommand comando = new MySqlCommand(query, conn);
                 if (ejercicio1 == "")
                     return error;
 
@@ -89,7 +90,7 @@ namespace DavidKinectTFG2016.clases
 
                 if (ejercicio4 != "")
                 {
-                    int IDEjercicio4= Ejercicio.getIdEjercicio(ejercicio4);
+                    int IDEjercicio4 = Ejercicio.getIdEjercicio(ejercicio4);
                     comando.Parameters.AddWithValue("@IDEJER4", IDEjercicio4);
                     comando.Parameters.AddWithValue("@EJER4", ejercicio4);
                     comando.Parameters.AddWithValue("@REP4", repeticiones4);
@@ -141,7 +142,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }
@@ -159,7 +160,7 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static int AñadirFeedback(int idEntrenamiento, string nombreUsuarioTerapeuta, string feedbackTerapeuta)
         {
-            SqlConnection conn;
+            MySqlConnection conn;
             int resultado = 0;
             int error = 0;
             try
@@ -168,20 +169,20 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
             try
             {
-                string query = "Update Entrenamientos SET feedbackTerapeuta = '"+feedbackTerapeuta+"' WHERE usuarioTerapeuta = '"+nombreUsuarioTerapeuta+"' and idEntrenamiento = "+idEntrenamiento+"";
-                SqlCommand comando = new SqlCommand(query,conn);
+                string query = "Update entrenamientos SET feedbackTerapeuta = '" + feedbackTerapeuta + "' WHERE usuarioTerapeuta = '" + nombreUsuarioTerapeuta + "' and idEntrenamiento = " + idEntrenamiento + "";
+                MySqlCommand comando = new MySqlCommand(query, conn);
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
                 return resultado;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }
@@ -199,7 +200,7 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static int modificarEntrenamiento(int idEntrenamiento, string fecha, string resumenResultados, string feedbackPaciente)
         {
-            SqlConnection conn;
+            MySqlConnection conn;
             int resultado = 0;
             int error = 0;
             try
@@ -208,24 +209,24 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
             try
             {
                 string query;
                 if (feedbackPaciente != null)
-                    query = "Update Entrenamientos SET fechaEntrenamiento = '" + fecha + "' , resultados = '"+resumenResultados+"' , feedbackPaciente='"+feedbackPaciente+"' WHERE idEntrenamiento = " + idEntrenamiento+"";
+                    query = "Update entrenamientos SET fechaEntrenamiento = '" + fecha + "' , resultados = '" + resumenResultados + "' , feedbackPaciente='" + feedbackPaciente + "' WHERE idEntrenamiento = " + idEntrenamiento + "";
                 else
-                    query = "Update Entrenamientos SET fechaEntrenamiento = '" + fecha + "' , resultados = '" + resumenResultados + "' WHERE idEntrenamiento = " + idEntrenamiento + "";
-                SqlCommand comando = new SqlCommand(query, conn);
+                    query = "Update entrenamientos SET fechaEntrenamiento = '" + fecha + "' , resultados = '" + resumenResultados + "' WHERE idEntrenamiento = " + idEntrenamiento + "";
+                MySqlCommand comando = new MySqlCommand(query, conn);
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
                 return resultado;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }

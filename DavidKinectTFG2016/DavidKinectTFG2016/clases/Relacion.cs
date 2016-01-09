@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
 using System.Windows;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases
 {
@@ -31,23 +31,24 @@ namespace DavidKinectTFG2016.clases
             int pIdTerapeuta = obtenerIdTerapeuta(pUsuarioTerapeuta);
             string pNombreTerapeuta = obtenerNombreTerapeuta(pUsuarioTerapeuta);
 
-            if (pIdTerapeuta < 0 || pNombreTerapeuta==null)
+            if (pIdTerapeuta < 0 || pNombreTerapeuta == null)
                 return error;
 
-            SqlConnection conn;
-            try {
+            MySqlConnection conn;
+            try
+            {
                 conn = BDComun.ObtnerConexion();
 
-                SqlCommand comando = new SqlCommand(string.Format("Insert Into Relaciones (idPaciente,idTerapeuta,nombrePaciente,apellidosPaciente,nombreTerapeuta,fechaInicio, fechaFin) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", pIdPaciente, pIdTerapeuta, pNombrePaciente, pApellidosPaciente, pNombreTerapeuta, pFechaInicio, pFechaFin), conn);
+                MySqlCommand comando = new MySqlCommand(string.Format("Insert Into relaciones (idPaciente,idTerapeuta,nombrePaciente,apellidosPaciente,nombreTerapeuta,fechaInicio, fechaFin) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", pIdPaciente, pIdTerapeuta, pNombrePaciente, pApellidosPaciente, pNombreTerapeuta, pFechaInicio, pFechaFin), conn);
 
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
 
                 return resultado;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }
@@ -59,20 +60,21 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static DataTable getRelaciones()
         {
-            try {
-                SqlConnection con = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand();
+            try
+            {
+                MySqlConnection con = BDComun.ObtnerConexion();
+                MySqlCommand comando = new MySqlCommand();
                 comando.Connection = con;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "Select * from Relaciones";
-                SqlDataReader reader = comando.ExecuteReader();
+                comando.CommandText = "Select * from relaciones";
+                MySqlDataReader reader = comando.ExecuteReader();
                 DataTable table = new DataTable();
                 table.Load(reader);
                 return table;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return null;
             }
         }
@@ -87,14 +89,15 @@ namespace DavidKinectTFG2016.clases
         public static int obtenerIdTerapeuta(string terapeuta)
         {
             int error = -1;
-            try {
+            try
+            {
                 int idTerapeuta = -3;
-                using (SqlConnection conexion = BDComun.ObtnerConexion())
+                using (MySqlConnection conexion = BDComun.ObtnerConexion())
                 {
-                    string query = "SELECT idTerapeuta FROM Terapeutas WHERE usuario=@Usuario";
-                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    string query = "SELECT idTerapeuta FROM terapeutas WHERE usuario=@Usuario";
+                    MySqlCommand cmd = new MySqlCommand(query, conexion);
                     cmd.Parameters.AddWithValue("Usuario", terapeuta);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    MySqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         idTerapeuta = reader.GetInt32(0);
@@ -102,9 +105,10 @@ namespace DavidKinectTFG2016.clases
                     reader.Close();
                 }
                 return idTerapeuta;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }
@@ -118,14 +122,15 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static string obtenerNombreTerapeuta(string terapeuta)
         {
-            try {
+            try
+            {
                 string nombreTerapeuta = "";
-                using (SqlConnection conexion = BDComun.ObtnerConexion())
+                using (MySqlConnection conexion = BDComun.ObtnerConexion())
                 {
-                    string query = "SELECT nombreTerapeuta FROM Terapeutas WHERE usuario=@Usuario";
-                    SqlCommand cmd = new SqlCommand(query, conexion);
+                    string query = "SELECT nombreTerapeuta FROM terapeutas WHERE usuario=@Usuario";
+                    MySqlCommand cmd = new MySqlCommand(query, conexion);
                     cmd.Parameters.AddWithValue("Usuario", terapeuta);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    MySqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         nombreTerapeuta = reader.GetString(0);
@@ -134,9 +139,9 @@ namespace DavidKinectTFG2016.clases
                 }
                 return nombreTerapeuta;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return null;
             }
         }
@@ -150,23 +155,24 @@ namespace DavidKinectTFG2016.clases
         /// </returns>
         public static string getTerapeuta(string nombrePaciente, string apellidosPaciente)
         {
-            try {
+            try
+            {
                 string usuarioTerapeuta = "";
-                SqlConnection con = BDComun.ObtnerConexion();
-                SqlCommand comando = new SqlCommand();
+                MySqlConnection con = BDComun.ObtnerConexion();
+                MySqlCommand comando = new MySqlCommand();
                 comando.Connection = con;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = string.Format("Select nombreTerapeuta from Relaciones where nombrePaciente = '" + nombrePaciente + "' and apellidosPaciente = '" + apellidosPaciente + "'");
-                SqlDataReader reader = comando.ExecuteReader();
+                comando.CommandText = string.Format("Select nombreTerapeuta from relaciones where nombrePaciente = '" + nombrePaciente + "' and apellidosPaciente = '" + apellidosPaciente + "'");
+                MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
                     usuarioTerapeuta = reader.GetString(0);
                 }
                 return usuarioTerapeuta;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return null;
             }
         }
@@ -193,13 +199,13 @@ namespace DavidKinectTFG2016.clases
             if (pIdTerapeuta < 0 || pNombreTerapeuta == null)
                 return error;
 
-            SqlConnection conn;
+            MySqlConnection conn;
             try
             {
                 conn = BDComun.ObtnerConexion();
-                string query = "Update relaciones set fechaFin ='"+fechaFin+"' where nombrePaciente = '" + nombrePaciente+ "'and idTerapeuta ='"+pIdTerapeuta+"' ";
+                string query = "Update relaciones set fechaFin ='" + fechaFin + "' where nombrePaciente = '" + nombrePaciente + "'and idTerapeuta ='" + pIdTerapeuta + "' ";
 
-                SqlCommand comando = new SqlCommand(query, conn);
+                MySqlCommand comando = new MySqlCommand(query, conn);
                 resultado = comando.ExecuteNonQuery();
                 conn.Close();
 
@@ -207,7 +213,7 @@ namespace DavidKinectTFG2016.clases
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                System.Console.WriteLine(ex);
                 return error;
             }
         }

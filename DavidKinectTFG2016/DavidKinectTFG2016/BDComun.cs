@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
+using System.Windows;
 
 namespace DavidKinectTFG2016
 {
@@ -18,12 +19,49 @@ namespace DavidKinectTFG2016
         /// <returns>
         /// conn: Conexion con la base de datos.
         /// </returns>
-        public static SqlConnection ObtnerConexion()
+        public static MySqlConnection ObtnerConexion()
         {
-            SqlConnection conn = new SqlConnection(@"Data source=DAVID-PORTATIL\DAVID; Initial Catalog = KinectTFGBD; Integrated Security=True");
-            conn.Open();
+            MySqlConnection conn = null;
+            if (accesoInternet())
+            {
+                try
+                {
+                    conn = new MySqlConnection(@"server=db4free.net; uid=davidlopez; pwd=123456; database=kinectbd; port=3306");
 
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    System.Console.WriteLine(ex);
+                }
+            }
+            else
+            {
+                MessageBox.Show("El equipo se encuentra sin conexión a internet. Hasta que no se encuentre conectado a una red, no podrá acceder al sistema UBU Health Kinect.");
+            } 
             return conn;
+        }
+
+        /// <summary>
+        /// Metodo que verifica si el ordenador esta conectado a Internet
+        /// Ya que la BD se encuentra alojada en un servidor web.
+        /// Y se necesita acceso a internet para poder acceder a los datos de la BD.
+        /// </summary>
+        /// <returns>
+        /// true: Conexion correcta
+        /// false: conexion incorrecta
+        /// </returns>
+        private static bool accesoInternet()
+        {
+            try
+            {
+                System.Net.IPHostEntry host = System.Net.Dns.GetHostEntry("www.google.com");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

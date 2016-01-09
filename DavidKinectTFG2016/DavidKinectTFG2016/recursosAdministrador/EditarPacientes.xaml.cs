@@ -1,7 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +21,8 @@ namespace DavidKinectTFG2016.recursosAdministrador
     /// </summary>
     public partial class EditarPacientes : Window
     {
-        SqlConnection conexion;
-        SqlDataAdapter adaptador;
+        MySqlConnection conexion;
+        MySqlDataAdapter adaptador;
         DataTable dt;
         public EditarPacientes()
         {
@@ -40,23 +40,24 @@ namespace DavidKinectTFG2016.recursosAdministrador
             {
                 conexion = BDComun.ObtnerConexion();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
             string query = "Select idPaciente,nombrePaciente,apellidosPaciente,usuario,nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente,descripcionPaciente from pacientes";
-            try {
-                SqlCommand comando = new SqlCommand(query, conexion);
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
 
-                adaptador = new SqlDataAdapter(comando);
+                adaptador = new MySqlDataAdapter(comando);
                 dt = new DataTable("pacientes");
                 adaptador.Fill(dt);
                 dataGrid.ItemsSource = dt.DefaultView;
                 adaptador.Update(dt);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar la tabla: " + ex.ToString());
             }
@@ -69,15 +70,17 @@ namespace DavidKinectTFG2016.recursosAdministrador
         /// <param name="e"></param> Evento del boton.
         private void buttonModificar_Click(object sender, RoutedEventArgs e)
         {
-            try {
-                SqlCommandBuilder builder = new SqlCommandBuilder(adaptador);
+            try
+            {
+                MySqlCommandBuilder builder = new MySqlCommandBuilder(adaptador);
                 adaptador.UpdateCommand = builder.GetUpdateCommand();
                 int numeroCambios = adaptador.Update(dt);
                 if (numeroCambios > 0)
                     MessageBox.Show("Actualizado");
                 else
                     MessageBox.Show("No se ha actualizado ningun registro");
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al modificar la tabla: " + ex.ToString());
             }

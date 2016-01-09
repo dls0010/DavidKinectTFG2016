@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DavidKinectTFG2016.clases;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.recursosPaciente
 {
@@ -21,7 +21,7 @@ namespace DavidKinectTFG2016.recursosPaciente
     /// </summary>
     public partial class EscribirFeedbackEjercicio : Window
     {
-        SqlConnection conexion;
+        MySqlConnection conexion;
         string nombreUsuarioPaciente;
         private string ejercicio;
         private int repeticiones;
@@ -105,10 +105,10 @@ namespace DavidKinectTFG2016.recursosPaciente
         private void buttonMandar_Click(object sender, RoutedEventArgs e)
         {
             feedback = textBoxFeedback.Text;
-            if (Ejercicio.registrarEjercicio(nombreUsuarioPaciente,ejercicio,repeticiones,duracion,feedback) > 0)
+            if (Ejercicio.registrarEjercicio(nombreUsuarioPaciente, ejercicio, repeticiones, duracion, feedback) > 0)
             {
-               MessageBox.Show("Feedback enviado correctamente.");
-               this.Close();
+                MessageBox.Show("Feedback enviado correctamente.");
+                this.Close();
             }
             else
             {

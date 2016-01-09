@@ -1,7 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +21,7 @@ namespace DavidKinectTFG2016.recursosPaciente
     /// </summary>
     public partial class ConsultaHistorial : Window
     {
-        SqlConnection conexion;
+        MySqlConnection conexion;
         String nombreUsuario;
         public ConsultaHistorial(string usuario)
         {
@@ -36,27 +36,50 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <param name="e"></param>Evento de ventana.
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 conexion = BDComun.ObtnerConexion();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
             string query = "Select * from historial where usuarioPaciente = '" + nombreUsuario + "'";
 
-            try {
-                SqlCommand comando = new SqlCommand(query, conexion);
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
 
-                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 DataTable dt = new DataTable("historial");
                 adaptador.Fill(dt);
                 dataGrid.ItemsSource = dt.DefaultView;
                 adaptador.Update(dt);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos en la tabla: " + ex.ToString());
+            }
+        }
+        /// <summary>
+        /// Metodo que se produce al pulsar el boton cancelar:
+        /// cerrar la ventana.
+        /// cerrar conexion con la base de datos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                conexion.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cerrar la conexion con la base de datos: " + ex.ToString());
             }
         }
     }

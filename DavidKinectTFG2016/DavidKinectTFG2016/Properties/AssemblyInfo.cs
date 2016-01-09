@@ -7,12 +7,12 @@ using System.Windows;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("DavidKinectTFG2016")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("UBU Health Kinect 2016")]
+[assembly: AssemblyDescription("Software orientado para la rehabilitación de pacientes y seguimiento de los avances por parte de los terapeutas.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("David López Santamaría | UBU")]
 [assembly: AssemblyProduct("DavidKinectTFG2016")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -53,3 +53,5 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("es-ES")]
+

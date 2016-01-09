@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,7 +21,7 @@ namespace DavidKinectTFG2016.recursosPaciente
     /// </summary>
     public partial class PrevisualizarEjercicio : Window
     {
-        SqlConnection conexion;
+        MySqlConnection conexion;
         string nombreEjercicio;
         int repeticiones;
         public PrevisualizarEjercicio(string idEjercicio, int repeticiones)
@@ -50,8 +50,8 @@ namespace DavidKinectTFG2016.recursosPaciente
             try
             {
                 string query = "Select descripcion,imagenEjercicio from ejercicios where ejercicio = '" + nombreEjercicio + "'";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     string descripcion = dr.GetString(0);

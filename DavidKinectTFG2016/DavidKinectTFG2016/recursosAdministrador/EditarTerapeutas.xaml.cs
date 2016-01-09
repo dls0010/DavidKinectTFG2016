@@ -1,7 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +21,8 @@ namespace DavidKinectTFG2016.recursosAdministrador
     /// </summary>
     public partial class EditarTerapeutas : Window
     {
-        SqlConnection conexion;
-        SqlDataAdapter adaptador;
+        MySqlConnection conexion;
+        MySqlDataAdapter adaptador;
         DataTable dt;
         public EditarTerapeutas()
         {
@@ -36,8 +36,9 @@ namespace DavidKinectTFG2016.recursosAdministrador
         /// <param name="e"></param> Evento del boton.
         private void buttonModificar_Click(object sender, RoutedEventArgs e)
         {
-            try {
-                SqlCommandBuilder builder = new SqlCommandBuilder(adaptador);
+            try
+            {
+                MySqlCommandBuilder builder = new MySqlCommandBuilder(adaptador);
                 adaptador.UpdateCommand = builder.GetUpdateCommand();
                 int numeroCambios = adaptador.Update(dt);
                 if (numeroCambios > 0)
@@ -45,7 +46,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
                 else
                     MessageBox.Show("No se ha actualizado ningun registro");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al modificar la tabla:" + ex.ToString());
             }
@@ -58,25 +59,28 @@ namespace DavidKinectTFG2016.recursosAdministrador
         /// <param name="e"></param>Evento de ventana.
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 conexion = BDComun.ObtnerConexion();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
             string query = "Select idTerapeuta,nombreTerapeuta,apellidosTerapeuta,usuario,nifTerapeuta,telefonoTerapeuta,nacimientoTerapeuta from terapeutas";
-            try {
-                SqlCommand comando = new SqlCommand(query, conexion);
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
 
-                adaptador = new SqlDataAdapter(comando);
+                adaptador = new MySqlDataAdapter(comando);
                 dt = new DataTable("terapeutas");
                 adaptador.Fill(dt);
                 dataGrid.ItemsSource = dt.DefaultView;
                 adaptador.Update(dt);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar la tabla " + ex.ToString());
             }

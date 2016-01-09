@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DavidKinectTFG2016.clases;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.recursosTerapeuta
 {
@@ -24,7 +24,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
     public partial class ConsultarEntrenamientos : Window
     {
         string nombreUsuarioTerapeuta;
-        SqlConnection conexion;
+        MySqlConnection conexion;
         int idEntrenamiento;
         public ConsultarEntrenamientos(string usuario)
         {
@@ -51,10 +51,10 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select * from entrenamientos where usuarioTerapeuta = '" + nombreUsuarioTerapeuta + "'";
-                SqlCommand comando = new SqlCommand(query, conexion);
+                MySqlCommand comando = new MySqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
 
-                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 DataTable dt = new DataTable("entrenamientos");
                 adaptador.Fill(dt);
                 dataGridEntrenamientos.ItemsSource = dt.DefaultView;
@@ -75,8 +75,8 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             try
             {
                 string query = "Select * from entrenamientos where fechaEntrenamiento is not null";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     idEntrenamiento = dr.GetInt32(0);
@@ -134,17 +134,17 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         /// <param name="e"></param> Evento del Combobox
         private void comboBoxEntrenamiento_DropDownClosed(object sender, EventArgs e)
         {
-            string usuarioPaciente="";
+            string usuarioPaciente = "";
             string feedbackPaciente = "";
             try
             {
                 string query = "Select usuarioPaciente, feedbackPaciente from entrenamientos where idEntrenamiento = '" + comboBoxEntrenamiento.Text + "'";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     usuarioPaciente = dr.GetString(0);
-                    if(dr["feedbackPaciente"] != DBNull.Value)
+                    if (dr["feedbackPaciente"] != DBNull.Value)
                         feedbackPaciente = dr.GetString(1);
                     else
                         feedbackPaciente = "El paciente no ha dejado feedback";
@@ -153,7 +153,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
                 dr.Close();
 
                 query = "Select descripcionPaciente, imagenPaciente from pacientes where usuario = '" + usuarioPaciente + "'";
-                comando = new SqlCommand(query, conexion);
+                comando = new MySqlCommand(query, conexion);
                 dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
@@ -192,7 +192,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             idEntrenamiento = Convert.ToInt32(comboBoxEntrenamiento.Text);
             if (feedbackTerapeuta != "")
             {
-                if (Entrenamiento.AñadirFeedback(idEntrenamiento,nombreUsuarioTerapeuta, feedbackTerapeuta) > 0)
+                if (Entrenamiento.AñadirFeedback(idEntrenamiento, nombreUsuarioTerapeuta, feedbackTerapeuta) > 0)
                 {
                     MessageBox.Show("Feedback enviado con exito.");
                 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DavidKinectTFG2016.clases;
+using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.recursosPaciente
 {
@@ -23,19 +23,19 @@ namespace DavidKinectTFG2016.recursosPaciente
     public partial class ConsultarEntrenamientos : Window
     {
         string nombreUsuarioPaciente;
-        SqlConnection conexion;
+        MySqlConnection conexion;
         string nombrePaciente;
         string nombreTerapeuta;
         string usuarioTerapeuta;
         string ejercicio1;
-        string ejercicio2=null;
-        string ejercicio3=null;
-        string ejercicio4=null;
-        string ejercicio5=null;
+        string ejercicio2 = null;
+        string ejercicio3 = null;
+        string ejercicio4 = null;
+        string ejercicio5 = null;
         List<int> listaRepeticiones;
         List<string> listaEjercicios;
         string entrenamientosTabla = "Todos";
-    
+
         public ConsultarEntrenamientos(string usuario)
         {
             nombreUsuarioPaciente = usuario;
@@ -58,7 +58,7 @@ namespace DavidKinectTFG2016.recursosPaciente
             {
                 MessageBox.Show("Error al conectar con la base de datos");
             }
-            
+
             llenarComboBox();
             cargarEntrenamientos(entrenamientosTabla);
         }
@@ -75,17 +75,21 @@ namespace DavidKinectTFG2016.recursosPaciente
                 string query = "";
                 if (entrenamientosTabla == "Todos")
                     query = "Select * from entrenamientos where usuarioPaciente = '" + nombreUsuarioPaciente + "'";
-                else if (entrenamientosTabla == "Pendientes") 
+                else if (entrenamientosTabla == "Pendientes")
                     query = "Select * from entrenamientos where fechaEntrenamiento IS NULL and usuarioPaciente='" + nombreUsuarioPaciente + "'";
 
-                SqlCommand comando = new SqlCommand(query, conexion);
+                MySqlCommand comando = new MySqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
 
-                SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
                 DataTable dt = new DataTable("entrenamientos");
                 adaptador.Fill(dt);
                 dataGridEntrenamientos.ItemsSource = dt.DefaultView;
-                adaptador.Update(dt);    
+                adaptador.Update(dt);
+                if(dt.Rows.Count==0 && entrenamientosTabla == "Pendientes")
+                {
+                    MessageBox.Show("No tienes ningún entrenamiento pendiente por hacer.");
+                }
             }
             catch (Exception ex)
             {
@@ -137,9 +141,9 @@ namespace DavidKinectTFG2016.recursosPaciente
         {
             try
             {
-                string query = "Select idEntrenamiento from entrenamientos where fechaEntrenamiento IS NULL and usuarioPaciente='"+nombreUsuarioPaciente+"'";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                string query = "Select idEntrenamiento from entrenamientos where fechaEntrenamiento IS NULL and usuarioPaciente='" + nombreUsuarioPaciente + "'";
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     int idEntrenamiento = dr.GetInt32(0);
@@ -163,14 +167,14 @@ namespace DavidKinectTFG2016.recursosPaciente
             try
             {
                 string query = "Select * from entrenamientos where idEntrenamiento =" + comboBoxIDEntrenamiento.Text + "";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     listaEjercicios = new List<string>();
                     listaRepeticiones = new List<int>();
                     nombrePaciente = dr.GetString(1);
-                    nombreTerapeuta  = dr.GetString(3);
+                    nombreTerapeuta = dr.GetString(3);
                     usuarioTerapeuta = dr.GetString(4);
                     ejercicio1 = dr.GetString(6);
                     listaEjercicios.Add(ejercicio1);
@@ -215,14 +219,14 @@ namespace DavidKinectTFG2016.recursosPaciente
         /// <param name="e"></param>
         private void buttonEmpezar_Click(object sender, RoutedEventArgs e)
         {
-            string resumenResultados= "Resumen resultados: \n";
+            string resumenResultados = "Resumen resultados: \n";
             string feedbackPaciente;
             List<string> listaDescripciones = new List<string>();
             try
             {
                 string query = "Select descripcion from ejercicios";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader dr = comando.ExecuteReader();
+                MySqlCommand comando = new MySqlCommand(query, conexion);
+                MySqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
                     string descripcion = dr.GetString(0);
@@ -241,9 +245,9 @@ namespace DavidKinectTFG2016.recursosPaciente
                 PrevisualizarEjercicio previsualizar = new PrevisualizarEjercicio(ejercicio, repeticiones);
                 previsualizar.ShowDialog();
 
-                if(ejercicio == "Ejercicio1")
+                if (ejercicio == "Ejercicio1")
                 {
-                    Ejercicio1 ejer1 = new Ejercicio1(nombreUsuarioPaciente,listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
+                    Ejercicio1 ejer1 = new Ejercicio1(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
                     ejer1.ShowDialog();
                     resumenResultados += "\n Ejercicio 1: \n" + ejer1.devolverResumen();
                 }
