@@ -208,7 +208,8 @@ namespace DavidKinectTFG2016.recursosPaciente
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al seleccionar el entrenamiento: " + ex.ToString());
+                System.Console.WriteLine("Error al seleccionar el entrenamiento: " + ex.ToString());
+                MessageBox.Show("No has seleccionado ningun entrenamiento");
             }
         }
 

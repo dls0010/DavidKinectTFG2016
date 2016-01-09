@@ -6,13 +6,15 @@
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosTerapeuta"
         mc:Ignorable="d"
         Title="ConsultarEjercicios" Height="400" Width="400" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
-    <Grid>
-        <Label x:Name="labelTituloElegirEjercicio" Content="{Binding labelTituloElegirEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBoxEjercicios" HorizontalAlignment="Left" Margin="203,10,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEjercicios_DropDownClosed"/>
-        <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="100" Margin="103,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" VerticalScrollBarVisibility="Auto"/>
-        <Label x:Name="labelDescripcion" Content="{Binding labelDescripcion, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelImagen" Content="{Binding labelImagen, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="imagenEjercicio" HorizontalAlignment="Left" Height="115" Margin="23,201,0,0" VerticalAlignment="Top" Width="332"/>
-        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
-    </Grid>
+    <Viewbox Stretch="Uniform">
+        <Grid>
+            <Label x:Name="labelTituloElegirEjercicio" Content="{Binding labelTituloElegirEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="comboBoxEjercicios" HorizontalAlignment="Left" Margin="203,10,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEjercicios_DropDownClosed"/>
+            <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="100" Margin="103,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" VerticalScrollBarVisibility="Auto"/>
+            <Label x:Name="labelDescripcion" Content="{Binding labelDescripcion, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="labelImagen" Content="{Binding labelImagen, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+            <Image x:Name="imagenEjercicio" HorizontalAlignment="Left" Height="115" Margin="23,201,0,0" VerticalAlignment="Top" Width="332"/>
+            <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="167,338,0,0" Click="buttonCancelar_Click" VerticalAlignment="Top" Width="75" Background="#FFFF2929"/>
+        </Grid>
+    </Viewbox>
 </Window>

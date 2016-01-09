@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Adquerir Pacientes" Height="600" Width="600" Loaded="Window_Loaded" Closed="Window_Closed" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
-        <Viewbox Stretch="Uniform" Margin="10,0,10,10">
+        <Viewbox Stretch="Uniform">
             <Grid Height="541">
                 <Label x:Name="labelNombre" Content="{Binding labelNombre, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,281,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelApellidos" Content="{Binding labelApellidos, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,312,0,0" VerticalAlignment="Top"/>
@@ -30,7 +30,7 @@
                 </ComboBox>
                 <Label x:Name="labelNacimiento" Content="{Binding labelNacimiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,402,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="textBoxNacimiento" HorizontalAlignment="Left" Height="23" Margin="107,405,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <DataGrid AutoGenerateColumns="True" x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
+                <DataGrid AutoGenerateColumns="True" x:Name="dataGrid" HorizontalAlignment="Left" Margin="0,31,517,0" VerticalAlignment="Top" MaxHeight="220"/>
                 <Button x:Name="buttonFinalizarTratamiento" Content="{Binding buttonFinalizarTratamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="454,404,0,0" VerticalAlignment="Top" Width="75" Click="buttonFinalizar_Click" Background="#FF7DE811"/>
                 <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="91" Margin="264,377,0,0" VerticalAlignment="Top" Width="86"/>
                 <Label x:Name="labelIDPaciente" Content="{Binding labelIDPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="32,253,0,0" VerticalAlignment="Top"/>

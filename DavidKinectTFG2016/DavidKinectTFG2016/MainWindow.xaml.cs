@@ -41,13 +41,13 @@ namespace DavidKinectTFG2016
             //Obtenemos los datos introducidos:
             string usuarioIntroducido = textBoxUsuario.Text;
             string contraseñaIntroducida = textBoxContraseña.Password;
-
-            //Utilizamos el modelo de identidades
-            KinectTFGBDEntities1 modeloEntidades = new KinectTFGBDEntities1();
-
-            if (Usuario.Autentificar(usuarioIntroducido, contraseñaIntroducida) > 0)
+            int autentificacion = Usuario.Autentificar(usuarioIntroducido, contraseñaIntroducida);
+            if (autentificacion > 0)
             {
                 MessageBox.Show("Usuario correcto");
+                textBoxUsuario.Background = Brushes.White;
+                textBoxContraseña.Background = Brushes.White;
+
                 string tipoUsuario = Usuario.obtenerTipo(textBoxUsuario.Text);
                 if (tipoUsuario == "Paciente")
                 {
@@ -65,6 +65,10 @@ namespace DavidKinectTFG2016
                     inicioAdministrador.Show();
                 }
 
+            }
+            else if(autentificacion == 0)
+            {
+                MessageBox.Show("El equipo se encuentra sin conexión a internet. Hasta que no se encuentre conectado a una red, no podrá acceder al sistema UBU Health Kinect.");
             }
             else
             {

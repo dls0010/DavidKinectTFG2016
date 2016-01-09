@@ -35,10 +35,7 @@ namespace DavidKinectTFG2016
                     System.Console.WriteLine(ex);
                 }
             }
-            else
-            {
-                MessageBox.Show("El equipo se encuentra sin conexión a internet. Hasta que no se encuentre conectado a una red, no podrá acceder al sistema UBU Health Kinect.");
-            } 
+            
             return conn;
         }
 

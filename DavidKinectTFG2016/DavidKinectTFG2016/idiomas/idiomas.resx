@@ -301,7 +301,7 @@
     <value>Crear ejercicio:</value>
   </data>
   <data name="labelMoficiarEjercicio" xml:space="preserve">
-    <value>Modificar ejercicio.</value>
+    <value>Modificar Ejercicio.</value>
   </data>
   <data name="labelTituloModificarEjercicio" xml:space="preserve">
     <value>Elige un ejercicio a modificar: </value>

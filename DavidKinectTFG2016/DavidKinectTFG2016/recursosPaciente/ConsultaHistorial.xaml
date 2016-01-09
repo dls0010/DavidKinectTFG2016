@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Consulta Historial" Height="300" Width="400" Loaded="Window_Loaded" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Margin="10,34,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible"/>
         <Label x:Name="labelTituloHistorialPaciente" Content="{Binding labelTituloHistorialPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.388,0.114"/>
         <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="202,0,0,0" VerticalAlignment="Top" Width="82" Click="buttonCancelar_Click" Background="#FFFF2C2C" Height="28"/>
     </Grid>

@@ -9,14 +9,16 @@
     <Grid>
         <Label x:Name="labelTituloEntrenamientosPaciente" Content="{Binding labelTituloEntrenamientosPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
         <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="25,61,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" MaxHeight="300"/>
-        <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="241,480,0,0" VerticalAlignment="Top" Width="97" Click="buttonCancelar_Click" Background="#FFFF2C2C" Height="32"/>
-        <ComboBox x:Name="comboBoxIDEntrenamiento" HorizontalAlignment="Left" Margin="218,402,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxIDEntrenamiento_DropDownClosed"/>
-        <Label x:Name="labelEscogerIDEntrenamiento" Content="{Binding labelEscogerIDEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="33,402,0,0" VerticalAlignment="Top" Width="170"/>
-        <Button x:Name="buttonEmpezar" HorizontalAlignment="Left" Margin="134,454,0,0" VerticalAlignment="Top" Width="75" Click="buttonEmpezar_Click" Height="80">
-            <Button.Background>
-                <ImageBrush ImageSource="/DavidKinectTFG2016;component/images/empezar.jpg"/>
-            </Button.Background>
-        </Button>
+        <Grid HorizontalAlignment="Center">
+            <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="241,480,0,0" VerticalAlignment="Top" Width="97" Click="buttonCancelar_Click" Background="#FFFF2C2C" Height="32"/>
+            <ComboBox x:Name="comboBoxIDEntrenamiento" HorizontalAlignment="Left" Margin="218,402,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxIDEntrenamiento_DropDownClosed"/>
+            <Label x:Name="labelEscogerIDEntrenamiento" Content="{Binding labelEscogerIDEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="33,402,0,0" VerticalAlignment="Top" Width="170"/>
+            <Button x:Name="buttonEmpezar" HorizontalAlignment="Left" Margin="134,454,0,0" VerticalAlignment="Top" Width="75" Click="buttonEmpezar_Click" Height="80">
+                <Button.Background>
+                    <ImageBrush ImageSource="/DavidKinectTFG2016;component/images/empezar.jpg"/>
+                </Button.Background>
+            </Button>
+        </Grid>
         <Button x:Name="buttonTodos" Content="{Binding buttonTodos, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="211,4,0,0" VerticalAlignment="Top" Width="75" Click="buttonTodos_Click"/>
         <Button x:Name="buttonPendientes" Content="{Binding buttonPendientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="319,4,0,0" VerticalAlignment="Top" Width="101" Click="buttonPendientes_Click"/>
     </Grid>

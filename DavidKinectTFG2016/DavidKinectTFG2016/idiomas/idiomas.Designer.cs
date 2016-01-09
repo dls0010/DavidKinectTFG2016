@@ -484,7 +484,7 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Modificar ejercicio..
+        ///   Busca una cadena traducida similar a Modificar Ejercicio..
         /// </summary>
         public static string labelMoficiarEjercicio {
             get {

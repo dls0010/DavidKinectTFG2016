@@ -50,6 +50,7 @@ namespace DavidKinectTFG2016.clases
         /// <param name="pUsuario"></param> Nombre del Usuario.
         /// <param name="pContraseña"></param> Contraseña del usuario.
         /// <returns>
+        /// 0: error en la conexión.
         /// -1: No hay usuario en esa base de datos.
         /// != -1: Usuario encontrado. Autentificacion correcta.
         /// </returns>
@@ -61,6 +62,11 @@ namespace DavidKinectTFG2016.clases
             try
             {
                 conn = BDComun.ObtnerConexion();
+                if (conn == null)
+                {
+                    error = 0;
+                    return error;
+                }
                 MySqlCommand comando = new MySqlCommand(string.Format("Select * from usuarios where usuario = '{0}' and contraseña= password('{1}')", pUsuario, pContraseña), conn);
 
                 MySqlDataReader reader = comando.ExecuteReader();
