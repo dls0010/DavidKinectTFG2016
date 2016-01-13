@@ -7,13 +7,12 @@
         mc:Ignorable="d"
         Title="Inicio Sesion Terapeuta" Loaded="Window_Loaded" Closed="Window_Closed" Height="700" Width="700" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
-        <Viewbox Stretch="Uniform" Margin="10,0,10,10">
+        <Viewbox Stretch="Uniform" >
             <Grid Height="362" Width="352">
-
                 <Label x:Name="labelTituloTerapeuta" Content="{Binding labelTituloTerapeuta, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,10,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelAdquirirPacientes" Content="{Binding labelAdquirirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="102,80,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelConsultar" Content="{Binding labelConsultarPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="102,120,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="buttonAdquirirPacientes" Content="{Binding buttonAdquirirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdquerir_Click"/>
+                <Button x:Name="buttonAdquirirPacientes" Content="{Binding buttonAdquirirPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="250,80,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdquirir_Click"/>
                 <Label x:Name="labelCrearEntrenamiento" Content="{Binding labelCrearEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,160,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelConsultarEntrenamiento" Content="{Binding labelConsultarEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,200,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelConsultarEjercicios" Content="{Binding labelConsultarEjercicios, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="101,240,0,0" VerticalAlignment="Top"/>
@@ -27,5 +26,6 @@
                 <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="73" Margin="10,10,0,0" VerticalAlignment="Top" Width="70"/>
             </Grid>
         </Viewbox>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="62" VerticalAlignment="Bottom" Width="200" Source="/DavidKinectTFG2016;component/images/logo.png" Margin="10,0,0,20"/>
     </Grid>
 </Window>

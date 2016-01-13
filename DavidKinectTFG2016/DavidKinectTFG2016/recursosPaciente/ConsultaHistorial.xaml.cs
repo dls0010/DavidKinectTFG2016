@@ -45,7 +45,7 @@ namespace DavidKinectTFG2016.recursosPaciente
                 MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
-            string query = "Select * from historial where usuarioPaciente = '" + nombreUsuario + "'";
+            string query = "Select ejercicio,nombrePaciente,usuarioTerapeuta,repeticiones,duracion,fecha,feedbackPaciente from historial where usuarioPaciente = '" + nombreUsuario + "'";
 
             try
             {

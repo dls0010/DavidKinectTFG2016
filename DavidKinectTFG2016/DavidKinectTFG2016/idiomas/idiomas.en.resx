@@ -171,7 +171,7 @@
   <data name="labelTituloAdministrador" xml:space="preserve">
     <value>Select the option:</value>
   </data>
-  <data name="buttonAdquerirPacientes" xml:space="preserve">
+  <data name="buttonAdquirirPacientes" xml:space="preserve">
     <value>Get...</value>
   </data>
   <data name="buttonConsultar" xml:space="preserve">
@@ -180,7 +180,7 @@
   <data name="buttonEjercicio" xml:space="preserve">
     <value>Exercise...</value>
   </data>
-  <data name="labelAdquerirPacientes" xml:space="preserve">
+  <data name="labelAdquirirPacientes" xml:space="preserve">
     <value>Get patients: </value>
   </data>
   <data name="labelConsultar" xml:space="preserve">

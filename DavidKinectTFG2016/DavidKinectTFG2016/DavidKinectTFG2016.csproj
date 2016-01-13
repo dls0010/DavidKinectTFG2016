@@ -195,8 +195,8 @@
     <Compile Include="recursosPaciente\PrevisualizarEjercicio.xaml.cs">
       <DependentUpon>PrevisualizarEjercicio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="recursosTerapeuta\AdquerirPacientes.xaml.cs">
-      <DependentUpon>AdquerirPacientes.xaml</DependentUpon>
+    <Compile Include="recursosTerapeuta\AdquirirPacientes.xaml.cs">
+      <DependentUpon>AdquirirPacientes.xaml</DependentUpon>
     </Compile>
     <Compile Include="recursosTerapeuta\ConsultarEjercicios.xaml.cs">
       <DependentUpon>ConsultarEjercicios.xaml</DependentUpon>
@@ -309,7 +309,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="recursosTerapeuta\AdquerirPacientes.xaml">
+    <Page Include="recursosTerapeuta\AdquirirPacientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -393,6 +393,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="direccionBD.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="KinectInteraction180_32.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

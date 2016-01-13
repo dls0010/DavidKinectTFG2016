@@ -11,29 +11,29 @@
             <Grid Width="428">
                 <Button x:Name="buttonIniciar" Content="{Binding buttonIniciar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="100,242,0,-8" VerticalAlignment="Top" Width="89" Click="iniciar_click_buttonIniciar" Height="30"/>
                 <Button x:Name="buttonRegistrar" Content="{Binding buttonRegistrar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="242,242,0,0" VerticalAlignment="Top" Width="89" Click="registrar_click_buttonRegistrar" Height="30"/>
-                <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Height="23" Margin="180,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label x:Name="labelUsuario" Content="{Binding labelUsuario, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="60,116,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="labelContraseña" Content="{Binding labelContraseña, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="60,168,0,0" VerticalAlignment="Top"/>
-                <Image x:Name="image" HorizontalAlignment="Left" Height="49" Margin="242,34,0,0" VerticalAlignment="Top" Width="149" Source="images/logo.png"/>
-                <Label x:Name="labelTitulo" Content="{Binding labelTitulo, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top"/>
-                <PasswordBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Margin="180,170,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
-                <Button x:Name="buttonSpanish"  Margin="230,10,50,0" VerticalAlignment="Top" Width="32" Height="19" Click="buttonSpanish_Click">
+                <Label x:Name="labelUsuario" Content="{Binding labelUsuario, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="104,124,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="labelContraseña" Content="{Binding labelContraseña, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="104,176,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBox x:Name="textBoxUsuario" HorizontalAlignment="Left" Height="23" Margin="224,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <PasswordBox x:Name="textBoxContraseña" HorizontalAlignment="Left" Margin="224,178,0,0" VerticalAlignment="Top" Height="24" Width="120"/>
+                <Image x:Name="image" HorizontalAlignment="Left" Height="49" Margin="255,49,0,0" VerticalAlignment="Top" Width="149" Source="images/logo.png"/>
+                <Label x:Name="labelTitulo" Content="{Binding labelTitulo, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="23,62,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Button x:Name="buttonSpanish"  Margin="34,11,362,0" VerticalAlignment="Top" Width="32" Height="19" Click="buttonSpanish_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="images/esp.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="buttonEnglish"  Margin="288,10,35,0" VerticalAlignment="Top" Width="32" Height="19" RenderTransformOrigin="-0.456,0.46" Click="buttonEnglish_Click">
+                <Button x:Name="buttonEnglish"  Margin="71,11,325,0" VerticalAlignment="Top" Width="32" Height="19" RenderTransformOrigin="-0.456,0.46" Click="buttonEnglish_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="images/eng.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="buttonAcerca"  Margin="331,9,4,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="-0.456,0.46" Click="buttonAcerca_Click">
+                <Button x:Name="buttonAcerca"  Margin="114,10,294,0" VerticalAlignment="Top" Width="20" Height="20" RenderTransformOrigin="-0.456,0.46" Click="buttonAcerca_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="images/info.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="buttonAyuda"  Content="{Binding buttonAyuda, Source={StaticResource IdiomasRes}}" Margin="79,10,282,0" VerticalAlignment="Top" Height="20" Click="buttonAyuda_Click"/>
-                <Button x:Name="buttonSalir"  Margin="10,0,386,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="-0.456,0.46" Click="buttonSalir_Click">
+                <Button x:Name="buttonAyuda"  Content="{Binding buttonAyuda, Source={StaticResource IdiomasRes}}" Margin="314,10,47,0" VerticalAlignment="Top" Height="20" Click="buttonAyuda_Click"/>
+                <Button x:Name="buttonSalir"  Margin="386,-2,10,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="-0.456,0.46" Click="buttonSalir_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="images/salir.png"/>
                     </Button.Background>

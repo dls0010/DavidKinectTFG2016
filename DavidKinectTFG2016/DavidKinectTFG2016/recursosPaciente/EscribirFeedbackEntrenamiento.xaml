@@ -8,7 +8,7 @@
         Title="Escribir Feedback Entrenamiento" Height="300" Width="400" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Viewbox Stretch="Uniform" Margin="10,0,10,10">
         <Grid>
-            <TextBox x:Name="textBoxFeedback" Text="Durante el entrenamiento me he sentido..." HorizontalAlignment="Left" Height="124" Margin="46,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301"/>
+            <TextBox x:Name="textBoxFeedback" Text="Durante el entrenamiento me he sentido: " HorizontalAlignment="Left" Height="124" Margin="46,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301"/>
             <Button x:Name="buttonMandar" Content="{Binding buttonMandar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="81,231,0,10" Width="75" Click="buttonMandar_Click" Background="#FF6CF51D" />
             <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="256,231,0,10" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C22"/>
             <Label x:Name="labelTituloFeedbackPaciente" Content="{Binding labelTituloFeedbackPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="46,27,0,0" VerticalAlignment="Top"/>

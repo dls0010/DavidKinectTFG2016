@@ -58,7 +58,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
             {
                 string query = "Select * from ejercicios";
                 MySqlCommand comando = new MySqlCommand(query, conexion);
-                MySqlDataReader dr = comando.ExecuteReader();
+                MySqlDataReader dr = Ejercicio.getEjercicios();
                 while (dr.Read())
                 {
                     string nombreEjercicio = dr.GetString(1);
@@ -81,9 +81,7 @@ namespace DavidKinectTFG2016.recursosAdministrador
         {
             try
             {
-                string query = "Select descripcion,imagenEjercicio from ejercicios where ejercicio = '" + comboBoxEjercicios.Text + "'";
-                MySqlCommand comando = new MySqlCommand(query, conexion);
-                MySqlDataReader dr = comando.ExecuteReader();
+                MySqlDataReader dr = Ejercicio.getEjercicio(comboBoxEjercicios.Text);
                 while (dr.Read())
                 {
                     string descripcion = dr.GetString(0);

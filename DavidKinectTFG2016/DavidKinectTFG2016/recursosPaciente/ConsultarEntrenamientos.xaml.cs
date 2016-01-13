@@ -74,9 +74,9 @@ namespace DavidKinectTFG2016.recursosPaciente
             {
                 string query = "";
                 if (entrenamientosTabla == "Todos")
-                    query = "Select * from entrenamientos where usuarioPaciente = '" + nombreUsuarioPaciente + "'";
+                    query = "Select idEntrenamiento, nombrePaciente,nombreTerapeuta,ejercicio1,repeticiones1,ejercicio2,repeticiones2,ejercicio3,repeticiones3,ejercicio4,repeticiones4,ejercicio5,repeticiones5,fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta from entrenamientos where usuarioPaciente = '" + nombreUsuarioPaciente + "'";
                 else if (entrenamientosTabla == "Pendientes")
-                    query = "Select * from entrenamientos where fechaEntrenamiento IS NULL and usuarioPaciente='" + nombreUsuarioPaciente + "'";
+                    query = "Select idEntrenamiento, nombrePaciente,nombreTerapeuta,ejercicio1,repeticiones1,ejercicio2,repeticiones2,ejercicio3,repeticiones3,ejercicio4,repeticiones4,ejercicio5,repeticiones5,fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta from entrenamientos where fechaEntrenamiento IS NULL and usuarioPaciente='" + nombreUsuarioPaciente + "'";
 
                 MySqlCommand comando = new MySqlCommand(query, conexion);
                 comando.ExecuteNonQuery();

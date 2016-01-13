@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace DavidKinectTFG2016.clases
 {
-    class Usuario
+    public class Usuario
     {
         /// <summary>
         /// Metodo que controla el crear un nuevo usuario en la base de datos.
@@ -74,7 +74,7 @@ namespace DavidKinectTFG2016.clases
 
                 while (reader.Read())
                 {
-                    resultado = 50;
+                    resultado = 1;
                 }
                 conn.Close();
                 return resultado;

@@ -50,7 +50,7 @@ namespace DavidKinectTFG2016.recursosTerapeuta
             }
             try
             {
-                string query = "Select * from entrenamientos where usuarioTerapeuta = '" + nombreUsuarioTerapeuta + "'";
+                string query = "Select idEntrenamiento,nombrePaciente, nombreTerapeuta, ejercicio1, repeticiones1,ejercicio2,repeticiones2,ejercicio3,repeticiones3,ejercicio4, repeticiones4,ejercicio5,repeticiones5,fechaEntrenamiento,resultados,feedbackPaciente,feedbackTerapeuta from entrenamientos where usuarioTerapeuta = '" + nombreUsuarioTerapeuta + "'";
                 MySqlCommand comando = new MySqlCommand(query, conexion);
                 comando.ExecuteNonQuery();
 

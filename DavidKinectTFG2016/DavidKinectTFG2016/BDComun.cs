@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows;
+using System.IO;
 
 namespace DavidKinectTFG2016
 {
     /// <summary>
     /// Clase usada para iniciar la conexión con la Base de datos KinectBD.
     /// </summary>
-    class BDComun
+    public class BDComun
     {
         /// <summary>
         /// Metodo para obtener la conexion con la base de datos.
@@ -21,12 +22,13 @@ namespace DavidKinectTFG2016
         /// </returns>
         public static MySqlConnection ObtnerConexion()
         {
+            string direccion = leerDireccionBD();
             MySqlConnection conn = null;
             if (accesoInternet())
             {
                 try
                 {
-                    conn = new MySqlConnection(@"server=db4free.net; uid=davidlopez; pwd=123456; database=kinectbd; port=3306");
+                    conn = new MySqlConnection(@direccion);
 
                     conn.Open();
                 }
@@ -38,6 +40,31 @@ namespace DavidKinectTFG2016
             
             return conn;
         }
+
+        /// <summary>
+        /// Metodo privado que obtiene la cadena de texto.
+        /// que permite la conexion con la base de datos remota.
+        /// </summary>
+        /// <returns>
+        /// string: direccion de la base de datos.
+        /// </returns>
+        private static string leerDireccionBD()
+        {
+            string linea="";
+            try
+            {
+                using (StreamReader sr = new StreamReader("direccionBD.txt", false))
+                {
+                    linea = sr.ReadLine();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("El archivo no se puede leer");
+                MessageBox.Show("No se ha podido leer la direccion de la base de datos");
+            }
+            return linea;
+        } 
 
         /// <summary>
         /// Metodo que verifica si el ordenador esta conectado a Internet

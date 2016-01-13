@@ -14,7 +14,7 @@ namespace DavidKinectTFG2016.clases
     /// <summary>
     /// Clase Paciente que registrar en la base de datos.
     /// </summary>
-    class Paciente
+    public class Paciente
     {
         /// <summary>
         /// Metodo que controla el registro un nuevo paciente en la base de datos.
@@ -75,34 +75,7 @@ namespace DavidKinectTFG2016.clases
                 return error;
             }
         }
-
-        /// <summary>
-        /// Metodo que obtiene todos los datos de la base de datos tabla Pacientes.
-        /// </summary>
-        /// <returns>
-        /// DataTable con todos los datos de la tabla Pacientes.
-        /// </returns>
-        public static DataTable getPacientes()
-        {
-            DataTable table;
-            try
-            {
-                MySqlConnection con = BDComun.ObtnerConexion();
-                MySqlCommand comando = new MySqlCommand();
-                comando.Connection = con;
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = "Select * from pacientes";
-                MySqlDataReader reader = comando.ExecuteReader();
-                table = new DataTable();
-                table.Load(reader);
-                return table;
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex);
-                return null;
-            }
-        }
+        
         /// <summary>
         /// Metodo que obtiene todos los datos de la base de datos tabla Pacientes.
         /// </summary>
@@ -138,7 +111,7 @@ namespace DavidKinectTFG2016.clases
                 return nombreCompleto;
             }
         }
-
+        
         /// <summary>
         /// Metodo que obtiene el nombre completo del paciente pasandole el nombre de usuario.
         /// </summary>
@@ -203,6 +176,41 @@ namespace DavidKinectTFG2016.clases
                 System.Console.WriteLine(ex);
                 return nombreUsuario;
             }
+        }
+
+        /// <summary>
+        /// Metodo publico que obtiene un adaptador que contiene
+        /// todos los pacientes de la BD.
+        /// </summary>
+        /// <returns>
+        /// MySqlDataAdapter adaptador que contiene todos los pacientes
+        /// </returns>
+        public static MySqlDataAdapter getAdaptadorPacientes()
+        {
+            MySqlCommand comando = null;
+            MySqlConnection conexion = null;
+            MySqlDataAdapter adaptador = null;
+            try
+            {
+                conexion = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
+            }
+
+            string query = "Select idPaciente,nombrePaciente,apellidosPaciente,usuario,nifPaciente,telefonoPaciente,nacimientoPaciente,estadoPaciente,descripcionPaciente from pacientes";
+            try
+            {
+                comando = new MySqlCommand(query, conexion);
+                comando.ExecuteNonQuery();
+                adaptador = new MySqlDataAdapter(comando);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la tabla: " + ex.ToString());
+            }
+            return adaptador;
         }
     }
 }

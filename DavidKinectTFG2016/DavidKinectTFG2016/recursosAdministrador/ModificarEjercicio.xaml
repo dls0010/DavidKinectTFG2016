@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosAdministrador"
         mc:Ignorable="d"
-        Title="Modificar Ejercicio" Height="400" Width="400" Loaded="Window_Loaded" WindowState="Maximized" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
-    <Viewbox Stretch="Uniform">
-        <Grid>
+        Title="Modificar Ejercicio" Height="500" Width="500" Loaded="Window_Loaded" WindowState="Maximized" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
+    <Grid>
+        <Image x:Name="imagenLogo" HorizontalAlignment="Center" Height="157" VerticalAlignment="Top" Width="325" Source="/DavidKinectTFG2016;component/images/logo.png"/>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="54,0,54,10">
             <Label x:Name="labelTituloModificarEjercicio" Content="{Binding labelTituloModificarEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <ComboBox x:Name="comboBoxEjercicios" HorizontalAlignment="Left" Margin="203,10,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEjercicios_DropDownClosed"/>
             <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="100" Margin="103,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" VerticalScrollBarVisibility="Auto"/>
@@ -18,5 +19,5 @@
             <Button x:Name="buttonModificar" Content="{Binding buttonModificar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="102,335,0,0" VerticalAlignment="Top" Width="75" Click="buttonModificar_Click" Background="#FF68FF00"/>
             <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="232,335,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Background="#FFFF1F1F"/>
         </Grid>
-    </Viewbox>
+    </Grid>
 </Window>

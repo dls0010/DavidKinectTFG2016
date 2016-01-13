@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.registrosVarios"
         mc:Ignorable="d"
-        Title="RegistroPaciente" Height="700" Width="550" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
+        Title="Registro Paciente" Height="700" Width="550" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
             <Grid Height="528" Width="419">

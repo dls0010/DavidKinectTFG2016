@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016"
         mc:Ignorable="d"
-        Title="AcercaDe" Height="300" Width="350" Icon="images/icon.png" >
+        Title="Acerca De" Height="300" Width="350" Icon="images/icon.png" >
     <Grid>
         <Viewbox Stretch="Uniform" Margin="10,0,10,10">
             <Grid Height="276" Width="345">
                 <Label x:Name="labelTituloAcercaDe" Content="{Binding labelTituloAcercaDe, Source={StaticResource IdiomasRes}}" Margin="0,90,10,-86"/>
-                <Label x:Name="labelVersion" Content="Version 1.0" Margin="10,120,-10,-118"/>
+                <Label x:Name="labelVersion" Content="Version 1.0.0" Margin="10,120,-10,-118"/>
                 <Label x:Name="labelNombre" Content="David López Santamaría" Margin="10,150,-10,-146"/>
                 <Label x:Name="labelFecha" Content="2016" Margin="10,180,-10,-146"/>
                 <Image x:Name="image" HorizontalAlignment="Left" Height="85" Margin="93,0,0,0" VerticalAlignment="Top" Width="149" Source="images/logo.png"/>

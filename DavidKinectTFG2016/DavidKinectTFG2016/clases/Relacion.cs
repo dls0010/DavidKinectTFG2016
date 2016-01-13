@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases
 {
-    class Relacion
+    public class Relacion
     {
         /// <summary>
         /// Metodo de registrar nueva relacion Paciente Terapeuta.
@@ -84,7 +84,7 @@ namespace DavidKinectTFG2016.clases
         /// </summary>
         /// <param name="terapeuta"></param>Nombre de usuario del Terapeuta.
         /// <returns>
-        /// string: id del terapeuta asignado.
+        /// int: id del terapeuta asignado.
         /// </returns>
         public static int obtenerIdTerapeuta(string terapeuta)
         {
@@ -105,6 +105,40 @@ namespace DavidKinectTFG2016.clases
                     reader.Close();
                 }
                 return idTerapeuta;
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex);
+                return error;
+            }
+        }
+
+        /// <summary>
+        /// Metodo adicional usado obtener el id del paciente asignado.
+        /// </summary>
+        /// <param name="paciente"></param>Nombre de usuario del Paciente.
+        /// <returns>
+        /// int: id del paciente asignado.
+        /// </returns>
+        public static int obtenerIdPaciente(string paciente)
+        {
+            int error = -1;
+            try
+            {
+                int idPaciente = -3;
+                using (MySqlConnection conexion = BDComun.ObtnerConexion())
+                {
+                    string query = "SELECT idPaciente FROM pacientes WHERE usuario=@Usuario";
+                    MySqlCommand cmd = new MySqlCommand(query, conexion);
+                    cmd.Parameters.AddWithValue("Usuario", paciente);
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        idPaciente = reader.GetInt32(0);
+                    }
+                    reader.Close();
+                }
+                return idPaciente;
             }
             catch (Exception ex)
             {

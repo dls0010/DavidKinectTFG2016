@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="Consultar Entrenamientos" Height="600" Width="550" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
-        <Label x:Name="labelTituloEntrenamientosPaciente" Content="{Binding labelTituloEntrenamientosPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="25,61,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" MaxHeight="300"/>
+        <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Center" Margin="25,61,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" MaxHeight="300" />
+        <Grid HorizontalAlignment="Center">
+            <Label x:Name="labelTituloEntrenamientosPaciente" Content="{Binding labelTituloEntrenamientosPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="buttonTodos" Content="{Binding buttonTodos, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="211,4,0,0" VerticalAlignment="Top" Width="75" Click="buttonTodos_Click"/>
+            <Button x:Name="buttonPendientes" Content="{Binding buttonPendientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="319,4,0,0" VerticalAlignment="Top" Width="101" Click="buttonPendientes_Click"/>
+        </Grid>
         <Grid HorizontalAlignment="Center">
             <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="241,480,0,0" VerticalAlignment="Top" Width="97" Click="buttonCancelar_Click" Background="#FFFF2C2C" Height="32"/>
             <ComboBox x:Name="comboBoxIDEntrenamiento" HorizontalAlignment="Left" Margin="218,402,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxIDEntrenamiento_DropDownClosed"/>
@@ -19,7 +23,5 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <Button x:Name="buttonTodos" Content="{Binding buttonTodos, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="211,4,0,0" VerticalAlignment="Top" Width="75" Click="buttonTodos_Click"/>
-        <Button x:Name="buttonPendientes" Content="{Binding buttonPendientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="319,4,0,0" VerticalAlignment="Top" Width="101" Click="buttonPendientes_Click"/>
     </Grid>
 </Window>

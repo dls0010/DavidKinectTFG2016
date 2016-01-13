@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DavidKinectTFG2016.recursosPaciente"
         mc:Ignorable="d"
-        Title="Ejercicio5" Height="480" Width="640" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
+        Title="Ejercicio 5" Height="480" Width="640" WindowState="Maximized" Loaded="Window_Loaded" Closed="Window_Closed" Icon="/DavidKinectTFG2016;component/images/icon.png">
     <Grid>
         <Viewbox Stretch="Uniform" Margin="34,28,29,28">
             <Grid>

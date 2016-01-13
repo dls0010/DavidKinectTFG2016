@@ -1,0 +1,1 @@
+server=db4free.net; uid=davidlopez; pwd=123456; database=kinectbd; port=3306

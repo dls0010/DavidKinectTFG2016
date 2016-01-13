@@ -592,7 +592,7 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a BIENVENIDO A  UBU HEALTH KINECT:.
+        ///   Busca una cadena traducida similar a BIENVENIDO A UBU HEALTH KINECT:.
         /// </summary>
         public static string labelTitulo {
             get {

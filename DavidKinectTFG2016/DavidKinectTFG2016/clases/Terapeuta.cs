@@ -14,7 +14,7 @@ namespace DavidKinectTFG2016.clases
     /// <summary>
     /// Clase Terapeuta que registrar en la base de datos.
     /// </summary>
-    class Terapeuta
+    public class Terapeuta
     {
         /// <summary>
         /// Metodo que permite registrar al Terapeuta en la base de datos
@@ -140,6 +140,41 @@ namespace DavidKinectTFG2016.clases
                 System.Console.WriteLine(ex);
                 return nombreCompleto;
             }
+        }
+
+        /// <summary>
+        /// Metodo publico que obtiene un adaptador que contiene
+        /// todos los terapeutas de la BD.
+        /// </summary>
+        /// <returns>
+        /// MySqlDataAdapter adaptador que contiene todos los terapeutas
+        /// </returns>
+        public static MySqlDataAdapter getAdaptadorTerapeutas()
+        {
+            MySqlCommand comando = null;
+            MySqlConnection conexion = null;
+            MySqlDataAdapter adaptador = null;
+            try
+            {
+                conexion = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
+            }
+
+            string query = "Select idTerapeuta,nombreTerapeuta,apellidosTerapeuta,usuario,nifTerapeuta,telefonoTerapeuta,nacimientoTerapeuta from terapeutas";
+            try
+            {
+                comando = new MySqlCommand(query, conexion);
+                comando.ExecuteNonQuery();
+                adaptador = new MySqlDataAdapter(comando);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la tabla " + ex.ToString());
+            }
+            return adaptador;
         }
     }
 }

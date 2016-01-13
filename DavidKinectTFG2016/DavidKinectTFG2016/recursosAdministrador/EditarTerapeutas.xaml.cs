@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DavidKinectTFG2016.clases;
 
 namespace DavidKinectTFG2016.recursosAdministrador
 {
@@ -68,13 +69,9 @@ namespace DavidKinectTFG2016.recursosAdministrador
                 MessageBox.Show("Error al conectar con la base de datos: " + ex.ToString());
             }
 
-            string query = "Select idTerapeuta,nombreTerapeuta,apellidosTerapeuta,usuario,nifTerapeuta,telefonoTerapeuta,nacimientoTerapeuta from terapeutas";
             try
             {
-                MySqlCommand comando = new MySqlCommand(query, conexion);
-                comando.ExecuteNonQuery();
-
-                adaptador = new MySqlDataAdapter(comando);
+                adaptador = Terapeuta.getAdaptadorTerapeutas();
                 dt = new DataTable("terapeutas");
                 adaptador.Fill(dt);
                 dataGrid.ItemsSource = dt.DefaultView;

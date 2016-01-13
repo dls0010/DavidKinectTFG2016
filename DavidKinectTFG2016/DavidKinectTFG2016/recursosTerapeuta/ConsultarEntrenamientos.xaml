@@ -9,8 +9,8 @@
     <Grid>
         <Grid>
             <Label x:Name="labelTituloConsultarEntrenamientosTerapeuta" Content="{Binding labelTituloConsultarEntrenamientosTerapeuta, Source={StaticResource IdiomasRes}}" Margin="10,10,396,535"/>
-            <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="28,52,0,0" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Width="Auto" MaxHeight="200"/>
-            <Grid HorizontalAlignment="Center">
+            <DataGrid x:Name="dataGridEntrenamientos" HorizontalAlignment="Left" Margin="28,52,0,0" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top" Width="Auto" MaxHeight="280"/>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <Label x:Name="labelTituloFeedback" Content="{Binding labelTituloFeedback, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,267,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="labelDescripcionPaciente" Content="{Binding labelDescripcion, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="40,307,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="textBoxDescripcionPaciente" HorizontalAlignment="Left" Height="113" Margin="28,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" IsEnabled="False" VerticalScrollBarVisibility="Auto"/>

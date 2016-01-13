@@ -14,7 +14,7 @@ namespace DavidKinectTFG2016.clases
     /// <summary>
     /// Clase Ejercicio que registra los ejercicios en la base de datos.
     /// </summary>
-    class Ejercicio
+    public class Ejercicio
     {
         /// <summary>
         /// Metodo que controla el registro una nueva actividad del paciente en la base de datos.
@@ -164,6 +164,48 @@ namespace DavidKinectTFG2016.clases
                 System.Console.WriteLine(ex);
                 return error;
             }
+        }
+
+        /// <summary>
+        /// Metodo publico que devuelve los datos de todos los ejercicios
+        /// de la base de datos.
+        /// </summary>
+        /// <returns>
+        /// MySqlDataReader de todos los ejercicios de la base de datos.
+        /// </returns>
+        public static MySqlDataReader getEjercicios()
+        {
+            MySqlConnection conexion=null;
+            try
+            {
+                conexion = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conectar con la Base de datos: " + ex.ToString());
+            }
+
+            string query = "Select * from ejercicios";
+            MySqlCommand comando = new MySqlCommand(query, conexion);
+            MySqlDataReader dr = comando.ExecuteReader();
+            return dr;
+        }
+
+        public static MySqlDataReader getEjercicio(string ejercicio)
+        {
+            MySqlConnection conexion = null;
+            try
+            {
+                conexion = BDComun.ObtnerConexion();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conectar con la Base de datos: " + ex.ToString());
+            }
+            string query = "Select descripcion,imagenEjercicio from ejercicios where ejercicio = '" + ejercicio + "'";
+            MySqlCommand comando = new MySqlCommand(query, conexion);
+            MySqlDataReader dr = comando.ExecuteReader();
+            return dr;
         }
     }
 }
