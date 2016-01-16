@@ -148,7 +148,7 @@
     <value>Repetir contraseña:</value>
   </data>
   <data name="labelTelefono" xml:space="preserve">
-    <value>Telefono:</value>
+    <value>Teléfono:</value>
   </data>
   <data name="labelTipoUsuario" xml:space="preserve">
     <value>Tipo usuario:</value>

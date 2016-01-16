@@ -1,0 +1,16 @@
+﻿<Window x:Class="DavidKinectTFG2016.recursosTerapeuta.ConsultarPacientes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DavidKinectTFG2016.recursosTerapeuta"
+        mc:Ignorable="d"
+        Title="Consultar Pacientes" Height="300" Width="300" Loaded="Window_Loaded" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
+    <Grid>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Margin="10,34,0,0" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible"/>
+        <Grid HorizontalAlignment="Center">
+            <Label x:Name="labelTituloConsultarPacientes" Content="{Binding labelTituloConsultarPacientes, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="202,0,0,0" VerticalAlignment="Top" Width="82" Click="buttonCancelar_Click" Background="#FFFF2C2C" Height="28"/>
+        </Grid>
+        </Grid>
+</Window>

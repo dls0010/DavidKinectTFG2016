@@ -565,7 +565,7 @@ namespace DavidKinectTFG2016.idiomas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Telefono:.
+        ///   Busca una cadena traducida similar a Teléfono:.
         /// </summary>
         public static string labelTelefono {
             get {

@@ -1,0 +1,31 @@
+﻿<Window x:Class="DavidKinectTFG2016.iniciosSesionVarios.InicioSesionPaciente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DavidKinectTFG2016.iniciosSesionVarios"
+        mc:Ignorable="d"
+        Title="Inicio Sesion Paciente" Height="700" Width="700" Loaded="Window_Loaded" Closed="Window_Closed" WindowState="Maximized" Icon="/DavidKinectTFG2016;component/images/icon.png">
+    <Grid>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="62" VerticalAlignment="Bottom" Width="200" Source="/DavidKinectTFG2016;component/images/logo.png" Margin="10,0,0,20"/>
+        <Viewbox Stretch="Uniform">
+            <Grid>
+                <Label x:Name="labelEjercicio" Content="{Binding labelEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="154,253,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelConsultar" Content="{Binding labelConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="29,450,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelRepeticiones" Content="{Binding labelRepeticiones, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="154,285,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="labelTituloPaciente" Content="{Binding labelTituloPaciente, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="109,32,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonEjercicio" Content="{Binding buttonEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="285,257,0,0" VerticalAlignment="Top" Width="75" Click="buttonEjercicio_Click" Background="#FF31E61F"/>
+                <TextBox x:Name="textBoxRepeticiones" HorizontalAlignment="Left" Height="20" Margin="300,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Text="5"/>
+                <Button x:Name="buttonConsultar" Content="{Binding buttonConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="183,450,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultar_Click"/>
+                <ComboBox x:Name="comboBoxEjercicios" HorizontalAlignment="Left" Margin="168,89,0,0" VerticalAlignment="Top" Width="120" DropDownClosed="comboBoxEjercicios_DropDownClosed"/>
+                <Label x:Name="labelSeleccionEjercicio" Content="{Binding labelSeleccionEjercicio, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="29,89,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="textBoxDescripcion" HorizontalAlignment="Left" Height="128" Margin="47,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="303" Text="Descripción del ejercicio"/>
+                <Image x:Name="imagenFoto" HorizontalAlignment="Left" Height="74" Margin="19,10,0,0" VerticalAlignment="Top" Width="73"/>
+                <Button x:Name="buttonConsultarEntrenamientos" Content="{Binding buttonConsultar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="183,490,0,0" VerticalAlignment="Top" Width="75" Click="buttonConsultarEntrenamientos_Click"/>
+                <Label x:Name="labelConsultarEntrenamiento" Content="{Binding labelConsultarEntrenamiento, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="29,490,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="buttonCancelar" Content="{Binding buttonCancelar, Source={StaticResource IdiomasRes}}" HorizontalAlignment="Left" Margin="285,468,0,0" VerticalAlignment="Top" Width="75" Click="buttonCancelar_Click" Background="#FFFF2C2C"/>
+                <Image x:Name="imagenEjercicio" HorizontalAlignment="Left" Height="100" Margin="87,325,0,0" VerticalAlignment="Top" Width="239"/>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>
