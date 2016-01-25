@@ -9,9 +9,16 @@ using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases.Tests
 {
+    /// <summary>
+    /// Clase que contiene las pruebas de la clase Administrador.
+    /// </summary>
     [TestClass()]
     public class AdministradorTests
     {
+        /// <summary>
+        /// Metodo de prueba que comprueba si un usuario de tipo Administrador se puede registrar.
+        /// en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void registrarAdministradorTest()
         {

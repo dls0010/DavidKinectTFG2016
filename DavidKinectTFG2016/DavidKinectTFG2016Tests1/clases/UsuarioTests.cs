@@ -11,9 +11,15 @@ using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases.Tests
 {
+    /// <summary>
+    /// Clase que contiene las pruebas de la clase Usuario.
+    /// </summary>
     [TestClass()]
     public class UsuarioTests
     {
+        /// <summary>
+        /// Metodo de prueba que comprueba si se da de alta a un usuario en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void CrearUsuariosTest()
         {
@@ -62,6 +68,10 @@ namespace DavidKinectTFG2016.clases.Tests
             }
         }
 
+        /// <summary>
+        /// Metodo de prueba que comprueba si se autentifica correctamente un usuario.
+        /// en la base de datos para acceder a la aplicación.
+        /// </summary>
         [TestMethod()]
         public void AutentificarTest()
         {
@@ -93,6 +103,10 @@ namespace DavidKinectTFG2016.clases.Tests
             }
         }
 
+        /// <summary>
+        /// Metodo que comprueba si se puede obtener correctamente el tipo de usuario.
+        /// al que pertenece un usuario registrado en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void obtenerTipoTest()
         {
@@ -124,6 +138,9 @@ namespace DavidKinectTFG2016.clases.Tests
             }
         }
 
+        /// <summary>
+        /// Metodo que comprueba si esta registrado un usuario en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void ExisteTest()
         {
@@ -155,6 +172,9 @@ namespace DavidKinectTFG2016.clases.Tests
             }
         }
 
+        /// <summary>
+        /// Metodo que comprueba si funciona correctamente el borrar un usuario de la base de datos.
+        /// </summary>
         [TestMethod()]
         public void BorrarUsuarioTest()
         {

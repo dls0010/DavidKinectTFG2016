@@ -9,9 +9,16 @@ using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases.Tests
 {
+    /// <summary>
+    /// Clase que contiene las pruebas de la clase Relacion.
+    /// </summary>
     [TestClass()]
     public class RelacionTests
     {
+        /// <summary>
+        /// Metodo de prueba que comprueba si se puede registrar una nueva relacion paciente - terapeuta.
+        /// en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void registrarRelacionTest()
         {

@@ -9,9 +9,18 @@ using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases.Tests
 {
+    /// <summary>
+    /// Clase que contiene las pruebas de la clase Paciente.
+    /// </summary>
     [TestClass()]
     public class PacienteTests
     {
+        /// <summary>
+        /// Metodo de prueba que comprueba si un usuario de tipo Paciente se puede registrar.
+        /// en la base de datos.
+        /// La ruta de la imagen la debemos de cambiar por la de nuestro ordenador.
+        /// Ya que sino, automaticamente fallará.
+        /// </summary>
         [TestMethod()]
         public void RegistrarPacienteTest()
         {
@@ -60,6 +69,10 @@ namespace DavidKinectTFG2016.clases.Tests
             }
         }
 
+        /// <summary>
+        /// Metodo de prueba que comprueba si se puede obtener el nombre completo de un paciente.
+        /// registrado en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void getNombreCompletoPacienteTest()
         {
@@ -109,6 +122,10 @@ namespace DavidKinectTFG2016.clases.Tests
             }
         }
 
+        /// <summary>
+        /// Metodo de prueba que comprueba si funciona la obtencion del nombre de usuario.
+        /// de un paciente de la base de datos.
+        /// </summary>
         [TestMethod()]
         public void getUsuarioTest()
         {

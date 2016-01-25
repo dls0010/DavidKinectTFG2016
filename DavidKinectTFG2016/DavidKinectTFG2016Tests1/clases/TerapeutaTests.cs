@@ -9,9 +9,16 @@ using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases.Tests
 {
+    /// <summary>
+    /// Clase que contiene las pruebas de la clase Terapeuta.
+    /// </summary>
     [TestClass()]
     public class TerapeutaTests
     {
+        /// <summary>
+        /// Metodo de prueba que comprueba si un usuario de tipo Terapeuta se puede registrar.
+        /// en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void registrarTerapeutaTest()
         {
@@ -60,6 +67,10 @@ namespace DavidKinectTFG2016.clases.Tests
             }
         }
 
+        /// <summary>
+        /// Metodo de prueba que comprueba se puede obtener el nombre de un terapeuta.
+        /// registrado en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void getNombreTerapeutaTest()
         {
@@ -109,6 +120,10 @@ namespace DavidKinectTFG2016.clases.Tests
             }
         }
 
+        /// <summary>
+        /// Metodo de prueba que comprueba se puede obtener el nombre completo de un terapeuta.
+        /// registrado en la base de datos.
+        /// </summary>
         [TestMethod()]
         public void getNombreCompletoTerapeutaTest()
         {

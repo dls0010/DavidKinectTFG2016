@@ -9,9 +9,14 @@ using MySql.Data.MySqlClient;
 
 namespace DavidKinectTFG2016.clases.Tests
 {
+    /// <summary>
+    /// Clase que contiene las pruebas de la clase Ejercicio.
+    /// </summary>
     [TestClass()]
     public class EjercicioTests
-    { 
+    {
+        /// Metodo de prueba que comprueba si un ejercicio realizado por un paciente se puede registrar.
+        /// en la base de datos.
         [TestMethod()]
         public void registrarEjercicioTest()
         {
