@@ -189,21 +189,28 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         private void buttonEnviar_Click(object sender, RoutedEventArgs e)
         {
             string feedbackTerapeuta = textBoxFeedbackTerapeuta.Text;
-            idEntrenamiento = Convert.ToInt32(comboBoxEntrenamiento.Text);
-            if (feedbackTerapeuta != "")
+            if (comboBoxEntrenamiento.Text != "")
             {
-                if (Entrenamiento.AñadirFeedback(idEntrenamiento, nombreUsuarioTerapeuta, feedbackTerapeuta) > 0)
+                idEntrenamiento = Convert.ToInt32(comboBoxEntrenamiento.Text);
+                if (feedbackTerapeuta != "")
                 {
-                    MessageBox.Show("Feedback enviado con exito.");
+                    if (Entrenamiento.AñadirFeedback(idEntrenamiento, nombreUsuarioTerapeuta, feedbackTerapeuta) > 0)
+                    {
+                        MessageBox.Show("Feedback enviado con exito.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al enviar el feedback. Pruebe de nuevo.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error al enviar el feedback. Pruebe de nuevo.");
+                    MessageBox.Show("Error, no has escrito feedback para publicar.");
                 }
             }
             else
             {
-                MessageBox.Show("Error, no has escrito feedback para publicar.");
+                MessageBox.Show("Debes de seleccionar un entrenamiento");
             }
         }
     }

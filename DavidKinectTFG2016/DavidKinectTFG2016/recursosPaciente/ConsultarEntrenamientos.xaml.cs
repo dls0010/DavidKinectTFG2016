@@ -223,89 +223,96 @@ namespace DavidKinectTFG2016.recursosPaciente
             string resumenResultados = "Resumen resultados: \n";
             string feedbackPaciente;
             List<string> listaDescripciones = new List<string>();
-            try
+            if (comboBoxIDEntrenamiento.Text != "")
             {
-                string query = "Select descripcion from ejercicios";
-                MySqlCommand comando = new MySqlCommand(query, conexion);
-                MySqlDataReader dr = comando.ExecuteReader();
-                while (dr.Read())
+                try
                 {
-                    string descripcion = dr.GetString(0);
-                    listaDescripciones.Add(descripcion);
+                    string query = "Select descripcion from ejercicios";
+                    MySqlCommand comando = new MySqlCommand(query, conexion);
+                    MySqlDataReader dr = comando.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        string descripcion = dr.GetString(0);
+                        listaDescripciones.Add(descripcion);
+                    }
+                    dr.Close();
                 }
-                dr.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar los datos de los entrenamientos en el combobox: " + ex.ToString());
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar los datos de los entrenamientos en el combobox: " + ex.ToString());
+                }
 
-            foreach (string ejercicio in listaEjercicios)
-            {
-                int repeticiones = listaRepeticiones[listaEjercicios.IndexOf(ejercicio)];
-                PrevisualizarEjercicio previsualizar = new PrevisualizarEjercicio(ejercicio, repeticiones);
-                previsualizar.ShowDialog();
+                foreach (string ejercicio in listaEjercicios)
+                {
+                    int repeticiones = listaRepeticiones[listaEjercicios.IndexOf(ejercicio)];
+                    PrevisualizarEjercicio previsualizar = new PrevisualizarEjercicio(ejercicio, repeticiones);
+                    previsualizar.ShowDialog();
 
-                if (ejercicio == "Ejercicio1")
-                {
-                    Ejercicio1 ejer1 = new Ejercicio1(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    ejer1.ShowDialog();
-                    resumenResultados += "\n Ejercicio 1: \n" + ejer1.devolverResumen();
-                }
-                if (ejercicio == "Ejercicio2")
-                {
-                    Ejercicio2 ejer2 = new Ejercicio2(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    ejer2.ShowDialog();
-                    resumenResultados += "\n Ejercicio 2: \n" + ejer2.devolverResumen();
+                    if (ejercicio == "Ejercicio1")
+                    {
+                        Ejercicio1 ejer1 = new Ejercicio1(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
+                        ejer1.ShowDialog();
+                        resumenResultados += "\n Ejercicio 1: \n" + ejer1.devolverResumen();
+                    }
+                    if (ejercicio == "Ejercicio2")
+                    {
+                        Ejercicio2 ejer2 = new Ejercicio2(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
+                        ejer2.ShowDialog();
+                        resumenResultados += "\n Ejercicio 2: \n" + ejer2.devolverResumen();
 
+                    }
+                    if (ejercicio == "Ejercicio3")
+                    {
+                        Ejercicio3 ejer3 = new Ejercicio3(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
+                        ejer3.ShowDialog();
+                        resumenResultados += "\n Ejercicio 3: \n" + ejer3.devolverResumen();
+                    }
+                    if (ejercicio == "Ejercicio4")
+                    {
+                        Ejercicio4 ejer4 = new Ejercicio4(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
+                        ejer4.ShowDialog();
+                        resumenResultados += "\n Ejercicio 4: \n" + ejer4.devolverResumen();
+                    }
+                    if (ejercicio == "Ejercicio5")
+                    {
+                        Ejercicio5 ejer5 = new Ejercicio5(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
+                        ejer5.ShowDialog();
+                        resumenResultados += "\n Ejercicio 5: \n" + ejer5.devolverResumen();
+                    }
+                    if (ejercicio == "Ejercicio6")
+                    {
+                        Ejercicio6 ejer6 = new Ejercicio6(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
+                        ejer6.ShowDialog();
+                        resumenResultados += "\n Ejercicio 6: \n" + ejer6.devolverResumen();
+                    }
                 }
-                if (ejercicio == "Ejercicio3")
-                {
-                    Ejercicio3 ejer3 = new Ejercicio3(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    ejer3.ShowDialog();
-                    resumenResultados += "\n Ejercicio 3: \n" + ejer3.devolverResumen();
-                }
-                if (ejercicio == "Ejercicio4")
-                {
-                    Ejercicio4 ejer4 = new Ejercicio4(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    ejer4.ShowDialog();
-                    resumenResultados += "\n Ejercicio 4: \n" + ejer4.devolverResumen();
-                }
-                if (ejercicio == "Ejercicio5")
-                {
-                    Ejercicio5 ejer5 = new Ejercicio5(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    ejer5.ShowDialog();
-                    resumenResultados += "\n Ejercicio 5: \n" + ejer5.devolverResumen();
-                }
-                if (ejercicio == "Ejercicio6")
-                {
-                    Ejercicio6 ejer6 = new Ejercicio6(nombreUsuarioPaciente, listaRepeticiones[listaEjercicios.IndexOf(ejercicio)]);
-                    ejer6.ShowDialog();
-                    resumenResultados += "\n Ejercicio 6: \n" + ejer6.devolverResumen();
-                }
-            }
 
-            DateTime hoy = DateTime.Now;
-            string fecha = hoy.ToString("yyyy/MM/dd HH:mm:ss tt");
+                DateTime hoy = DateTime.Now;
+                string fecha = hoy.ToString("yyyy/MM/dd HH:mm:ss tt");
 
-            if (MessageBox.Show("¿Quieres escribir feedback acerca del entrenamiento?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-            {
-                EscribirFeedbackEntrenamiento feedback = new EscribirFeedbackEntrenamiento();
-                feedback.ShowDialog();
-                feedbackPaciente = feedback.devolverFeedback();
+                if (MessageBox.Show("¿Quieres escribir feedback acerca del entrenamiento?", "Pregunta", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    EscribirFeedbackEntrenamiento feedback = new EscribirFeedbackEntrenamiento();
+                    feedback.ShowDialog();
+                    feedbackPaciente = feedback.devolverFeedback();
+                }
+                else
+                {
+                    feedbackPaciente = null;
+                }
+                if (Entrenamiento.modificarEntrenamiento(Convert.ToInt32(comboBoxIDEntrenamiento.Text), fecha, resumenResultados, feedbackPaciente) > 0)
+                {
+                    MessageBox.Show("Enhorabuena, has completado el entrenamiento y tu terapeuta podrá ver tus resultados");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error al registrar tu entrenamiento");
+                }
             }
             else
             {
-                feedbackPaciente = null;
-            }
-            if (Entrenamiento.modificarEntrenamiento(Convert.ToInt32(comboBoxIDEntrenamiento.Text), fecha, resumenResultados, feedbackPaciente) > 0)
-            {
-                MessageBox.Show("Enhorabuena, has completado el entrenamiento y tu terapeuta podrá ver tus resultados");
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Ha ocurrido un error al registrar tu entrenamiento");
+                MessageBox.Show("Debes de seleccionar un entrenamiento");
             }
         }
 

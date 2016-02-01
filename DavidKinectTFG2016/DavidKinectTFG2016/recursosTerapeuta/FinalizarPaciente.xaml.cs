@@ -162,24 +162,31 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         {
             DateTime hoy = DateTime.Today;
             string fechaFin = hoy.ToString("yyyy/MM/dd");
-            try
+            if (comboBoxNombre.Text != "")
             {
-                if (Relacion.finalizarRelacion(textBoxIDPaciente.Text, nombreUsuario, textBoxNombre.Text, textBoxApellidos.Text, fechaFin) > 0)
+                try
                 {
-                    MessageBox.Show("Paciente recuperado.");
-                    string query = "Update pacientes set estadoPaciente ='Recuperado' where nifPaciente = '" + textBoxNIF.Text + "'";
-                    MySqlCommand comando = new MySqlCommand(query, conexion);
-                    comando.ExecuteNonQuery();
-                    this.Window_Loaded(this, e);
+                    if (Relacion.finalizarRelacion(textBoxIDPaciente.Text, nombreUsuario, textBoxNombre.Text, textBoxApellidos.Text, fechaFin) > 0)
+                    {
+                        MessageBox.Show("Paciente recuperado.");
+                        string query = "Update pacientes set estadoPaciente ='Recuperado' where nifPaciente = '" + textBoxNIF.Text + "'";
+                        MySqlCommand comando = new MySqlCommand(query, conexion);
+                        comando.ExecuteNonQuery();
+                        this.Window_Loaded(this, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fallo al finalizar el tratamiento del paciente.");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Fallo al finalizar el tratamiento del paciente.");
+                    MessageBox.Show("Fallo al actualizar el campo estado del paciente: " + ex.ToString());
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Fallo al actualizar el campo estado del paciente: " + ex.ToString());
+                MessageBox.Show("Debes de seleccionar un paciente");
             }
         }
 

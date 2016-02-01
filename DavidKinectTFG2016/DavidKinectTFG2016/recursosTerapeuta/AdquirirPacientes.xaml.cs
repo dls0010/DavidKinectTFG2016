@@ -159,24 +159,31 @@ namespace DavidKinectTFG2016.recursosTerapeuta
         {
             DateTime hoy = DateTime.Today;
             string fechaInicio = hoy.ToString("yyyy/MM/dd");
-            try
+            if (comboBoxNombre.Text != "")
             {
-                if (Relacion.registrarRelacion(textBoxIDPaciente.Text, nombreUsuario, textBoxNombre.Text, textBoxApellidos.Text, fechaInicio) > 0)
+                try
                 {
-                    MessageBox.Show("Paciente atendido.");
-                    string query = "Update pacientes set estadoPaciente ='En tratamiento' where nifPaciente = '" + textBoxNIF.Text + "'";
-                    MySqlCommand comando = new MySqlCommand(query, conexion);
-                    comando.ExecuteNonQuery();
-                    this.Window_Loaded(this, e);
+                    if (Relacion.registrarRelacion(textBoxIDPaciente.Text, nombreUsuario, textBoxNombre.Text, textBoxApellidos.Text, fechaInicio) > 0)
+                    {
+                        MessageBox.Show("Paciente atendido.");
+                        string query = "Update pacientes set estadoPaciente ='En tratamiento' where nifPaciente = '" + textBoxNIF.Text + "'";
+                        MySqlCommand comando = new MySqlCommand(query, conexion);
+                        comando.ExecuteNonQuery();
+                        this.Window_Loaded(this, e);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fallo al asignar el paciente.");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Fallo al asignar el paciente.");
+                    MessageBox.Show("Fallo al actualizar el campo estado del paciente: " + ex.ToString());
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Fallo al actualizar el campo estado del paciente: " + ex.ToString());
+                MessageBox.Show("Debe de seleccionar el nombre del paciente elegido");
             }
         }
 
