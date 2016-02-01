@@ -31,6 +31,8 @@ namespace DavidKinectTFG2016.registrosVarios
         {
             nombreUsuario = nombre;
             InitializeComponent();
+            buttonNacimiento.IsEnabled = false;
+            buttonTomarFoto.IsEnabled = false;
         }
 
         /// <summary>
@@ -119,10 +121,17 @@ namespace DavidKinectTFG2016.registrosVarios
         private void buttonHacerFoto_Click(object sender, RoutedEventArgs e)
         {
             buttonHacerFoto.IsEnabled = false;
-            kinect = KinectSensor.KinectSensors.FirstOrDefault(sensorItem => sensorItem.Status == KinectStatus.Connected);
-            kinect.Start();
-            kinect.ColorStream.Enable();
-            kinect.ColorFrameReady += kinect_ColorFrameReady;
+            if (KinectSensor.KinectSensors.Count == 0)
+            {
+                MessageBox.Show("No se ha detectado ninguna camara Kinect");
+            }
+            else
+            {
+                kinect = KinectSensor.KinectSensors.FirstOrDefault(sensorItem => sensorItem.Status == KinectStatus.Connected);
+                kinect.Start();
+                kinect.ColorStream.Enable();
+                kinect.ColorFrameReady += kinect_ColorFrameReady;
+            }
         }
 
         /// <summary>
@@ -132,6 +141,7 @@ namespace DavidKinectTFG2016.registrosVarios
         /// <param name="e"></param> eventos de la kinect.
         private void kinect_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
         {
+            buttonTomarFoto.IsEnabled = true;
             using (ColorImageFrame imageFrame = e.OpenColorImageFrame())
             {
                 if (imageFrame == null)
@@ -174,11 +184,21 @@ namespace DavidKinectTFG2016.registrosVarios
                 jpg.Frames.Add(BitmapFrame.Create(imagen));
                 jpg.Save(fotoGuardada);
                 fotoGuardada.Close();
-                /*
-                kinect.ColorStream.Disable();
-                kinect.Stop();*/
                 buttonHacerFoto.IsEnabled = true;
+                kinect.ColorStream.Disable();
+                kinect.Stop();
             }
+            MessageBox.Show("Foto tomada");
+        }
+
+        /// <summary>
+        /// Metodo que activa el boton OK una vez elegida una fecha en el calendario.
+        /// </summary>
+        /// <param name="sender"></param> DataPicker.
+        /// <param name="e"></param>Evento del datapicker.
+        private void dateCalendario_CalendarClosed(object sender, RoutedEventArgs e)
+        {
+            buttonNacimiento.IsEnabled = true;
         }
     }
 }

@@ -21,7 +21,7 @@
                 <TextBox x:Name="textBoxApellidos" HorizontalAlignment="Left" Height="23" Margin="125,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <TextBox x:Name="textBoxNIF" MaxLength="9" HorizontalAlignment="Left" Height="23" Margin="125,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" UndoLimit="9"/>
                 <TextBox x:Name="textBoxTelefono" MaxLength="9" HorizontalAlignment="Left" Height="23" Margin="125,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" UndoLimit="9"/>
-                <DatePicker x:Name="dateCalendario" HorizontalAlignment="Left" Margin="125,200,0,0" VerticalAlignment="Top"/>
+                <DatePicker x:Name="dateCalendario" HorizontalAlignment="Left" Margin="125,200,0,0" VerticalAlignment="Top" CalendarClosed="dateCalendario_CalendarClosed"/>
                 <Button x:Name="buttonNacimiento" Content="OK" HorizontalAlignment="Left" Margin="283,200,0,0" VerticalAlignment="Top" Width="75" Click="buttonNacimiento_Click"/>
                 <TextBox x:Name="textBoxNacimiento" HorizontalAlignment="Left" Height="23" Margin="125,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"/>
                 <TextBox x:Name="textBoxEstado" HorizontalAlignment="Left" Height="23" Margin="125,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Libre" IsEnabled="False"/>
