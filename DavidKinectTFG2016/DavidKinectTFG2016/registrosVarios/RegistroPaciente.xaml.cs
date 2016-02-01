@@ -33,6 +33,10 @@ namespace DavidKinectTFG2016.registrosVarios
             InitializeComponent();
             buttonNacimiento.IsEnabled = false;
             buttonTomarFoto.IsEnabled = false;
+            if (KinectSensor.KinectSensors.Count == 0)
+            {
+                buttonHacerFoto.IsEnabled = false;
+            }
         }
 
         /// <summary>
